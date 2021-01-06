@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">DailyCoding</string>
+
+    <!-- Home -->
+    <string name="ready">자, 준비 되셨나요?</string>
+    <string name="start">문제풀기</string>
+    <string name="ranking">예진 님의 현재 랭킹</string>
+
+    <string name="hotNews">현재 급상승 뉴스</string>
+    <string name="recruit">현재 채용 공고</string>
+    <string name="hottest">실시간 인기글</string>
+
+    <!-- Navigation Drawer -->
+    <string name="home">Home</string>
+    <string name="course">Course</string>
+    <string name="news">News</string>
+    <string name="languages">Languages</string>
+    <string name="setting">Setting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

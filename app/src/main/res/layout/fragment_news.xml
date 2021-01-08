@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <EditText
+        android:id="@+id/news_editText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/round_border"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:paddingLeft="10dp"
+        android:hint="검색어를 입력하세요">
+
+    </EditText>
+    <ImageButton
+        android:id="@+id/news_searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/search"
+        android:background="@android:color/transparent"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="22dp">
+
+    </ImageButton>
+    <TextView
+        android:id="@+id/news_textView"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:text="현재 급상승 뉴스"
+        android:layout_below="@+id/news_editText"
+        android:layout_marginTop="15dp"
+        android:layout_alignLeft="@+id/news_editText"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold">
+
+    </TextView>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/news_arrow"
+        android:background="@android:color/transparent"
+        android:layout_toEndOf="@+id/news_textView"
+        android:layout_below="@+id/news_editText"
+        android:layout_alignTop="@+id/news_textView">
+
+    </ImageButton>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_below="@+id/news_textView"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:id="@+id/news_textView2"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:text="최근 프로그래밍 이슈"
+        android:layout_below="@+id/recyclerView1"
+        android:layout_marginTop="15dp"
+        android:layout_alignLeft="@+id/news_editText"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold">
+
+    </TextView>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/news_arrow"
+        android:background="@android:color/transparent"
+        android:layout_toEndOf="@+id/news_textView2"
+        android:layout_below="@+id/recyclerView1"
+        android:layout_alignTop="@+id/news_textView2"
+        >
+
+    </ImageButton>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_below="@+id/news_textView2"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>

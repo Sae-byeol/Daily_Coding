@@ -18,29 +18,29 @@ public class SpinnerAdapter extends BaseAdapter {
     LayoutInflater inflater;
 
 
-    public SpinnerAdapter(Context context, List<String> data){
+    public SpinnerAdapter(Context context, List<String> data) {
         this.context = context;
         this.data = data;
-        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
 
     @Override
     public int getCount() {
-        if(data!=null) return data.size();
+        if (data != null) return data.size();
         else return 0;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView==null) {
+        if (convertView == null) {
             convertView = inflater.inflate(R.layout.spinner_item, parent, false);
         }
 
-        if(data!=null){
+        if (data != null) {
             //데이터세팅
             String text = data.get(position);
-            ((TextView)convertView.findViewById(R.id.spinnerText)).setText(text);
+            ((TextView) convertView.findViewById(R.id.spinnerText)).setText(text);
         }
 
         return convertView;
@@ -48,13 +48,13 @@ public class SpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        if(convertView==null){
+        if (convertView == null) {
             convertView = inflater.inflate(R.layout.spinner_dropdown, parent, false);
         }
 
         //데이터세팅
         String text = data.get(position);
-        ((TextView)convertView.findViewById(R.id.spinnerText)).setText(text);
+        ((TextView) convertView.findViewById(R.id.spinnerText)).setText(text);
 
         return convertView;
     }

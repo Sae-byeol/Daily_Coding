@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:gravity="center_vertical"
-    android:padding="5dp"
+    android:paddingBottom="10dp"
     android:orientation="horizontal"
     android:background="@color/transparent_light"
     android:layout_width="match_parent"
@@ -15,7 +15,14 @@
         android:background="@drawable/round_border"
         android:fontFamily="@font/robotoregular"
         android:layout_weight="1"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:src="@color/transparent_light"
+        android:layout_marginStart="5dp"
+        android:scaleType="centerInside"
+        android:layout_width="12dp"
         android:layout_height="match_parent" />
 
 

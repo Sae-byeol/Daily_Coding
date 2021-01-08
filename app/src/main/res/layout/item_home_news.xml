@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/item_temp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/round_border"
+    android:layout_marginLeft="16dp"
+    android:layout_width="196dp"
+    android:layout_height="144dp">
+
+</androidx.constraintlayout.widget.ConstraintLayout>

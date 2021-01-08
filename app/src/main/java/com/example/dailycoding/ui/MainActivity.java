@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setListener();
     }
 
-    private void init(){
+    private void init() {
         btnMenu = findViewById(R.id.main_imageview_menu);
         drawerLayout = findViewById(R.id.main_drawerlayout);
         navigationView = findViewById(R.id.main_navigation);
@@ -45,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void setListener(){
+    private void setListener() {
 
-        btnMenu.setOnClickListener(new View.OnClickListener(){
+        btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.START);

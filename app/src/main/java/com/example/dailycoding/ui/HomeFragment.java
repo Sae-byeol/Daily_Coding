@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +36,12 @@ public class HomeFragment extends Fragment {
     private LineChart lineChart;
     private LineChart _lineChart;
 
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+    private ArrayList<String> data;
+
     private TextView tv_toplate;
 
     @Override
@@ -50,6 +58,30 @@ public class HomeFragment extends Fragment {
         initSpinner();
         initChart();
         initMultiline();
+        initAdapter();
+    }
+
+    private void initAdapter() {
+
+        data = new ArrayList<>();
+
+        data.add("0");
+        data.add("0");
+        data.add("0");
+        data.add("0");
+        data.add("0");
+        data.add("0");
+
+        recyclerView = (RecyclerView) getView().findViewById(R.id.home_recyclerview);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(getContext());
+        ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+
+        mAdapter = new HomeAdapter(data);
+        recyclerView.setAdapter(mAdapter);
+
     }
 
     private void initSpinner() {
@@ -137,7 +169,7 @@ public class HomeFragment extends Fragment {
         yRAxis.setDrawAxisLine(false);
         yRAxis.setDrawGridLines(false);
 
-        final String[] date = {"01.01","01.02","01.03","01.04","01.05","01.06","01.07"};
+        final String[] date = {"01.01", "01.02", "01.03", "01.04", "01.05", "01.06", "01.07"};
         xAxis.setValueFormatter(new IndexAxisValueFormatter(date));
 
     }
@@ -193,7 +225,7 @@ public class HomeFragment extends Fragment {
         yRAxis.setDrawAxisLine(false);
         yRAxis.setDrawGridLines(false);
 
-        final String[] date = {"27위","19위","22위","24위","20위","18위","13위"};
+        final String[] date = {"27위", "19위", "22위", "24위", "20위", "18위", "13위"};
         xAxis.setValueFormatter(new IndexAxisValueFormatter(date));
 
         tv_toplate = getView().findViewById(R.id.home_textview_toplate);

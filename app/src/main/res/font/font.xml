@@ -4,9 +4,6 @@
 
     <!--regular-->
     <font
-        android:font="@font/robotoregular"
-        android:fontStyle="normal"
-        android:fontWeight="700"
         app:font="@font/robotoregular"
         app:fontStyle="normal"
         app:fontWeight="500" />

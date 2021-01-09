@@ -74,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.drawer_news:
                         replaceFragment(NewsFragment.newInstance());
+
+                    case R.id.drawer_course:
+                        replaceFragment(CourseFragment.newInstance());
                 }
                 return false;
             }

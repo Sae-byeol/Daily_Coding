@@ -70,13 +70,14 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.drawer_home:
                         Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
-
+                        break;
 
                     case R.id.drawer_news:
                         replaceFragment(NewsFragment.newInstance());
-
+                        break;
                     case R.id.drawer_course:
                         replaceFragment(CourseFragment.newInstance());
+                        break;
                 }
                 return false;
             }

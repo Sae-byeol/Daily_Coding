@@ -66,6 +66,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/TextView_problemSelection"
         android:layout_marginTop="30dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView_course"
         android:layout_width="match_parent"

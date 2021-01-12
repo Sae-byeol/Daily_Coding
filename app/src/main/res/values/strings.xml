@@ -18,4 +18,13 @@
     <string name="setting">Setting</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">검색어를 입력하세요</string>
+    <string name="pick">우리들의 Pick</string>
+    <string name="pick_source">개발자들이 직접 경험하고,도움을 받은, 검증된 교육 자료들입니다.</string>
+    <string name="promotion_btn">프로모션</string>
+    <string name="chanel_btn">채널</string>
+    <string name="news_item_title">title</string>
+    <string name="news_item_context">context</string>
+    <string name="news_item_review">review</string>
+    <string name="news_item_btn"><![CDATA[커리큘럼 보러가기>>]]></string>
 </resources>

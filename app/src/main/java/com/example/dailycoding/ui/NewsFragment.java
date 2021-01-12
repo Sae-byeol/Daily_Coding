@@ -15,7 +15,7 @@ import com.example.dailycoding.R;
 public class NewsFragment extends Fragment {
     private RecyclerView recyclerView,recyclerView2;
     private RecyclerView.Adapter mAdapter;
-    private String[] mDataset={"news 1","news 2"};
+    private String[] mDataset={"news 1","news 2","news3"};
 
     public static NewsFragment newInstance() {
         return new NewsFragment();
@@ -27,18 +27,18 @@ public class NewsFragment extends Fragment {
         View rootView=(View)inflater.inflate(R.layout.fragment_news, container, false);
 
         recyclerView=(RecyclerView)rootView.findViewById(R.id.recyclerView1);
-        LinearLayoutManager horizontalLayoutManager=new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
+        LinearLayoutManager LayoutManager=new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(horizontalLayoutManager);
+        recyclerView.setLayoutManager(LayoutManager);
         mAdapter=new NewsAdapter(getActivity(),mDataset);
         recyclerView.setAdapter(mAdapter);
 
-        recyclerView2 = (RecyclerView) rootView.findViewById(R.id.recyclerView2);
+        /*recyclerView2 = (RecyclerView) rootView.findViewById(R.id.recyclerView2);
         LinearLayoutManager horizontalLayoutManager2=new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(horizontalLayoutManager2);
         mAdapter=new NewsAdapter(getActivity(),mDataset);
-        recyclerView2.setAdapter(mAdapter);
+        recyclerView2.setAdapter(mAdapter);*/
 
         return rootView;
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,11 +20,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         protected ImageView imageView;
-        protected TextView textView;
+        protected TextView textView_title;
+        protected TextView textView_content;
+        protected TextView textView_review;
+        protected Button button;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.imageView=itemView.findViewById(R.id.news_item_imageView);
-            this.textView=itemView.findViewById(R.id.news_item_textView);
+            this.textView_title=itemView.findViewById(R.id.news_item_textView);
+            this.textView_content=itemView.findViewById(R.id.news_item_textView2);
+            this.textView_review=itemView.findViewById(R.id.news_item_textView3);
+            this.button=itemView.findViewById(R.id.news_item_button);
         }
     }
     public NewsAdapter(Context context,String[] myDataset){
@@ -41,7 +48,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NewsAdapter.ViewHolder holder, int position) {
-        holder.textView.setText(mDataset[position]);
+        holder.textView_title.setText(mDataset[position]);
     }
 
     @Override

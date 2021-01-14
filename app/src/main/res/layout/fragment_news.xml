@@ -1,106 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <EditText
-        android:id="@+id/news_editText"
-        android:layout_width="match_parent"
-        android:layout_height="41dp"
-        android:background="@drawable/round_border"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:padding="10dp"
-        android:hint="@string/search"
-        android:textSize="14sp">
-
-    </EditText>
-    <ImageButton
-        android:id="@+id/news_searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/search"
-        android:background="@android:color/transparent"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="22dp"
-        >
-
-    </ImageButton>
-    <TextView
-        android:id="@+id/news_textView"
-        android:layout_width="345dp"
-        android:layout_height="wrap_content"
-        android:text="@string/pick"
-        android:layout_below="@+id/news_editText"
-        android:layout_marginTop="17dp"
-        android:layout_alignStart="@+id/news_editText"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold">
-
-    </TextView>
-    <TextView
-        android:id="@+id/news_textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/news_textView"
-        android:text="@string/pick_source"
-        android:layout_alignStart="@+id/news_editText"
-        android:layout_marginTop="8dp"
-        android:textSize="10sp"
-        >
-
-    </TextView>
     <LinearLayout
-        android:id="@+id/news_linear"
+        android:id="@+id/child_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/news_textView2"
-        android:layout_marginLeft="63dp">
-        <Button
-            android:id="@+id/news_promotionButton"
-            android:layout_width="99dp"
-            android:layout_height="35dp"
-            android:backgroundTint="#E5E5E5"
-            android:layout_marginTop="8dp"
-            android:text="@string/promotion_btn"
-            android:textSize="10sp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/news_editText"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:background="@drawable/round_border"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="10dp"
+                android:hint="@string/search"
+                android:textSize="14sp">
+
+            </EditText>
+            <ImageButton
+                android:id="@+id/news_searchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/search"
+                android:background="@android:color/transparent"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="22dp"
+                >
+
+            </ImageButton>
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/news_textView"
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:text="@string/pick"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="17dp"
             android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold">
+
+        </TextView>
+        <TextView
+            android:id="@+id/news_textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_source"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:textSize="10sp"
             >
 
-        </Button>
-        <Button
-            android:id="@+id/news_chanelButton"
-            android:layout_width="99dp"
-            android:layout_height="35dp"
-            android:backgroundTint="#E5E5E5"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/chanel_btn"
-            android:textSize="10sp"
-            android:textColor="@color/black">
+        </TextView>
+        <LinearLayout
+            android:id="@+id/news_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="63dp">
+            <Button
+                android:id="@+id/news_promotionButton"
+                android:layout_width="99dp"
+                android:layout_height="35dp"
+                android:backgroundTint="#E5E5E5"
+                android:layout_marginTop="8dp"
+                android:text="@string/promotion_btn"
+                android:textSize="10sp"
+                android:textColor="@color/black"
+                >
 
-        </Button>
+            </Button>
+            <Button
+                android:id="@+id/news_chanelButton"
+                android:layout_width="99dp"
+                android:layout_height="35dp"
+                android:backgroundTint="#E5E5E5"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/chanel_btn"
+                android:textSize="10sp"
+                android:textColor="@color/black">
 
+            </Button>
+
+        </LinearLayout>
 
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView1"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:layout_below="@+id/news_linear"
 
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        >
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-
-
-</RelativeLayout>
+</FrameLayout>

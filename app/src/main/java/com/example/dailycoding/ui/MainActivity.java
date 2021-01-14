@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnMenu;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private View header;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         init();
         setListener();
+
     }
 
     private void init() {
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.main_drawerlayout);
         navigationView = findViewById(R.id.main_navigation);
         navigationView.setItemIconTintList(null);
+        header = LayoutInflater.from(this).inflate(R.layout.navigationview_header, null);
+        navigationView.addHeaderView(header);
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -69,14 +74,16 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.drawer_home:
-                        Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
-                        break;
-
-                    case R.id.drawer_news:
-                        replaceFragment(NewsFragment.newInstance());
+                        replaceFragment(HomeFragment.newInstance());
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.drawer_course:
                         replaceFragment(CourseFragment.newInstance());
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.drawer_news:
+                        replaceFragment(NewsFragment.newInstance());
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                 }
                 return false;

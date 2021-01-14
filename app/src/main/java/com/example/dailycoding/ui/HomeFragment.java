@@ -44,6 +44,10 @@ public class HomeFragment extends Fragment {
 
     private TextView tv_toplate;
 
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

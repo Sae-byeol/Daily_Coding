@@ -27,4 +27,8 @@
     <string name="news_item_context">context</string>
     <string name="news_item_review">review</string>
     <string name="news_item_btn"><![CDATA[커리큘럼 보러가기>>]]></string>
+
+    <!--Course-->
+    <string name="course_title">기출문제 선택</string>
+    <string name="unsolvedProblem">잠깐! 풀다 만 문제가 있어요!</string>
 </resources>

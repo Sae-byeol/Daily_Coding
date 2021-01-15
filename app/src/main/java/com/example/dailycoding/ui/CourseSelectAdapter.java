@@ -10,13 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
 
-public class CourseTitleAdapter extends RecyclerView.Adapter<CourseTitleAdapter.ViewHolder> {
+import java.util.ArrayList;
+
+public class CourseSelectAdapter extends RecyclerView.Adapter<CourseSelectAdapter.ViewHolder> {
 
 //    private List<Item> data;
-    private String[] data;
+//    private String[] data;
+    private ArrayList<String> dataList;
 
-    public CourseTitleAdapter(String[] data) {
-        this.data = data;
+    public CourseSelectAdapter(ArrayList<String> dataList) {
+        this.dataList = dataList;
     }
 
     @NonNull
@@ -29,12 +32,12 @@ public class CourseTitleAdapter extends RecyclerView.Adapter<CourseTitleAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.textView.setText(data[position]);
+        holder.textView.setText(dataList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return dataList.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

@@ -16,6 +16,8 @@ import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.Pivot;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
+import java.util.ArrayList;
+
 public class CourseFragment extends Fragment {
 
     private DiscreteScrollView scrollView;
@@ -23,7 +25,9 @@ public class CourseFragment extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private static final String[] DATA={"변수활용1", "변수활용2", "변수활용3"};
+//    private static final String[] DATA={"변수활용1", "변수활용2", "변수활용3"};
+    private static ArrayList<String> list_courseTitle;
+    private static ArrayList<Course> list_course;
 
     public static CourseFragment newInstance() {
         return new CourseFragment();
@@ -39,13 +43,14 @@ public class CourseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        initData();
         showCourseTitle();
         showCourseList();
     }
 
     private void showCourseTitle(){
         scrollView = getView().findViewById(R.id.DiscreteScrollView_course);
-        scrollView.setAdapter(new CourseTitleAdapter(new String[]{"PYTHON", "JAVA", "C++"}));
+        scrollView.setAdapter(new CourseSelectAdapter(list_courseTitle));
         scrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMaxScale(1.05f)
                 .setMinScale(0.8f)
@@ -66,8 +71,29 @@ public class CourseFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new CourseAdapter(DATA);
+        mAdapter = new CourseAdapter(list_course, getContext());
         recyclerView.setAdapter(mAdapter);
     }
+
+    private void initData(){
+        list_courseTitle = new ArrayList<>();
+        list_course=new ArrayList<>();
+
+        list_courseTitle.add("Python");
+        list_courseTitle.add("Java");
+        list_courseTitle.add("C++");
+
+        ArrayList tempList=new ArrayList();
+        tempList.add("변수활용11");
+        tempList.add("변수활용12");
+        tempList.add("변수활용13");
+        tempList.add("변수활용14");
+
+        list_course.add(new Course("변수활용1", tempList,false));
+        list_course.add(new Course("변수활용2", tempList,false));
+        list_course.add(new Course("변수활용3", tempList,false));
+
+    }
+
 
 }

@@ -12,7 +12,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/round_border"
-        android:layout_marginTop="13.5dp"
         >
         <TextView
             android:id="@+id/TextView_unsolvedProblem_title"

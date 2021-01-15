@@ -18,7 +18,7 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 
-public class CourseFragment extends Fragment {
+public class LanguageIntroductionFragment extends Fragment {
 
     private DiscreteScrollView scrollView;
     private RecyclerView recyclerView;
@@ -29,15 +29,15 @@ public class CourseFragment extends Fragment {
     private static ArrayList<String> list_courseTitle;
     private static ArrayList<Course> list_course;
 
-    public static CourseFragment newInstance() {
-        return new CourseFragment();
+    public static LanguageIntroductionFragment newInstance() {
+        return new LanguageIntroductionFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_course, container, false);
+        return inflater.inflate(R.layout.fragment_language_introduction, container, false);
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class CourseFragment extends Fragment {
     }
 
     private void showCourseTitle(){
-        scrollView = getView().findViewById(R.id.DiscreteScrollView_course);
+        scrollView = getView().findViewById(R.id.DiscreteScrollView_language);
         scrollView.setAdapter(new CourseSelectAdapter(list_courseTitle));
         scrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMaxScale(1.05f)
@@ -60,7 +60,7 @@ public class CourseFragment extends Fragment {
     }
 
     private void showCourseList(){
-        recyclerView = getView().findViewById(R.id.RecyclerView_course);
+        recyclerView = getView().findViewById(R.id.RecyclerView_language);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -71,7 +71,7 @@ public class CourseFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new CourseAdapter(list_course, getContext(), true);
+        mAdapter = new CourseAdapter(list_course, getContext(), false);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -89,9 +89,10 @@ public class CourseFragment extends Fragment {
         tempList.add("변수활용13");
         tempList.add("변수활용14");
 
-        list_course.add(new Course("변수활용1", tempList,false));
-        list_course.add(new Course("변수활용2", tempList,false));
-        list_course.add(new Course("변수활용3", tempList,false));
+        list_course.add(new Course(getString(R.string.languageIntro_title1), tempList,false));
+        list_course.add(new Course(getString(R.string.languageIntro_title2), tempList,false));
+        list_course.add(new Course(getString(R.string.languageIntro_title3), tempList,false));
+        list_course.add(new Course(getString(R.string.languageIntro_title4), tempList,false));
 
     }
 

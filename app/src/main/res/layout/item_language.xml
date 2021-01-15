@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ConstraintLayout_item_course"
+    android:id="@+id/ConstraintLayout_item_language"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/round_border"
     android:layout_marginVertical="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
-        android:id="@+id/TextView_course_list"
+        android:id="@+id/TextView_language_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/RecyclerView_course_content"
+        app:layout_constraintBottom_toTopOf="@id/TextView_languageIntroduction_content"
         android:layout_marginVertical="19dp"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"/>
     <ImageView
-        android:id="@+id/ImageVIew_itemCourse_arrow"
+        android:id="@+id/ImageVIew_language_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/TextView_course_list"
-        app:layout_constraintBottom_toBottomOf="@id/TextView_course_list"
+        app:layout_constraintTop_toTopOf="@id/TextView_language_list"
+        app:layout_constraintBottom_toBottomOf="@id/TextView_language_list"
         android:background="@drawable/arrow_down"
         android:layout_marginEnd="10dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerView_course_content"
+    <TextView
+        android:id="@+id/TextView_languageIntroduction_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextView_course_list"
+        app:layout_constraintTop_toBottomOf="@id/TextView_language_list"
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="22dp"
+        android:text="@string/languageIntro_content1"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,10 +9,10 @@
             android:title="@string/home"
             android:checked="true" />
         <item
-            android:id="@+id/drawer_course"
+            android:id="@+id/drawer_news"
             android:title="@string/course" />
         <item
-            android:id="@+id/drawer_news"
+            android:id="@+id/drawer_course"
             android:title="@string/news" />
         <item
             android:id="@+id/drawer_languages"

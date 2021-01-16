@@ -1,100 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/child_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <RelativeLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
             <EditText
                 android:id="@+id/news_editText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_border"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
-                android:padding="10dp"
+                android:background="@drawable/round_border"
                 android:hint="@string/search"
-                android:textSize="14sp">
+                android:padding="10dp"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             </EditText>
+
             <ImageButton
                 android:id="@+id/news_searchButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/search"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="10dp"
                 android:background="@android:color/transparent"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="22dp"
-                >
+                android:src="@drawable/search"
+                app:layout_constraintRight_toRightOf="@+id/news_editText"
+                app:layout_constraintTop_toTopOf="parent">
 
             </ImageButton>
 
-        </RelativeLayout>
-
-
-        <TextView
-            android:id="@+id/news_textView"
-            android:layout_width="345dp"
-            android:layout_height="wrap_content"
-            android:text="@string/pick"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="17dp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold">
-
-        </TextView>
-        <TextView
-            android:id="@+id/news_textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/pick_source"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
-            android:textSize="10sp"
-            >
-
-        </TextView>
-        <LinearLayout
-            android:id="@+id/news_linear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="63dp">
-            <Button
-                android:id="@+id/news_promotionButton"
-                android:layout_width="99dp"
-                android:layout_height="35dp"
-                android:backgroundTint="#E5E5E5"
-                android:layout_marginTop="8dp"
-                android:text="@string/promotion_btn"
-                android:textSize="10sp"
+            <TextView
+                android:id="@+id/news_textView"
+                android:layout_width="345dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:text="@string/pick"
                 android:textColor="@color/black"
-                >
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@+id/news_editText"
+                app:layout_constraintTop_toBottomOf="@+id/news_editText">
 
-            </Button>
-            <Button
-                android:id="@+id/news_chanelButton"
-                android:layout_width="99dp"
-                android:layout_height="35dp"
-                android:backgroundTint="#E5E5E5"
-                android:layout_marginLeft="60dp"
+            </TextView>
+
+            <TextView
+                android:id="@+id/news_textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/chanel_btn"
+                android:text="@string/pick_source"
                 android:textSize="10sp"
-                android:textColor="@color/black">
+                app:layout_constraintLeft_toLeftOf="@+id/news_editText"
+                app:layout_constraintTop_toBottomOf="@+id/news_textView">
 
-            </Button>
+            </TextView>
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/news_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/news_textView2">
+
+                <Button
+                    android:id="@+id/news_promotionButton"
+                    android:layout_width="99dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#E5E5E5"
+                    android:text="@string/promotion_btn"
+                    android:textColor="@color/black"
+                    android:textSize="10sp">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/news_chanelButton"
+                    android:layout_width="99dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#E5E5E5"
+                    android:text="@string/chanel_btn"
+                    android:textColor="@color/black"
+                    android:textSize="10sp">
+
+                </Button>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

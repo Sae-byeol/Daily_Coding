@@ -1,5 +1,7 @@
 package com.example.dailycoding.api;
 
+
+
 public class ApiUtils {
 
     public static final String BASE_URL = "https://radiant-hollows-57561.herokuapp.com/";

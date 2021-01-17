@@ -281,13 +281,12 @@ public class HomeFragment extends Fragment {
                      * ]
                      */
                     tv_temp.setText(result.get(0).getCategory()); // 임시로 텍스트 변경
-
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<CategoryResponse>> call, Throwable t) {
-
+                Log.e("onFailure", t.getMessage());
             }
         });
     }

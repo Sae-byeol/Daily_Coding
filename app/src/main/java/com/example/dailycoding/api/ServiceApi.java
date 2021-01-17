@@ -17,5 +17,5 @@ import retrofit2.http.Path;
 public interface ServiceApi{
 
     @GET("/problem/theory/{lang}")
-    Call<ArrayList<CategoryResponse>> getData(@Path("lang") String lang);
+    Call<ArrayList<CategoryResponse>> getData(@Path("lang") String language);
 }

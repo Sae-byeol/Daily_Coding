@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:descendantFocusability="blocksDescendants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/rank_textview_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/robotoregular"
+            android:text="@string/rank_check"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/rank_spinner"
+            android:layout_width="52dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/transparent_light"
+            android:popupBackground="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/rank_textview_check"
+            app:layout_constraintStart_toEndOf="@+id/rank_textview_check"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/rank_textview_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="@string/rank_info"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_exclamation"
+            app:layout_constraintStart_toEndOf="@+id/rank_imageview_exclamation"
+            app:layout_constraintTop_toTopOf="@id/rank_imageview_exclamation" />
+
+        <ImageView
+            android:id="@+id/rank_imageview_exclamation"
+            android:layout_width="11dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="7dp"
+            app:layout_constraintStart_toStartOf="@+id/rank_textview_check"
+            app:layout_constraintTop_toBottomOf="@+id/rank_textview_check"
+            app:srcCompat="@drawable/ic_unfilled_exclamation_mark" />
+
+        <TextView
+            android:id="@+id/rank_textview_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/ranking"
+            app:layout_constraintStart_toStartOf="@+id/rank_imageview_exclamation"
+            app:layout_constraintTop_toBottomOf="@+id/rank_imageview_exclamation" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/rank_chart"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rank_textview_time" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/rank_chart_multiline"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            app:layout_constraintEnd_toEndOf="@id/rank_chart"
+            app:layout_constraintStart_toStartOf="@id/rank_chart"
+            app:layout_constraintTop_toBottomOf="@id/rank_chart" />
+
+        <TextView
+            android:id="@+id/rank_textview_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/rankDate"
+            app:layout_constraintStart_toStartOf="@+id/rank_textview_rank"
+            app:layout_constraintTop_toBottomOf="@+id/rank_textview_rank" />
+
+        <TextView
+            android:id="@+id/rank_textview_toplate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/black"
+            android:textFontWeight="700"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rank_textview_time"
+            app:layout_constraintEnd_toEndOf="@+id/rank_chart"
+            app:layout_constraintTop_toBottomOf="@+id/rank_textview_rank" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="39dp"
+            android:text="@string/rank_other"
+            app:layout_constraintStart_toStartOf="@+id/rank_textview_time"
+            app:layout_constraintTop_toBottomOf="@+id/rank_chart_multiline" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/rankDate"
+            app:layout_constraintStart_toStartOf="@+id/textView7"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rank_layout_info1"
+            android:layout_width="95dp"
+            android:layout_height="149dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/round_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+            <TextView
+                android:id="@+id/rank_textview_toprank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/rank"
+                android:textSize="14sp"
+                android:textFontWeight="700"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/rank_imageview_profile"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rank_textview_toprank"
+                app:srcCompat="@drawable/account" />
+
+            <TextView
+                android:id="@+id/rank_textview_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rank_tempName"
+                android:layout_marginTop="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rank_imageview_profile" />
+
+            <ImageView
+                android:id="@+id/rank_imageview_star"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintStart_toStartOf="@+id/rank_textview_name"
+                app:layout_constraintTop_toBottomOf="@+id/rank_textview_name"
+                app:srcCompat="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/rank_textview_star"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="3dp"
+                android:gravity="center"
+                android:text="230"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_star"
+                app:layout_constraintStart_toEndOf="@+id/rank_imageview_star"
+                app:layout_constraintTop_toTopOf="@+id/rank_imageview_star" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rank_layout_info2"
+            android:layout_width="76dp"
+            android:layout_height="119dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="18dp"
+            android:background="@drawable/round_border"
+            app:layout_constraintBottom_toBottomOf="@+id/rank_layout_info1"
+            app:layout_constraintEnd_toStartOf="@+id/rank_layout_info1">
+
+            <TextView
+                android:id="@+id/rank_textview_toprank2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/rank"
+                android:textFontWeight="700"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/rank_imageview_profile2"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rank_textview_toprank2"
+                app:srcCompat="@drawable/account" />
+
+            <TextView
+                android:id="@+id/rank_textview_name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/rank_tempName"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rank_imageview_profile2" />
+
+            <ImageView
+                android:id="@+id/rank_imageview_star2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintStart_toStartOf="@+id/rank_textview_name2"
+                app:layout_constraintTop_toBottomOf="@+id/rank_textview_name2"
+                app:srcCompat="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/rank_textview_star2"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="3dp"
+                android:gravity="center"
+                android:text="230"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_star2"
+                app:layout_constraintStart_toEndOf="@+id/rank_imageview_star2"
+                app:layout_constraintTop_toTopOf="@+id/rank_imageview_star2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rank_layout_info3"
+            android:layout_width="76dp"
+            android:layout_height="119dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="18dp"
+            android:background="@drawable/round_border"
+            app:layout_constraintBottom_toBottomOf="@+id/rank_layout_info1"
+            app:layout_constraintStart_toEndOf="@id/rank_layout_info1">
+
+            <TextView
+                android:id="@+id/rank_textview_toprank3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/rank"
+                android:textFontWeight="700"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/rank_imageview_profile3"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rank_textview_toprank3"
+                app:srcCompat="@drawable/account" />
+
+            <TextView
+                android:id="@+id/rank_textview_name3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textSize="12sp"
+                android:text="@string/rank_tempName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rank_imageview_profile3" />
+
+            <ImageView
+                android:id="@+id/rank_imageview_star3"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintStart_toStartOf="@+id/rank_textview_name3"
+                app:layout_constraintTop_toBottomOf="@+id/rank_textview_name3"
+                app:srcCompat="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/rank_textview_star3"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="3dp"
+                android:gravity="center"
+                android:text="230"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_star3"
+                app:layout_constraintStart_toEndOf="@+id/rank_imageview_star3"
+                app:layout_constraintTop_toTopOf="@+id/rank_imageview_star3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rank_recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rank_layout_info1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

@@ -1,24 +1,22 @@
 package com.example.dailycoding.ui;
 
+
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
@@ -39,7 +37,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
+public class RankFragment extends Fragment {
 
     private Spinner mSpinner;
     private SpinnerAdapter spinnerAdapter;
@@ -54,20 +52,19 @@ public class HomeFragment extends Fragment {
 
     private TextView tv_toplate;
     private TextView tv_temp;
-    private ImageButton btn_more;
 
     // retrofit2
     private ServiceApi service;
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static RankFragment newInstance() {
+        return new RankFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_rank, container, false);
     }
 
     @Override
@@ -77,29 +74,18 @@ public class HomeFragment extends Fragment {
         //retrofit2 객체 할당
         service = ApiUtils.getServiceApi();
 
-        init();
-        initListener();
+//        init();
         initSpinner();
         initChart();
         initMultiline();
         initAdapter();
-        
-        // Retrofit2 Test
-        loadData("python");
+//
+//        // Retrofit2 Test
+//        loadData("python");
     }
 
     private void init() {
         tv_temp = getView().findViewById(R.id.home_textview_ready);
-        btn_more = getView().findViewById(R.id.home_button_more);
-    }
-
-    private void initListener() {
-        btn_more.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)getActivity()).replaceFragment(RankFragment.newInstance());
-            }
-        });
     }
 
     private void initAdapter() {
@@ -113,21 +99,21 @@ public class HomeFragment extends Fragment {
         data.add("0");
         data.add("0");
 
-        recyclerView = (RecyclerView) getView().findViewById(R.id.home_recyclerview);
+        recyclerView = (RecyclerView) getView().findViewById(R.id.rank_recyclerview);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
-        ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.HORIZONTAL);
+        ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new HomeAdapter(data);
+        mAdapter = new RankAdapter(data);
         recyclerView.setAdapter(mAdapter);
 
     }
 
     private void initSpinner() {
         // spinner init
-        mSpinner = getView().findViewById(R.id.home_spinner);
+        mSpinner = getView().findViewById(R.id.rank_spinner);
 
         List<String> data = new ArrayList<>();
         data.add("JAVA");
@@ -159,7 +145,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void initChart() {
-        lineChart = (LineChart) getView().findViewById(R.id.home_chart);
+        lineChart = (LineChart) getView().findViewById(R.id.rank_chart);
 
         List<Entry> entries = new ArrayList<>();
         entries.add(new Entry(0f, 27f));
@@ -216,7 +202,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void initMultiline() {
-        lineChart = (LineChart) getView().findViewById(R.id.home_chart_multiline);
+        lineChart = (LineChart) getView().findViewById(R.id.rank_chart_multiline);
 
         List<Entry> entries = new ArrayList<>();
         entries.add(new Entry(0f, 0));
@@ -269,7 +255,7 @@ public class HomeFragment extends Fragment {
         final String[] date = {"27위", "19위", "22위", "24위", "20위", "18위", "13위"};
         xAxis.setValueFormatter(new IndexAxisValueFormatter(date));
 
-        tv_toplate = getView().findViewById(R.id.home_textview_toplate);
+        tv_toplate = getView().findViewById(R.id.rank_textview_toplate);
         tv_toplate.setText("13위");
     }
 

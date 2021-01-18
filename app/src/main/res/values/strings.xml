@@ -19,6 +19,14 @@
     <string name="greeting01">안녕하세요, 어스 님.</string>
     <string name="greeting02">오늘도 활기차게 공부해봐요.</string>
 
+    <!-- Rank -->
+    <string name="rank_check">랭킹 확인</string>
+    <string name="rank_info">모든 랭크는 매일 오전 12시와 오후 12시에 갱신됩니다.</string>
+    <string name="rank_other">다른 사용자들의 랭킹</string>
+    <string name="rank">1위</string>
+    <string name="rankDate">2021.01.03 PM 12:00 기준</string>
+    <string name="rank_tempName">최길동</string>
+
     <!--Course-->
     <string name="course_title">기출문제 선택</string>
     <string name="unsolvedProblem">잠깐! 풀다 만 문제가 있어요!</string>

@@ -85,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
                         replaceFragment(NewsFragment.newInstance());
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
+                    case R.id.drawer_languages:
+                        replaceFragment(LanguageIntroductionFragment.newInstance());
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
                 }
                 return false;
             }

@@ -19,6 +19,19 @@
     <string name="greeting01">안녕하세요, 어스 님.</string>
     <string name="greeting02">오늘도 활기차게 공부해봐요.</string>
 
+    <!--Course-->
+    <string name="course_title">기출문제 선택</string>
+    <string name="unsolvedProblem">잠깐! 풀다 만 문제가 있어요!</string>
+    <string name="languageIntroduction_title">프로그래밍 언어소개</string>
+    <string name="languageIntro_title1">Java란 무엇인가요?</string>
+    <string name="languageIntro_content1">JAVA란, 객체지향 프로그래밍 언어 중 하나입니다. 객체지향 프로그래밍은 프로그램을 짤 때 각각의 역할을 하는 객체로 프로그램을 구성합니다. 보다 간략하고 쉬우며 네크워크 기능 구현이 용이하여 인터넷 환경에서 가장 활발히 사용되는 프로그래밍 언어라고 볼 수 있습니다.</string>
+    <string name="languageIntro_title2">Java의 장단점은?</string>
+    <string name="languageIntro_content2">JAVA란, 객체지향 프로그래밍 언어 중 하나입니다. 객체지향 프로그래밍은 프로그램을 짤 때 각각의 역할을 하는 객체로 프로그램을 구성합니다. 보다 간략하고 쉬우며 네크워크 기능 구현이 용이하여 인터넷 환경에서 가장 활발히 사용되는 프로그래밍 언어라고 볼 수 있습니다.</string>
+    <string name="languageIntro_title3">Java의 특징은?</string>
+    <string name="languageIntro_content3">JAVA란, 객체지향 프로그래밍 언어 중 하나입니다. 객체지향 프로그래밍은 프로그램을 짤 때 각각의 역할을 하는 객체로 프로그램을 구성합니다. 보다 간략하고 쉬우며 네크워크 기능 구현이 용이하여 인터넷 환경에서 가장 활발히 사용되는 프로그래밍 언어라고 볼 수 있습니다.</string>
+    <string name="languageIntro_title4">Java를 활발히 사용중인 회사</string>
+    <string name="languageIntro_content4">JAVA란, 객체지향 프로그래밍 언어 중 하나입니다. 객체지향 프로그래밍은 프로그램을 짤 때 각각의 역할을 하는 객체로 프로그램을 구성합니다. 보다 간략하고 쉬우며 네크워크 기능 구현이 용이하여 인터넷 환경에서 가장 활발히 사용되는 프로그래밍 언어라고 볼 수 있습니다.</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search">검색어를 입력하세요</string>

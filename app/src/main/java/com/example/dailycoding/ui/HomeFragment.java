@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.api.ApiUtils;
+import com.example.dailycoding.api.ServiceApi;
+import com.example.dailycoding.model.CategoryResponse;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -28,6 +32,10 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -43,6 +51,10 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> data;
 
     private TextView tv_toplate;
+    private TextView tv_temp;
+
+    // retrofit2
+    private ServiceApi service;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -59,10 +71,21 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //retrofit2 객체 할당
+        service = ApiUtils.getServiceApi();
+
+        init();
         initSpinner();
         initChart();
         initMultiline();
         initAdapter();
+        
+        // Retrofit2 Test
+        loadData("python");
+    }
+
+    private void init() {
+        tv_temp = getView().findViewById(R.id.home_textview_ready);
     }
 
     private void initAdapter() {
@@ -234,6 +257,38 @@ public class HomeFragment extends Fragment {
 
         tv_toplate = getView().findViewById(R.id.home_textview_toplate);
         tv_toplate.setText("13위");
+    }
+
+
+    // retrofit2 사용예시
+    private void loadData(String language) {
+        service.getData(language).enqueue(new Callback<ArrayList<CategoryResponse>>() {
+            @Override
+            public void onResponse(Call<ArrayList<CategoryResponse>> call, Response<ArrayList<CategoryResponse>> response) {
+                if(response.isSuccessful()) {
+                    ArrayList<CategoryResponse> result = response.body();
+                    /**
+                     * [
+                     *     {
+                     *         "category": "something python"     //result[0]
+                     *     },
+                     *     {
+                     *         "category": "category?"            //result[1]
+                     *     },
+                     *     {
+                     *         "category": "category01"
+                     *     }
+                     * ]
+                     */
+                    tv_temp.setText(result.get(0).getCategory()); // 임시로 텍스트 변경
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<CategoryResponse>> call, Throwable t) {
+                Log.e("onFailure", t.getMessage());
+            }
+        });
     }
 
 }

@@ -28,6 +28,8 @@ import kotlin.jvm.functions.Function2;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+    
     private ImageButton btnMenu;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -40,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        loginUi();
+        
         init();
         setListener();
 
@@ -69,6 +70,34 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.main_framelayout, fragment).commit();      // Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
     }
 
+    private void loginUi() {
+        textView = findViewById(R.id.programmers_textview);
+        textView = findViewById(R.id.programmers_number);
+        textView = findViewById(R.id.course_textview);
+        textView = findViewById(R.id.course_number);
+        btnMenu = findViewById(R.id.login_kakao);
+        btnMenu = findViewById(R.id.login_google);
+        button = findViewById(R.id.login_register);
+
+        UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
+            @Override
+            public Unit invoke(User user, Throwable throwable) {
+                if (user != null){
+                    Log.i(TAG, "invoke: id=" + user.getId());
+                    Log.i(TAG, "invoke: email=" + user.getKakaoAccount().getEmail());
+                    Log.i(TAG, "invoke: nickname=" + user.getKakaoAccount().getProfile().getNickname());
+                    Log.i(TAG, "invoke: gender=" + user.getKakaoAccount().getGender());
+                    Log.i(TAG, "invoke: age=" + user.getKakaoAccount().getAgeRange());
+                }
+                else{
+                    textView.setVisibility(View.VISIBLE);
+                    btnMenu.setVisibility(View.VISIBLE);
+                    button.setVisibility(View.VISIBLE);
+                }
+                return null;
+            }
+        });
+    }
 
     private void setListener(){
 
@@ -78,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -107,28 +138,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void loginUi() {
-        textView = findViewById(R.id.programmers_textview);
-        textView = findViewById(R.id.programmers_number);
-        textView = findViewById(R.id.course_textview);
-        textView = findViewById(R.id.course_number);
-        btnMenu = findViewById(R.id.login_kakao);
-        btnMenu = findViewById(R.id.login_google);
-        button = findViewById(R.id.login_register);
 
-        UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
-            @Override
-            public Unit invoke(User user, Throwable throwable) {
-                if (user != null){
-                    init();
-                }
-                else{
-                    textView.setVisibility(View.VISIBLE);
-                    btnMenu.setVisibility(View.VISIBLE);
-                    button.setVisibility(View.VISIBLE);
-                }
-                return null;
-            }
-        });
-    }
 }

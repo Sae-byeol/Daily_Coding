@@ -15,10 +15,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dailycoding.R;
 import com.google.android.material.navigation.NavigationView;
+import com.kakao.sdk.user.UserApiClient;
+import com.kakao.sdk.user.model.User;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function2;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,12 +32,16 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private View header;
+    private TextView textView;
+    private Button button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        loginUi();
         init();
         setListener();
 
@@ -97,4 +107,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void loginUi() {
+        textView = findViewById(R.id.programmers_textview);
+        textView = findViewById(R.id.programmers_number);
+        textView = findViewById(R.id.course_textview);
+        textView = findViewById(R.id.course_number);
+        btnMenu = findViewById(R.id.login_kakao);
+        btnMenu = findViewById(R.id.login_google);
+        button = findViewById(R.id.login_register);
+
+        UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
+            @Override
+            public Unit invoke(User user, Throwable throwable) {
+                if (user != null){
+                    init();
+                }
+                else{
+                    textView.setVisibility(View.VISIBLE);
+                    btnMenu.setVisibility(View.VISIBLE);
+                    button.setVisibility(View.VISIBLE);
+                }
+                return null;
+            }
+        });
+    }
 }

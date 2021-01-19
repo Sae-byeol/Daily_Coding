@@ -9,22 +9,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dailycoding.R;
 import com.google.android.material.navigation.NavigationView;
-import com.kakao.sdk.user.UserApiClient;
-import com.kakao.sdk.user.model.User;
-
-import kotlin.Unit;
-import kotlin.jvm.functions.Function2;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         init();
         setListener();
 
@@ -70,34 +63,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.main_framelayout, fragment).commit();      // Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
     }
 
-    private void loginUi() {
-        textView = findViewById(R.id.programmers_textview);
-        textView = findViewById(R.id.programmers_number);
-        textView = findViewById(R.id.course_textview);
-        textView = findViewById(R.id.course_number);
-        btnMenu = findViewById(R.id.login_kakao);
-        btnMenu = findViewById(R.id.login_google);
-        button = findViewById(R.id.login_register);
-
-        UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
-            @Override
-            public Unit invoke(User user, Throwable throwable) {
-                if (user != null){
-                    Log.i(TAG, "invoke: id=" + user.getId());
-                    Log.i(TAG, "invoke: email=" + user.getKakaoAccount().getEmail());
-                    Log.i(TAG, "invoke: nickname=" + user.getKakaoAccount().getProfile().getNickname());
-                    Log.i(TAG, "invoke: gender=" + user.getKakaoAccount().getGender());
-                    Log.i(TAG, "invoke: age=" + user.getKakaoAccount().getAgeRange());
-                }
-                else{
-                    textView.setVisibility(View.VISIBLE);
-                    btnMenu.setVisibility(View.VISIBLE);
-                    button.setVisibility(View.VISIBLE);
-                }
-                return null;
-            }
-        });
-    }
 
     private void setListener(){
 

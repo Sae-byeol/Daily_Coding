@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="489dp"
-            android:src="@drawable/kakao_login_large_wide"
+            android:src="@drawable/kakao_login_medium_wide"
             app:layout_constraintBottom_toTopOf="@+id/login_kakao"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

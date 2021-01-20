@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyCoding"
-        android:name=".api.KakaoApplication">
+        android:name=".util.App">
 
         <activity android:name=".ui.MainActivity">
             <intent-filter>

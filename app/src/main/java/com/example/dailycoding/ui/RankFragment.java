@@ -22,6 +22,7 @@ import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceApi;
 import com.example.dailycoding.model.CategoryResponse;
+import com.example.dailycoding.util.BaseFragment;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -37,7 +38,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RankFragment extends Fragment {
+public class RankFragment extends BaseFragment {
 
     private Spinner mSpinner;
     private SpinnerAdapter spinnerAdapter;

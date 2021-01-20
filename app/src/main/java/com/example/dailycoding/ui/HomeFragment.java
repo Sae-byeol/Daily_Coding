@@ -24,6 +24,7 @@ import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceApi;
 import com.example.dailycoding.model.CategoryResponse;
+import com.example.dailycoding.util.BaseFragment;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -39,7 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     private Spinner mSpinner;
     private SpinnerAdapter spinnerAdapter;
@@ -276,10 +277,12 @@ public class HomeFragment extends Fragment {
 
     // retrofit2 사용예시
     private void loadData(String language) {
+        progressOn();
         service.getData(language).enqueue(new Callback<ArrayList<CategoryResponse>>() {
             @Override
             public void onResponse(Call<ArrayList<CategoryResponse>> call, Response<ArrayList<CategoryResponse>> response) {
                 if(response.isSuccessful()) {
+                    progressOff();
                     ArrayList<CategoryResponse> result = response.body();
                     /**
                      * [

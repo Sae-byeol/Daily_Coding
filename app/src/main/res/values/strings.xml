@@ -65,8 +65,8 @@
 
     <string name="agree">이용약관에 <b>동의</b>하시면 <b>회원가입</b>이 <b>완료</b>됩니다.</string>
     <string name="total_agree">전체 이용약관에 동의합니다.</string>
-    <string name="agree1">서비스 이용약관 (필수)</string>
-    <string name="agree2">개인정보 처리방침 (필수)</string>
+    <string name="agree1">서비스 이용약관 <b>(필수)</b></string>
+    <string name="agree2">개인정보 처리방침 <b>(필수)</b></string>
     <string name="agree3">이벤트 마케팅 수신동의 (선택)</string>
     <string name="agree_btn">확인</string>
 </resources>

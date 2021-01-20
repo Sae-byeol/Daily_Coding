@@ -17,9 +17,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.util.BaseActivity;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends BaseActivity {
+    private static final String TAG = "MainActivity";
     
     private ImageButton btnMenu;
     private DrawerLayout drawerLayout;

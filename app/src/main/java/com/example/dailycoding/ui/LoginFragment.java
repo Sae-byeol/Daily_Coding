@@ -9,10 +9,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.dailycoding.R;
+import com.example.dailycoding.util.BaseActivity;
 import com.kakao.sdk.auth.LoginClient;
 import com.kakao.sdk.auth.model.OAuthToken;
 import com.kakao.sdk.user.UserApiClient;
@@ -23,7 +25,7 @@ import com.kakao.sdk.user.model.User;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
 
-public class LoginFragment extends AppCompatActivity {
+public class LoginFragment extends BaseActivity {
     private static final String TAG = "LoginFragment";
 
     private ImageButton kakaoLogin, googleLogin;
@@ -49,6 +51,9 @@ public class LoginFragment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    private void loginUi() {
 
         textView = findViewById(R.id.programmers_textview);
         textView = findViewById(R.id.programmers_number);
@@ -90,6 +95,10 @@ public class LoginFragment extends AppCompatActivity {
                 }
                 else{
                     startActivity(new Intent(LoginFragment.this, MainActivity.class));
+
+                    //replaceFragment(HomeFragment.newInstance());
+                    drawerLayout.closeDrawer(GravityCompat.START);
+
                 }
                 return null;
             }

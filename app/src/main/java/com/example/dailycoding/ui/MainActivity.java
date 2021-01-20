@@ -20,15 +20,11 @@ import com.example.dailycoding.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
-    private static final String TAG = "MainActivity";
     
     private ImageButton btnMenu;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private View header;
-    private TextView textView;
-    private Button button;
 
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.dailycoding.ui;
+package com.example.dailycoding.api;
 
 import android.app.Application;
 

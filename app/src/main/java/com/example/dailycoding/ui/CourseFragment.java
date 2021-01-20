@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.util.BaseFragment;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.Pivot;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 
-public class CourseFragment extends Fragment {
+public class CourseFragment extends BaseFragment {
 
     private DiscreteScrollView scrollView;
     private RecyclerView recyclerView;

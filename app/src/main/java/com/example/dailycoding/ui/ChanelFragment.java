@@ -11,9 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.util.BaseFragment;
 
 
-public class ChanelFragment extends Fragment {
+public class ChanelFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private String[] mDataset={"chanel 1","chanel 2","chanel 3"};

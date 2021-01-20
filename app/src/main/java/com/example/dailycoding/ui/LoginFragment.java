@@ -30,6 +30,8 @@ public class LoginFragment extends AppCompatActivity {
     private TextView textView;
     private Button button;
 
+    private String TAG = "LoginFragment";
+
     private void loginUi() {
         textView = findViewById(R.id.programmers_textview);
         textView = findViewById(R.id.programmers_number);
@@ -49,7 +51,7 @@ public class LoginFragment extends AppCompatActivity {
                     Log.i(TAG, "invoke: gender=" + user.getKakaoAccount().getGender());
                     Log.i(TAG, "invoke: age=" + user.getKakaoAccount().getAgeRange());
 
-                    replaceFragment(HomeFragment.newInstance());
+                    //replaceFragment(HomeFragment.newInstance());
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
                 return null;

@@ -19,7 +19,7 @@
         android:id="@+id/wrong_answer_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="오답노트"
+        android:text="@string/wrong_answer_title"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/wrong_answer_left"
         app:layout_constraintLeft_toLeftOf="parent"

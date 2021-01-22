@@ -8,11 +8,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.bumptech.glide.Glide;
 import com.example.dailycoding.R;
 import com.example.dailycoding.util.BaseActivity;
 import com.kakao.sdk.auth.LoginClient;
@@ -25,7 +23,7 @@ import com.kakao.sdk.user.model.User;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
 
-public class LoginFragment extends BaseActivity {
+public class LoginActivity extends BaseActivity {
     private static final String TAG = "LoginFragment";
 
     private ImageButton kakaoLogin, googleLogin;
@@ -66,12 +64,12 @@ public class LoginFragment extends BaseActivity {
         kakaoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (LoginClient.getInstance().isKakaoTalkLoginAvailable(LoginFragment.this)){
-                    LoginClient.getInstance().loginWithKakaoAccount(LoginFragment.this, callback);
-                    startActivity(new Intent(LoginFragment.this, MainActivity.class));
+                if (LoginClient.getInstance().isKakaoTalkLoginAvailable(LoginActivity.this)){
+                    LoginClient.getInstance().loginWithKakaoAccount(LoginActivity.this, callback);
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
                 else {
-                    LoginClient.getInstance().loginWithKakaoAccount(LoginFragment.this, callback);
+                    LoginClient.getInstance().loginWithKakaoAccount(LoginActivity.this, callback);
                 }
             }
         });
@@ -94,7 +92,7 @@ public class LoginFragment extends BaseActivity {
                     Glide.with(profileImage).load(user.getKakaoAccount().getProfile().getThumbnailImageUrl()).circleCrop().into(profileImage);*/
                 }
                 else{
-                    startActivity(new Intent(LoginFragment.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                     //replaceFragment(HomeFragment.newInstance());
                     drawerLayout.closeDrawer(GravityCompat.START);

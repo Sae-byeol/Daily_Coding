@@ -69,4 +69,6 @@
     <string name="agree2">개인정보 처리방침 <b>(필수)</b></string>
     <string name="agree3">이벤트 마케팅 수신동의 (선택)</string>
     <string name="agree_btn">확인</string>
+    <string name="wrong_answer_title">오답노트</string>
+    <string name="wrong_answer_content">변수 생성 예제 1번</string>
 </resources>

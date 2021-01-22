@@ -45,6 +45,14 @@
         </ImageButton>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/cl_item_expanded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/cl_item_default"
+        android:background="@drawable/round_border"
+        android:text="이용약관 내용">
 
+    </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

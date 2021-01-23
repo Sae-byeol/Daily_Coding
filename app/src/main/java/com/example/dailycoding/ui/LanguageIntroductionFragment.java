@@ -21,6 +21,8 @@ import java.util.ArrayList;
 
 public class LanguageIntroductionFragment extends BaseFragment {
 
+    private static final int LOOPS=1000;
+
     private DiscreteScrollView scrollView;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -50,8 +52,22 @@ public class LanguageIntroductionFragment extends BaseFragment {
     }
 
     private void showCourseTitle(){
+//        scrollView = getView().findViewById(R.id.DiscreteScrollView_language);
+//        scrollView.setAdapter(new CourseSelectAdapter(list_courseTitle));
+//        scrollView.setOffscreenItems(3);
+//        scrollView.setOverScrollEnabled(false);
+//        scrollView.setItemTransformer(new ScaleTransformer.Builder()
+//                .setMaxScale(1.05f)
+//                .setMinScale(0.8f)
+//                .setPivotX(Pivot.X.CENTER) // CENTER is a default one
+//                .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
+//                .build());
         scrollView = getView().findViewById(R.id.DiscreteScrollView_language);
-        scrollView.setAdapter(new CourseSelectAdapter(list_courseTitle));
+        CourseSelectAdapter courseSelectAdapter=new CourseSelectAdapter(list_courseTitle, LOOPS);
+//        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(courseSelectAdapter);
+//        scrollView.setAdapter(wrapper);
+        scrollView.setAdapter(courseSelectAdapter);
+        scrollView.scrollToPosition(LOOPS*3/2);
         scrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMaxScale(1.05f)
                 .setMinScale(0.8f)
@@ -72,7 +88,7 @@ public class LanguageIntroductionFragment extends BaseFragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new CourseAdapter(list_course, getContext(), false);
+        mAdapter = new CourseAdapter(list_course, getContext(), 2);
         recyclerView.setAdapter(mAdapter);
     }
 

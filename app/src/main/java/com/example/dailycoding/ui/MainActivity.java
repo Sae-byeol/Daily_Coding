@@ -20,16 +20,14 @@ import com.example.dailycoding.R;
 import com.example.dailycoding.util.BaseActivity;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends BaseActivity {
 
+public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
     
     private ImageButton btnMenu;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private View header;
-    private TextView textView;
-    private Button button;
 
 
     @Override

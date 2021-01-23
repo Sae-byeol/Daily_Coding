@@ -8,6 +8,8 @@ public class Course {
     private ArrayList<String> content;
     private boolean isExpanded;
 
+    public Course(){}
+
     public Course(String title, ArrayList<String> content, boolean isExpanded) {
         this.title = title;
         this.content = content;

@@ -103,7 +103,7 @@ public class CourseFragment extends BaseFragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new CourseAdapter(list_course, getContext(), true);
+        mAdapter = new CourseAdapter(list_course, getContext(), 0);
         recyclerView.setAdapter(mAdapter);
     }
 

@@ -2,6 +2,7 @@ package com.example.dailycoding.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,12 +27,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
 
     private Context context;
     //    isCourse:true이면 기출문제 선택, false이면 언어 소개
-    private boolean isCourse;
+    private int type;
 
-    public CourseAdapter(ArrayList<Course> dataList, Context context, boolean isCourse) {
+    private static final String TAG="CourseAdapter";
+
+    public CourseAdapter(ArrayList<Course> dataList, Context context, int type) {
         this.context=context;
         this.dataList = dataList;
-        this.isCourse=isCourse;
+        this.type=type;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -44,14 +47,20 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
         public MyViewHolder(View itemView) {
             super(itemView);
             //코스 페이지
-            if(isCourse){
+            if(type==0){
                 TextView_title = itemView.findViewById(R.id.TextView_course_list);
 //                recyclerView=itemView.findViewById(R.id.RecyclerView_course_content);
                 constraintLayout=itemView.findViewById(R.id.ConstraintLayout_item_course);
                 imageView=itemView.findViewById(R.id.ImageVIew_itemCourse_arrow);
             }
+            //문제 리스트 페이지
+            else if(type==1){
+                TextView_title = itemView.findViewById(R.id.TextView_course_list);
+                constraintLayout=itemView.findViewById(R.id.ConstraintLayout_item_course);
+                imageView=itemView.findViewById(R.id.ImageVIew_itemCourse_arrow);
+            }
             //언어소개 페이지
-            else{
+            else if(type==2){
                 TextView_title = itemView.findViewById(R.id.TextView_language_list);
                 TextView_content=itemView.findViewById(R.id.TextView_languageIntroduction_content);
                 imageView=itemView.findViewById(R.id.ImageVIew_language_arrow);
@@ -61,10 +70,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                 @SuppressLint("UseCompatLoadingForDrawables")
                 @Override
                 public void onClick(View v) {
-                    if(isCourse){
+                    if(type==0){
+                        Intent intent=new Intent(context, ProblemListActivity.class);
+                        context.startActivity(intent);
+                    }
+                    else if(type==1){
 
                     }
-                    else {
+                    else if(type==2){
                         Course course = dataList.get(getAdapterPosition());
                         course.setExpanded(!course.isExpanded());
                         notifyItemChanged(getAdapterPosition());
@@ -80,7 +93,12 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     public CourseAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                int viewType) {
         View v;
-        if(isCourse){
+        Log.d(TAG, ""+type);
+        if(type==0){
+            v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_course, parent, false);
+        }
+        else if(type==1){
             v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_course, parent, false);
         }
@@ -97,7 +115,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.TextView_title.setText(dataList.get(position).getTitle());
         boolean isExpanded = dataList.get(position).isExpanded();
-        if(isCourse){
+        if(type==1||type==0){
             holder.imageView.setBackground(context.getDrawable(R.drawable.news_arrow));
 
 //            holder.recyclerView.setHasFixedSize(true);

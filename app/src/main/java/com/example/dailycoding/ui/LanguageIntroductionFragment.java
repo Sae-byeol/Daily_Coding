@@ -88,7 +88,7 @@ public class LanguageIntroductionFragment extends BaseFragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new CourseAdapter(list_course, getContext(), false);
+        mAdapter = new CourseAdapter(list_course, getContext(), 2);
         recyclerView.setAdapter(mAdapter);
     }
 

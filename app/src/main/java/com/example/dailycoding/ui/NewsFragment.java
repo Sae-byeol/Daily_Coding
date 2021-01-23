@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.util.BaseFragment;
 
-public class NewsFragment extends Fragment {
+public class NewsFragment extends BaseFragment {
 
 
     public static NewsFragment newInstance() {

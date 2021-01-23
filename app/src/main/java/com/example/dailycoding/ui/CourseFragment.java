@@ -15,6 +15,7 @@ import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.util.BaseFragment;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
 import com.yarolegovich.discretescrollview.transform.Pivot;
@@ -22,7 +23,7 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 
-public class CourseFragment extends Fragment {
+public class CourseFragment extends BaseFragment {
 
     public final static int PAGES=5;
     public final static int LOOPS=1000;

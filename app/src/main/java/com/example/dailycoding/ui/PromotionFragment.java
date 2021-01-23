@@ -11,9 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.util.BaseFragment;
 
 
-public class PromotionFragment extends Fragment {
+public class PromotionFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private String[] mDataset={"promotion 1","promotion 2","promotion 3"};

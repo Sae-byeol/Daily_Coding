@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "14609446681",
+    "project_id": "daily-coding--login",
+    "storage_bucket": "daily-coding--login.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14609446681:android:9178a46acd5529eb2b3788",
+        "android_client_info": {
+          "package_name": "com.example.dailycoding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14609446681-fr7fhesmp8vohu9u3si0nmjte2v6d08f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dailycoding",
+            "certificate_hash": "57c2e4ccb551bc9846040d5ac4701242174aad60"
+          }
+        },
+        {
+          "client_id": "14609446681-1vm285lkdpsbvd9ikuk8d6biksbb24t3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5_El5Idmf9Qv63ISB7QL-qCSpBL5qtKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "14609446681-1vm285lkdpsbvd9ikuk8d6biksbb24t3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,23 +9,26 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.util.BaseActivity;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
 
+public class MainActivity extends BaseActivity {
+    private static final String TAG = "MainActivity";
+    
     private ImageButton btnMenu;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private View header;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -96,5 +101,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
 }

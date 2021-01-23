@@ -10,9 +10,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.dailycoding.R;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
 import com.yarolegovich.discretescrollview.transform.Pivot;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
@@ -20,10 +24,14 @@ import java.util.ArrayList;
 
 public class CourseFragment extends Fragment {
 
+    public final static int PAGES=5;
+    public final static int LOOPS=1000;
+    public final static int FIRST_PAGE=PAGES*LOOPS/2;
     private DiscreteScrollView scrollView;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private ViewPager2 viewPager2;
 
 //    private static final String[] DATA={"변수활용1", "변수활용2", "변수활용3"};
     private static ArrayList<String> list_courseTitle;
@@ -50,13 +58,36 @@ public class CourseFragment extends Fragment {
 
     private void showCourseTitle(){
         scrollView = getView().findViewById(R.id.DiscreteScrollView_course);
-        scrollView.setAdapter(new CourseSelectAdapter(list_courseTitle));
+        CourseSelectAdapter courseSelectAdapter=new CourseSelectAdapter(list_courseTitle, LOOPS);
+//        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(courseSelectAdapter);
+//        scrollView.setAdapter(wrapper);
+        scrollView.setAdapter(courseSelectAdapter);
+        scrollView.scrollToPosition(LOOPS*3/2);
         scrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMaxScale(1.05f)
                 .setMinScale(0.8f)
                 .setPivotX(Pivot.X.CENTER) // CENTER is a default one
                 .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
                 .build());
+
+//        viewPager2=getView().findViewById(R.id.ViewPager2_course);
+//        viewPager2.setAdapter(new CourseSelectAdapter(list_courseTitle, viewPager2, LOOPS));
+//
+//        viewPager2.setCurrentItem(FIRST_PAGE);
+//        viewPager2.setClipToPadding(false);
+//        viewPager2.setClipChildren(false);
+//        viewPager2.setOffscreenPageLimit(3);
+//        viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+//
+//        CompositePageTransformer compositePageTransformer=new CompositePageTransformer();
+////        compositePageTransformer.addTransformer(new MarginPageTransformer(0));
+//        compositePageTransformer.addTransformer((page, position) -> {
+//            float r=1-Math.abs(position);
+//            page.setScaleY(0.85f+r*0.15f);
+//        });
+////        compositePageTransformer.addTransformer(new MarginPageTransformer(-150));
+//        viewPager2.setPageTransformer(compositePageTransformer);
+
     }
 
     private void showCourseList(){

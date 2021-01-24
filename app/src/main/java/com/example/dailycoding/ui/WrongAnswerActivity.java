@@ -20,15 +20,15 @@ public class WrongAnswerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wrong_answer);
         arrayList=new ArrayList<>();
-        arrayList.add(new WrongAnswerData("변수 생성 예제 1",true));
-        arrayList.add(new WrongAnswerData("변수 생성 예제 2",false));
-        arrayList.add(new WrongAnswerData("변수 생성 예제 3",false));
-        arrayList.add(new WrongAnswerData("변수 생성 예제 4",true));
+        arrayList.add(new WrongAnswerData("변수 생성 예제 1",true,"오답 문제 1",false));
+        arrayList.add(new WrongAnswerData("변수 생성 예제 2",false,"오답 문제 2",false));
+        arrayList.add(new WrongAnswerData("변수 생성 예제 3",false,"오답 문제 3",false));
+        arrayList.add(new WrongAnswerData("변수 생성 예제 4",true,"오답 문제 4",false));
 
         recyclerView=(RecyclerView)findViewById(R.id.wrong_answer_recyclerView);
         linearLayoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        mainAdapter=new WrongAnswerAdapter(arrayList);
+        mainAdapter=new WrongAnswerAdapter(arrayList,this);
         recyclerView.setAdapter(mainAdapter);
 
 

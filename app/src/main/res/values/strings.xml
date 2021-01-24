@@ -73,4 +73,12 @@
     <string name="wrong_answer_title">오답노트</string>
     <string name="wrong_answer_content">변수 생성 예제 1번</string>
     <string name="news_item_content">content</string>
+    <string name="wrong_answer">오답노트 내용</string>
+    <string name="code_it">코린이를 위한 강의, Code it</string>
+    <string name="news_activity_title">Code it</string>
+    <string name="code_it_content">#코린이를 위한 강의 #파이썬 #기초 탄탄</string>
+    <string name="news_activity_course">개설과목</string>
+    <string name="news_activity_course2">파이썬의 기초에 대해서, 파이썬 if문, 파이썬 while문</string>
+    <string name="news_activity_code_it_review">코딩을 하나도 몰랐던 입장이었지만 Code it의 코린이 탈출 스쿨을 듣고 나서는 뚝딱뚝딱 할 수 있게 되었어요. 특히 파이썬에 대한 강의들이 굉장히 쉽고 재밌게 나와있는데 기본적인 문법을 익히는데 굉장히 효과적이었습니다. 한 강의에 20분 내지 30분 정도밖에 시간이 걸리지 않아 효율적이면서도 가볍게 들을 수 있어서 좋았습니다.</string>
+    <string name="news_activity_button">사이트 방문하기</string>
 </resources>

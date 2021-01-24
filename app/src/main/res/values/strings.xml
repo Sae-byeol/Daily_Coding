@@ -72,4 +72,5 @@
     <string name="agree_btn">확인</string>
     <string name="wrong_answer_title">오답노트</string>
     <string name="wrong_answer_content">변수 생성 예제 1번</string>
+    <string name="news_item_content">content</string>
 </resources>

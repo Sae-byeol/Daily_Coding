@@ -25,10 +25,13 @@ public class AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.Vi
     //직전에 클릭했던 Item의 position
     private int prePosition=-1;
 
+    private Context context;
+
     //리사이클러뷰로 보여줄 리스트
     public ArrayList<CheckModel> item_list;
-    public AgreeCheckAdapter(ArrayList<CheckModel> item_list) {
+    public AgreeCheckAdapter(ArrayList<CheckModel> item_list,Context context) {
         this.item_list = item_list;
+        this.context=context;
     }
 
     //뷰홀더 그릇에 담을 내용
@@ -60,6 +63,14 @@ public class AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.Vi
             changeVisibility(selectedItems.get(position));
 
             button.setOnClickListener(this);
+
+            if (selectedItems.get(position)){
+                //펼쳐진 아이템인 경우
+                button.setBackground(context.getDrawable(R.drawable.arrow_up));
+            }
+            else{
+                button.setBackground(context.getDrawable(R.drawable.arrow_down));
+            }
 
         }
 

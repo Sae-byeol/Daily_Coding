@@ -34,7 +34,7 @@ public class AgreeCheckActivity extends BaseActivity {
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mainAdapter=new AgreeCheckAdapter(item_list);
+        mainAdapter=new AgreeCheckAdapter(item_list,this);
         recyclerView.setAdapter(mainAdapter);
 
         //모두 동의 버튼의 클릭 이벤트

@@ -1,6 +1,9 @@
 package com.example.dailycoding.ui;
 
+import android.annotation.SuppressLint;
+import android.app.Service;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.api.ApiUtils;
+import com.example.dailycoding.api.RetrofitClient;
+import com.example.dailycoding.api.ServiceApi;
+import com.example.dailycoding.model.CategoryResponse;
 import com.example.dailycoding.util.BaseFragment;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.Pivot;
@@ -19,9 +26,15 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class LanguageIntroductionFragment extends BaseFragment {
 
     private static final int LOOPS=1000;
+    private static final String TAG="LanguageIntroductionFragment";
 
     private DiscreteScrollView scrollView;
     private RecyclerView recyclerView;
@@ -31,6 +44,12 @@ public class LanguageIntroductionFragment extends BaseFragment {
 //    private static final String[] DATA={"변수활용1", "변수활용2", "변수활용3"};
     private static ArrayList<String> list_courseTitle;
     private static ArrayList<Course> list_course;
+
+//    private Retrofit retrofit;
+
+    private RetrofitClient retrofitClient;
+    private Retrofit retrofit;
+    private ApiUtils apiUtils;
 
     public static LanguageIntroductionFragment newInstance() {
         return new LanguageIntroductionFragment();
@@ -93,6 +112,31 @@ public class LanguageIntroductionFragment extends BaseFragment {
     }
 
     private void initData(){
+        apiUtils=new ApiUtils();
+        retrofitClient=new RetrofitClient();
+        retrofit= RetrofitClient.getClient(ApiUtils.BASE_URL);
+        ServiceApi serviceApi= ApiUtils.getServiceApi();
+
+        serviceApi.getData("python").enqueue(new Callback<ArrayList<CategoryResponse>>() {
+            @SuppressLint("LongLogTag")
+            @Override
+            public void onResponse(Call<ArrayList<CategoryResponse>> call, Response<ArrayList<CategoryResponse>> response) {
+//                Log.d(TAG, call+" / "+response);
+//                ArrayList<CategoryResponse> arrayList=response.body();
+                if(response.isSuccessful()){
+                    ArrayList<CategoryResponse> arrayList=response.body();
+                    for(int i=0;i<arrayList.size();i++){
+                        Log.d(TAG, i+"번 / "+arrayList.get(i));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<CategoryResponse>> call, Throwable t) {
+
+            }
+        });
+
         list_courseTitle = new ArrayList<>();
         list_course=new ArrayList<>();
 

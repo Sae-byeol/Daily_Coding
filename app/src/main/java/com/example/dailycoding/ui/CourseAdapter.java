@@ -97,7 +97,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     public CourseAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                int viewType) {
         View v;
-        Log.d(TAG, ""+type);
+//        Log.d(TAG, ""+type);
         if(type==0){
             v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_course, parent, false);

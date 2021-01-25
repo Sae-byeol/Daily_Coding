@@ -73,6 +73,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
+    compile 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

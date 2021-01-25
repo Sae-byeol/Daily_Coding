@@ -66,7 +66,10 @@
             android:layout_marginTop="489dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_centerInParent="true"
+            android:text="@string/google_sign_up"
+            app:isDarkTheme="true" />/>
 
         <ImageButton
             android:id="@+id/login_kakao"
@@ -76,8 +79,9 @@
             android:src="@drawable/kakao_login_medium_wide"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            />
+z
         <Button
             android:id="@+id/login_register"
             android:layout_width="wrap_content"

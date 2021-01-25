@@ -96,13 +96,15 @@
         android:text="@string/news_activity_code_it_review"
         android:textSize="12sp"
         android:layout_marginTop="8dp"/>
+
     <Button
+        android:id="@+id/news_item_button"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/news_activity_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/news_activity_button"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 

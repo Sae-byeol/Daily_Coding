@@ -70,13 +70,17 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                 @SuppressLint("UseCompatLoadingForDrawables")
                 @Override
                 public void onClick(View v) {
+                    //코스 페이지
                     if(type==0){
                         Intent intent=new Intent(context, ProblemListActivity.class);
                         context.startActivity(intent);
                     }
+                    //문제 리스트 페이지
                     else if(type==1){
-
+                        Intent intent=new Intent(context, ProblemDetailActivity.class);
+                        context.startActivity(intent);
                     }
+                    //언어 소개 페이지
                     else if(type==2){
                         Course course = dataList.get(getAdapterPosition());
                         course.setExpanded(!course.isExpanded());

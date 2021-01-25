@@ -30,7 +30,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             this.textView_title=itemView.findViewById(R.id.news_item_textView);
             this.textView_content=itemView.findViewById(R.id.news_item_textView2);
             this.textView_review=itemView.findViewById(R.id.news_item_textView3);
-            this.button=itemView.findViewById(R.id.news_item_button);
+//            this.button=itemView.findViewById(R.id.news_item_button);
         }
     }
     public NewsAdapter(Context context,String[] myDataset){

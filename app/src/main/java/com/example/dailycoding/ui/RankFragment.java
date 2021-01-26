@@ -239,7 +239,7 @@ public class RankFragment extends BaseFragment {
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.TOP);
-        xAxis.setTextColor(Color.GRAY);
+        xAxis.setTextColor(Color.BLACK);
         xAxis.setDrawAxisLine(false);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);

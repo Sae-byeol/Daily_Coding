@@ -89,18 +89,22 @@ public class MainActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.drawer_home:
+                        navigationView.setCheckedItem(R.id.drawer_home);
                         replaceFragment(HomeFragment.newInstance());
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.drawer_course:
+                        navigationView.setCheckedItem(R.id.drawer_course);
                         replaceFragment(CourseFragment.newInstance());
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.drawer_news:
+                        navigationView.setCheckedItem(R.id.drawer_news);
                         replaceFragment(NewsFragment.newInstance());
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.drawer_languages:
+                        navigationView.setCheckedItem(R.id.drawer_languages);
                         replaceFragment(LanguageIntroductionFragment.newInstance());
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;

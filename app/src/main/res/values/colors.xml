@@ -11,4 +11,6 @@
     <color name="transparent_light">#FFFFFF</color>
     <color name="transparent_dark">#000000</color>
     <color name="transparent">#00000000</color>
+    <color name="color_primary_light">#48FF51</color>
+    <color name="color_primary_gray">#C4C4C4</color>
 </resources>

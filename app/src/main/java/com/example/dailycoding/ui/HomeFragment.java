@@ -1,10 +1,12 @@
 package com.example.dailycoding.ui;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -174,9 +176,11 @@ public class HomeFragment extends BaseFragment {
         LineDataSet lineDataSet = new LineDataSet(entries, null);
         lineDataSet.setLineWidth(2);
         lineDataSet.setCircleRadius(6);
-        lineDataSet.setColor(Color.GRAY);
-        lineDataSet.setCircleColor(Color.GRAY);
-        lineDataSet.setCircleHoleColor(Color.GRAY);
+        lineDataSet.setColor(Color.BLACK);
+        int[] colors = {Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,ContextCompat.getColor(getContext(),R.color.color_primary_light)};
+        lineDataSet.setCircleColors(colors);
+        lineDataSet.setCircleHoleRadius(100);
+
         lineDataSet.setDrawCircleHole(true);
         lineDataSet.setDrawCircles(true);
         lineDataSet.setDrawHorizontalHighlightIndicator(false);
@@ -201,7 +205,7 @@ public class HomeFragment extends BaseFragment {
         //xAxis.setAxisMaximum(100+0.1f);
 
         YAxis yLAxis = lineChart.getAxisLeft();
-        yLAxis.setTextColor(Color.BLACK);
+        yLAxis.setTextColor(ContextCompat.getColor(getContext(),R.color.color_primary_gray));
         yLAxis.setDrawLabels(false);
         yLAxis.setDrawAxisLine(false);
         yLAxis.setDrawGridLines(false);
@@ -250,7 +254,7 @@ public class HomeFragment extends BaseFragment {
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.TOP);
-        xAxis.setTextColor(Color.GRAY);
+        xAxis.setTextColor(Color.BLACK);
         xAxis.setDrawAxisLine(false);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);

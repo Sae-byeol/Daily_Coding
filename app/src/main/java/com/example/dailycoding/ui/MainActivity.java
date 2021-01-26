@@ -2,12 +2,14 @@ package com.example.dailycoding.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -36,22 +38,30 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         init();
+        initNavigation();
         setListener();
 
     }
 
     private void init() {
         btnMenu = findViewById(R.id.main_imageview_menu);
-        drawerLayout = findViewById(R.id.main_drawerlayout);
-        navigationView = findViewById(R.id.main_navigation);
-        navigationView.setItemIconTintList(null);
-        header = LayoutInflater.from(this).inflate(R.layout.navigationview_header, null);
-        navigationView.addHeaderView(header);
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.main_framelayout, new HomeFragment());
         fragmentTransaction.commit();
+
+    }
+
+    private void initNavigation() {
+
+        drawerLayout = findViewById(R.id.main_drawerlayout);
+        navigationView = findViewById(R.id.main_navigation);
+        navigationView.setItemIconTintList(null);
+        header = LayoutInflater.from(this).inflate(R.layout.navigationview_header, null);
+        navigationView.addHeaderView(header);
+        navigationView.setBackground(ContextCompat.getDrawable(this,R.drawable.round_border_black));
+        navigationView.setItemTextColor(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.color_primary_light)));
 
     }
 

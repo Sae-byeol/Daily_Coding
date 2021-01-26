@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -76,7 +77,7 @@ public class RankFragment extends BaseFragment {
         service = ApiUtils.getServiceApi();
 
 //        init();
-        initSpinner();
+        //initSpinner();
         initChart();
         initMultiline();
         initAdapter();
@@ -111,39 +112,39 @@ public class RankFragment extends BaseFragment {
         recyclerView.setAdapter(mAdapter);
 
     }
-
-    private void initSpinner() {
-        // spinner init
-        mSpinner = getView().findViewById(R.id.rank_spinner);
-
-        List<String> data = new ArrayList<>();
-        data.add("JAVA");
-        data.add("C++");
-        data.add("Python");
-
-        spinnerAdapter = new SpinnerAdapter(requireContext(), data);
-        mSpinner.setAdapter(spinnerAdapter);
-        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), data.get(position), Toast.LENGTH_SHORT).show();
-
-//                switch (position) {
-//                    case 0:
-//                        Toast.makeText(getContext(), "JAVA", Toast.LENGTH_SHORT).show();
-//                    case 1:
-//                        Toast.makeText(getContext(), "C++", Toast.LENGTH_SHORT).show();
-//                    case 2:
-//                        Toast.makeText(getContext(), "Python", Toast.LENGTH_SHORT).show();
-//                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
+//
+//    private void initSpinner() {
+//        // spinner init
+//        mSpinner = getView().findViewById(R.id.rank_spinner);
+//
+//        List<String> data = new ArrayList<>();
+//        data.add("JAVA");
+//        data.add("C++");
+//        data.add("Python");
+//
+//        spinnerAdapter = new SpinnerAdapter(requireContext(), data);
+//        mSpinner.setAdapter(spinnerAdapter);
+//        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(getContext(), data.get(position), Toast.LENGTH_SHORT).show();
+//
+////                switch (position) {
+////                    case 0:
+////                        Toast.makeText(getContext(), "JAVA", Toast.LENGTH_SHORT).show();
+////                    case 1:
+////                        Toast.makeText(getContext(), "C++", Toast.LENGTH_SHORT).show();
+////                    case 2:
+////                        Toast.makeText(getContext(), "Python", Toast.LENGTH_SHORT).show();
+////                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+//    }
 
     private void initChart() {
         lineChart = (LineChart) getView().findViewById(R.id.rank_chart);
@@ -160,9 +161,11 @@ public class RankFragment extends BaseFragment {
         LineDataSet lineDataSet = new LineDataSet(entries, null);
         lineDataSet.setLineWidth(2);
         lineDataSet.setCircleRadius(6);
-        lineDataSet.setColor(Color.GRAY);
-        lineDataSet.setCircleColor(Color.GRAY);
-        lineDataSet.setCircleHoleColor(Color.GRAY);
+        lineDataSet.setColor(Color.BLACK);
+        int[] colors = {Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK, ContextCompat.getColor(getContext(),R.color.color_primary_light)};
+        lineDataSet.setCircleColors(colors);
+        lineDataSet.setCircleHoleRadius(100);
+
         lineDataSet.setDrawCircleHole(true);
         lineDataSet.setDrawCircles(true);
         lineDataSet.setDrawHorizontalHighlightIndicator(false);

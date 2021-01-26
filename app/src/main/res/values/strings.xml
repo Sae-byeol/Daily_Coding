@@ -6,7 +6,7 @@
     <string name="start">문제풀기</string>
     <string name="ranking">예진 님의 현재 랭킹</string>
 
-    <string name="hotNews">현재 급상승 뉴스</string>
+    <string name="hotNews">개발자들의 Pick !</string>
     <string name="recruit">현재 채용 공고</string>
     <string name="hottest">실시간 인기글</string>
 
@@ -26,6 +26,9 @@
     <string name="rank">1위</string>
     <string name="rankDate">2021.01.03 PM 12:00 기준</string>
     <string name="rank_tempName">최길동</string>
+    <string name="Java">JAVA</string>
+    <string name="C">C++</string>
+    <string name="Python">Python</string>
 
     <!--Course-->
     <string name="course_title">기출문제 선택</string>

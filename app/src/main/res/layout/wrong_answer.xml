@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:text="@string/wrong_answer_title"
         android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/wrong_answer_left"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

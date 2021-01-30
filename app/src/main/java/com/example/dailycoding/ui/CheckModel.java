@@ -3,19 +3,21 @@ package com.example.dailycoding.ui;
 import java.io.Serializable;
 
 public class CheckModel implements Serializable {
-    private String itemName;
+    private int itemName;
     private boolean isSelected;
 
-    public CheckModel(String itemName, boolean isSelected) {
+
+    public CheckModel(int itemName, boolean isSelected) {
         this.itemName = itemName;
         this.isSelected = isSelected;
+
     }
 
-    public String getItemName() {
+    public int getItemName() {
         return itemName;
     }
 
-    public void setItemName(String itemName) {
+    public void setItemName(int itemName) {
         this.itemName = itemName;
     }
 

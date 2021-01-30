@@ -6,7 +6,7 @@
     <string name="start">문제풀기</string>
     <string name="ranking">예진 님의 현재 랭킹</string>
 
-    <string name="hotNews">개발자들의 Pick !</string>
+    <string name="hotNews">개발자들의 Pick ! </string>
     <string name="recruit">현재 채용 공고</string>
     <string name="hottest">실시간 인기글</string>
 
@@ -49,7 +49,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search">검색어를 입력하세요</string>
-    <string name="pick">우리들의 Pick</string>
     <string name="pick_source">개발자들이 직접 경험하고,도움을 받은, 검증된 교육 자료들입니다.</string>
     <string name="promotion_btn">프로모션</string>
     <string name="chanel_btn">채널</string>
@@ -69,21 +68,24 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
-    <string name="agree">이용약관에 <b>동의</b>하시면 <b>회원가입</b>이 <b>완료</b>됩니다.</string>
+    <string name="agree">이용약관에 <font color="#48FF51"> <b>동의</b></font>하시면 <font color="#48FF51"><b>회원가입</b></font>이 <font color="#48FF51"><b>완료</b></font>됩니다.</string>
     <string name="total_agree">전체 이용약관에 동의합니다.</string>
-    <string name="agree1">서비스 이용약관 <b>(필수)</b></string>
-    <string name="agree2">개인정보 처리방침 <b>(필수)</b></string>
+    <string name="agree1">서비스 이용약관 <font color="#48FF51"><b>(필수)</b></font></string>
+    <string name="agree2">개인정보 처리방침 <font color="#48FF51"><b>(필수)</b></font></string>
     <string name="agree3">이벤트 마케팅 수신동의 (선택)</string>
     <string name="agree_btn">확인</string>
     <string name="wrong_answer_title">오답노트</string>
     <string name="wrong_answer_content">변수 생성 예제 1번</string>
     <string name="news_item_content">content</string>
     <string name="wrong_answer">오답노트 내용</string>
-    <string name="code_it">코린이를 위한 강의, Code it</string>
+    <string name="code_it">코린이를 위한 강의, <font color="#48FF51">Code it </font></string>
     <string name="news_activity_title">Code it</string>
     <string name="code_it_content">#코린이를 위한 강의 #파이썬 #기초 탄탄</string>
     <string name="news_activity_course">개설과목</string>
     <string name="news_activity_course2">파이썬의 기초에 대해서, 파이썬 if문, 파이썬 while문</string>
     <string name="news_activity_code_it_review">코딩을 하나도 몰랐던 입장이었지만 Code it의 코린이 탈출 스쿨을 듣고 나서는 뚝딱뚝딱 할 수 있게 되었어요. 특히 파이썬에 대한 강의들이 굉장히 쉽고 재밌게 나와있는데 기본적인 문법을 익히는데 굉장히 효과적이었습니다. 한 강의에 20분 내지 30분 정도밖에 시간이 걸리지 않아 효율적이면서도 가볍게 들을 수 있어서 좋았습니다.</string>
     <string name="news_activity_button">사이트 방문하기</string>
+    <string name="news_text">개발자들의 <font color="#48FF51">Pick! </font></string>
+    <string name="agree_check_content">이용약관 내용</string>
+
 </resources>

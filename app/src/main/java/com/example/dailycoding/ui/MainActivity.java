@@ -32,6 +32,8 @@ public class MainActivity extends BaseActivity {
     private NavigationView navigationView;
     private View header;
 
+    //잠시 추가
+    private ImageButton btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,16 @@ public class MainActivity extends BaseActivity {
         init();
         initNavigation();
         setListener();
+
+        //잠시 추가
+        btn=findViewById(R.id.main_imageview_account);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, AgreeCheckActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

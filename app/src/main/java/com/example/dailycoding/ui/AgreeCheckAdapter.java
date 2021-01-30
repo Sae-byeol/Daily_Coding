@@ -3,6 +3,7 @@ package com.example.dailycoding.ui;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.ColorSpace;
+import android.text.method.ScrollingMovementMethod;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +53,8 @@ public class AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.Vi
         void onBind(CheckModel model,int position){
             this.model=model;
             this.position=position;
+            //이용약관 내용에 스크롤바 붙이기
+            textView_expanded.setMovementMethod(new ScrollingMovementMethod());
 
             item_name.setText(model.getItemName());
             chkSelected.setChecked(model.isSelected());

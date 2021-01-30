@@ -35,6 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.NewsNewActivity"/>
+        <activity android:name=".ui.WrongAnswerActivity"/>
         <activity android:name=".ui.AgreeCheckActivity"/>
     </application>
 

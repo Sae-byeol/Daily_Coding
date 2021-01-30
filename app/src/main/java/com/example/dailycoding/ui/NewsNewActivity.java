@@ -2,6 +2,7 @@ package com.example.dailycoding.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,6 +12,8 @@ import androidx.annotation.Nullable;
 
 import com.example.dailycoding.R;
 import com.example.dailycoding.util.BaseActivity;
+
+import org.w3c.dom.Text;
 
 public class NewsNewActivity extends BaseActivity implements View.OnClickListener {
     @Override
@@ -25,6 +28,8 @@ public class NewsNewActivity extends BaseActivity implements View.OnClickListene
 
         activity_title.setText(intent.getStringExtra("title"));
         activity_content.setText(intent.getStringExtra("content"));
+
+
 
         //뒤로 가기 버튼
         ImageButton closeBtn=findViewById(R.id.news_activity_left);

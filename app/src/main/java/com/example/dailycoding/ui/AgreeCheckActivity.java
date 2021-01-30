@@ -2,6 +2,7 @@ package com.example.dailycoding.ui;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ public class AgreeCheckActivity extends BaseActivity {
     private CheckBox check_all;
     private AgreeCheckAdapter mainAdapter;
     private RecyclerView recyclerView;
+    private Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +29,11 @@ public class AgreeCheckActivity extends BaseActivity {
     private void initControls(){
         recyclerView=(RecyclerView)findViewById((R.id.agree_recyclerView));
         check_all=(CheckBox)findViewById(R.id.agree_checkBox);
+        btn=(Button)findViewById(R.id.agree_btn);
 
-        item_list.add(new CheckModel("서비스 이용약관 (필수)", false));
-        item_list.add(new CheckModel("개인정보 처리방침 (필수)", false));
-        item_list.add(new CheckModel("이벤트 마케팅 수신동의 (선택)", false));
+        item_list.add(new CheckModel(R.string.agree1, false));
+        item_list.add(new CheckModel(R.string.agree2, false));
+        item_list.add(new CheckModel(R.string.agree3, false));
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -45,6 +48,10 @@ public class AgreeCheckActivity extends BaseActivity {
                 if (check_all.isChecked()){
                     for (CheckModel model:item_list){
                         model.setSelected(true);
+                        //'다음'버튼을 '시작하기'버튼으로 변경
+                        btn.setText("시작하기");
+                        btn.setTextColor(getResources().getColor(R.color.black));
+                        btn.setBackgroundColor(getResources().getColor(R.color.color_primary_light));
                     }
                 }
                 else{

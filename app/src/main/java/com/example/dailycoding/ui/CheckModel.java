@@ -5,12 +5,20 @@ import java.io.Serializable;
 public class CheckModel implements Serializable {
     private int itemName;
     private boolean isSelected;
+    private int content;
 
-
-    public CheckModel(int itemName, boolean isSelected) {
+    public CheckModel(int itemName, boolean isSelected,int content) {
         this.itemName = itemName;
         this.isSelected = isSelected;
+        this.content=content;
+    }
 
+    public int getContent() {
+        return content;
+    }
+
+    public void setContent(int content) {
+        this.content = content;
     }
 
     public int getItemName() {

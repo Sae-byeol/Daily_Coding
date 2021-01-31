@@ -3,6 +3,7 @@ package com.example.dailycoding.ui;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.ColorSpace;
+import android.os.Build;
 import android.text.method.ScrollingMovementMethod;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
@@ -49,7 +52,11 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
             chkSelected=(CheckBox)itemView.findViewById(R.id.item_checkBox);
             button=(ImageButton)itemView.findViewById(R.id.item_imageButton);
             textView_expanded=(TextView)itemView.findViewById(R.id.cl_item_expanded);
+            textView_expanded=(TextView)itemView.findViewById(R.id.cl_item_expanded);
+
+
         }
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         void onBind(CheckModel model,int position){
             this.model=model;
             this.position=position;
@@ -59,9 +66,7 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
             item_name.setText(model.getItemName());
             chkSelected.setChecked(model.isSelected());
 
-            //일단 ItemName을 펼쳤을때의 내용으로 하도록 하고
-            //나중에 약관 내용 찾아서(?) 수정
-            textView_expanded.setText(model.getItemName());
+            textView_expanded.setText(model.getContent());
 
             changeVisibility(selectedItems.get(position));
 
@@ -69,14 +74,14 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
 
             if (selectedItems.get(position)){
                 //펼쳐진 아이템인 경우
-                button.setBackground(context.getDrawable(R.drawable.arrow_up));
+                button.setBackground(ContextCompat.getDrawable(context,R.drawable.arrow_up));
             }
             else{
-                button.setBackground(context.getDrawable(R.drawable.arrow_down));
+                button.setBackground(ContextCompat.getDrawable(context, R.drawable.arrow_down));
             }
 
         }
-
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void onClick(View v) {
             if (selectedItems.get(position)) {
@@ -96,7 +101,10 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
         }
         private void changeVisibility(final boolean isExpanded) {
 
-            int height = textView_expanded.getHeight();
+            //int height = textView_expanded.getHeight();
+            int dpValue = 141;
+            float d = context.getResources().getDisplayMetrics().density;
+            int height = (int) (dpValue * d);
 
             // ValueAnimator.ofInt(int... values)는 View가 변할 값을 지정, 인자는 int 배열
             ValueAnimator va = isExpanded ? ValueAnimator.ofInt(0, height) : ValueAnimator.ofInt(height, 0);
@@ -134,6 +142,7 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
         holder.item_name.setText(item_list.get(position).getItemName());
         holder.chkSelected.setChecked(item_list.get(position).isSelected());
         holder.chkSelected.setTag(item_list.get(position));
+
 
         //각 아이템의 체크박스 클릭 이벤트
         holder.chkSelected.setOnClickListener(new View.OnClickListener() {

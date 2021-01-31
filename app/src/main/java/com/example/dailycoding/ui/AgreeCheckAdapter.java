@@ -19,7 +19,7 @@ import com.example.dailycoding.R;
 
 import java.util.ArrayList;
 
-public class AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.ViewHolder> {
+public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.ViewHolder> {
 
     //Item의 클릭 상태를 저장할 array 객체
     private SparseBooleanArray selectedItems=new SparseBooleanArray();

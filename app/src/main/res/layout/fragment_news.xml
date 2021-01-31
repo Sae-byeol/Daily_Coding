@@ -15,7 +15,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <EditText
                 android:id="@+id/news_editText"
                 android:layout_width="0dp"
@@ -32,6 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
             </EditText>
+
 
             <ImageButton
                 android:id="@+id/news_searchButton"
@@ -74,9 +74,11 @@
 
             <LinearLayout
                 android:id="@+id/news_linear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="210dp"
+                android:layout_height="37dp"
+                android:gravity="center"
                 android:orientation="horizontal"
+                android:layout_marginTop="15dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/news_textView2">
@@ -85,7 +87,6 @@
                     android:id="@+id/news_chanelButton"
                     android:layout_width="74dp"
                     android:layout_height="34dp"
-                    android:layout_marginTop="15dp"
                     android:text="@string/chanel_btn"
                     android:background="@drawable/round_border_black"
                     android:textColor="@color/color_primary_light"
@@ -93,19 +94,17 @@
 
                 </android.widget.Button>
 
-                <Button
+                <android.widget.Button
                     android:id="@+id/news_promotionButton"
                     android:layout_width="74dp"
                     android:layout_height="34dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="60dp"
-                    android:backgroundTint="#E5E5E5"
                     android:text="@string/promotion_btn"
                     android:textColor="@color/color_primary_light"
-                    android:background="@drawable/round_border"
+                    android:background="@drawable/round_border_white"
                     android:textSize="10sp">
 
-                </Button>
+                </android.widget.Button>
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,9 +43,9 @@ public class NewsFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.child_fragment,new ChanelFragment()).commit();
-                //디자인 변경
-                subButton1.setBackgroundColor(getResources().getColor(R.color.black));
-                subButton2.setBackgroundColor(getResources().getColor(R.color.white));
+                //버튼1 검정색 , 버튼2 하얀색으로
+                subButton1.setBackground(getResources().getDrawable(R.drawable.round_border_black));
+                subButton2.setBackground(getResources().getDrawable(R.drawable.round_border_white));
             }
         });
         subButton2.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +53,8 @@ public class NewsFragment extends BaseFragment {
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.child_fragment,new PromotionFragment()).commit();
                 //디자인 변경
-                subButton2.setBackgroundColor(getResources().getColor(R.color.black));
-                subButton1.setBackgroundColor(getResources().getColor(R.color.white));
+                subButton2.setBackground(getResources().getDrawable(R.drawable.round_border_black));
+                subButton1.setBackground(getResources().getDrawable(R.drawable.round_border_white));
             }
         });
 

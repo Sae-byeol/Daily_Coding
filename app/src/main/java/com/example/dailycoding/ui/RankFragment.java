@@ -2,12 +2,15 @@ package com.example.dailycoding.ui;
 
 
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +58,11 @@ public class RankFragment extends BaseFragment {
     private TextView tv_toplate;
     private TextView tv_temp;
 
+    private int selected;
+    private ImageButton btnJava;
+    private ImageButton btnC;
+    private ImageButton btnPython;
+
     // retrofit2
     private ServiceApi service;
 
@@ -78,6 +86,8 @@ public class RankFragment extends BaseFragment {
 
 //        init();
         //initSpinner();
+        init();
+        initListener();
         initChart();
         initMultiline();
         initAdapter();
@@ -87,7 +97,47 @@ public class RankFragment extends BaseFragment {
     }
 
     private void init() {
-        tv_temp = getView().findViewById(R.id.home_textview_ready);
+        selected = 0;
+
+        btnJava = getView().findViewById(R.id.rank_btn_java);
+        btnC = getView().findViewById(R.id.rank_btn_c);
+        btnPython = getView().findViewById(R.id.rank_btn_python);
+
+        btnJava.setBackgroundResource(R.drawable.bg_black_java);
+
+    }
+
+    private void initListener() {
+
+        btnJava.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                selected = 0;
+                btnJava.setBackgroundResource(R.drawable.bg_black_java);
+                btnC.setBackgroundResource(R.drawable.bg_green_c__);
+                btnPython.setBackgroundResource(R.drawable.bg_green_python);
+            }
+        });
+
+        btnC.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                selected = 1;
+                btnJava.setBackgroundResource(R.drawable.bg_green_java);
+                btnC.setBackgroundResource(R.drawable.bg_black_c__);
+                btnPython.setBackgroundResource(R.drawable.bg_green_python);
+            }
+        });
+
+        btnPython.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                selected = 2;
+                btnJava.setBackgroundResource(R.drawable.bg_green_java);
+                btnC.setBackgroundResource(R.drawable.bg_green_c__);
+                btnPython.setBackgroundResource(R.drawable.bg_black_python);
+            }
+        });
     }
 
     private void initAdapter() {

@@ -38,6 +38,7 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void onAnimationRepeat(Animation animation) {
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
             }
         });
         Image.startAnimation(anim);

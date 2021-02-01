@@ -1,7 +1,6 @@
 package com.example.dailycoding.ui;
 
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -31,7 +30,7 @@ public class AgreeCheckActivity extends BaseActivity {
     }
     private void initControls(){
         recyclerView=(RecyclerView)findViewById((R.id.agree_recyclerView));
-        check_all=(CheckBox)findViewById(R.id.agree_checkBox);
+        check_all=(CheckBox)findViewById(R.id.profile_checkBox);
         btn=(Button)findViewById(R.id.agree_btn);
 
         item_list.add(new CheckModel(R.string.agree1, false,R.string.agree_check_cont1));

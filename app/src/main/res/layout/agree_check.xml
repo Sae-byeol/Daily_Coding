@@ -20,7 +20,7 @@
     </TextView>
 
     <CheckBox
-        android:id="@+id/agree_checkBox"
+        android:id="@+id/profile_checkBox"
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:layout_marginTop="34dp"
@@ -31,13 +31,13 @@
 
         />
     <TextView
-        android:id="@+id/agree_textView2"
+        android:id="@+id/profileText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/total_agree"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/agree_checkBox"
+        app:layout_constraintStart_toEndOf="@id/profile_checkBox"
         app:layout_constraintTop_toBottomOf="@id/agree_textView1"
         android:layout_marginTop="31dp"
         android:layout_marginStart="6dp"
@@ -49,8 +49,8 @@
         android:layout_width="279dp"
         android:layout_height="2dp"
         android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@id/agree_checkBox"
-        app:layout_constraintStart_toStartOf="@id/agree_checkBox"
+        app:layout_constraintTop_toBottomOf="@id/profile_checkBox"
+        app:layout_constraintStart_toStartOf="@id/profile_checkBox"
         android:layout_marginTop="26dp">
 
     </View>
@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         app:layout_constraintTop_toBottomOf="@id/agree_line"
-        app:layout_constraintStart_toStartOf="@id/agree_checkBox"
+        app:layout_constraintStart_toStartOf="@id/profile_checkBox"
         android:layout_marginTop="8dp">
 
     </androidx.recyclerview.widget.RecyclerView>

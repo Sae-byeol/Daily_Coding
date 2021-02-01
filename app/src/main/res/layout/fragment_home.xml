@@ -163,7 +163,7 @@
             android:layout_width="8dp"
             android:layout_height="16dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_right_arrow"
+            android:background="@drawable/ic_bk_arrow_right"
             app:layout_constraintBottom_toBottomOf="@+id/home_textview_ranking"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/home_textview_ranking" />

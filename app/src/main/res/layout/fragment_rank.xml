@@ -41,7 +41,7 @@
             android:layout_marginTop="7dp"
             app:layout_constraintStart_toStartOf="@+id/rank_textview_check"
             app:layout_constraintTop_toBottomOf="@+id/rank_textview_check"
-            app:srcCompat="@drawable/ic_unfilled_exclamation_mark" />
+            app:srcCompat="@drawable/ic_warning" />
 
         <TextView
             android:id="@+id/rank_textview_rank"
@@ -168,7 +168,7 @@
                 android:layout_marginTop="6dp"
                 app:layout_constraintStart_toStartOf="@+id/rank_textview_name"
                 app:layout_constraintTop_toBottomOf="@+id/rank_textview_name"
-                app:srcCompat="@drawable/ic_star" />
+                app:srcCompat="@drawable/blakc_star" />
 
             <TextView
                 android:id="@+id/rank_textview_star"
@@ -237,7 +237,7 @@
                 android:layout_marginTop="6dp"
                 app:layout_constraintStart_toStartOf="@+id/rank_textview_name2"
                 app:layout_constraintTop_toBottomOf="@+id/rank_textview_name2"
-                app:srcCompat="@drawable/ic_star" />
+                app:srcCompat="@drawable/green_star" />
 
             <TextView
                 android:id="@+id/rank_textview_star2"
@@ -307,7 +307,7 @@
                 android:layout_marginTop="6dp"
                 app:layout_constraintStart_toStartOf="@+id/rank_textview_name3"
                 app:layout_constraintTop_toBottomOf="@+id/rank_textview_name3"
-                app:srcCompat="@drawable/ic_star" />
+                app:srcCompat="@drawable/green_star" />
 
             <TextView
                 android:id="@+id/rank_textview_star3"

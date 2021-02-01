@@ -11,7 +11,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
-        android:background="@drawable/ic_left_arrow">
+        android:background="@drawable/ic_bk_arrow_left">
 
     </ImageButton>
 

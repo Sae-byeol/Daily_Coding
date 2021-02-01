@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyCoding">
-        <activity android:name=".ui.ProblemDetailActivity"></activity>
+        <activity android:name=".ui.ProfileActivity"></activity>
+        <activity android:name=".ui.SplashActivity" />
+        <activity android:name=".ui.ProblemDetailActivity" />
         <activity android:name=".ui.ProblemListActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
@@ -34,9 +36,9 @@
                     android:scheme="kakaob8635a4704737dec5e7018a56f0fa289" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.NewsNewActivity"/>
-        <activity android:name=".ui.WrongAnswerActivity"/>
-        <activity android:name=".ui.AgreeCheckActivity"/>
+        <activity android:name=".ui.NewsNewActivity" />
+        <activity android:name=".ui.WrongAnswerActivity" />
+        <activity android:name=".ui.AgreeCheckActivity" />
     </application>
 
 </manifest>

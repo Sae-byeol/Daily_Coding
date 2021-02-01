@@ -59,6 +59,12 @@ public class HomeFragment extends BaseFragment {
     private TextView tv_temp;
     private ImageButton btn_more;
 
+    private int selected;
+    private Button btnJava;
+    private Button btnC;
+    private Button btnPython;
+
+
     // retrofit2
     private ServiceApi service;
 
@@ -94,6 +100,7 @@ public class HomeFragment extends BaseFragment {
     private void init() {
         tv_temp = getView().findViewById(R.id.home_textview_ready);
         btn_more = getView().findViewById(R.id.home_button_more);
+        selected = 0;
     }
 
     private void initListener() {
@@ -144,14 +151,20 @@ public class HomeFragment extends BaseFragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getContext(), data.get(position), Toast.LENGTH_SHORT).show();
 
-//                switch (position) {
-//                    case 0:
-//                        Toast.makeText(getContext(), "JAVA", Toast.LENGTH_SHORT).show();
-//                    case 1:
-//                        Toast.makeText(getContext(), "C++", Toast.LENGTH_SHORT).show();
-//                    case 2:
-//                        Toast.makeText(getContext(), "Python", Toast.LENGTH_SHORT).show();
-//                }
+                switch (position) {
+                    case 0:
+                        selected = 0;
+                    case 1:
+                        selected = 1;
+                    case 2:
+                        selected = 2;
+                }
+
+                switch (selected) {
+                    case 0:
+                    case 1:
+                    case 2:
+                }
             }
 
             @Override

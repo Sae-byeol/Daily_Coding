@@ -19,6 +19,7 @@
             android:background="@drawable/round_border_black"
             android:fontFamily="@font/robotoregular"
             android:gravity="center"
+            android:textStyle="bold"
             android:textColor="@color/color_primary_light"
             android:textSize="10sp" />
 

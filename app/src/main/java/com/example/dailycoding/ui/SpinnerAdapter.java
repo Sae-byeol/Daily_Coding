@@ -1,11 +1,16 @@
 package com.example.dailycoding.ui;
 
 import android.content.Context;
+import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.example.dailycoding.R;
 
@@ -16,6 +21,7 @@ public class SpinnerAdapter extends BaseAdapter {
     Context context;
     List<String> data;
     LayoutInflater inflater;
+    int currentPos;
 
 
     public SpinnerAdapter(Context context, List<String> data) {
@@ -40,7 +46,11 @@ public class SpinnerAdapter extends BaseAdapter {
         if (data != null) {
             //데이터세팅
             String text = data.get(position);
+            currentPos = position;
             ((TextView) convertView.findViewById(R.id.spinnerText)).setText(text);
+            Log.e("currentText",text);
+            Log.e("currentText",position+"");
+            Log.e("currentText",currentPos+"");
         }
 
         return convertView;
@@ -55,6 +65,55 @@ public class SpinnerAdapter extends BaseAdapter {
         //데이터세팅
         String text = data.get(position);
         ((TextView) convertView.findViewById(R.id.spinnerText)).setText(text);
+
+        if (((TextView) convertView.findViewById(R.id.spinnerText)).getText() == "JAVA") {
+            if(currentPos == 0) {
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_black);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
+            }
+            else {
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_light);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.black));
+            }
+        }
+
+        if (((TextView) convertView.findViewById(R.id.spinnerText)).getText() == "C++") {
+            if(currentPos == 1) {
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_black);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
+            }
+            else {
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_light);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.black));
+            }
+        }
+
+        if (((TextView) convertView.findViewById(R.id.spinnerText)).getText() == "Python") {
+            if(currentPos == 2) {
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_black);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
+            }
+            else {
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_light);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.black));
+            }
+        }
+//        ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_light);
+//        ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context,R.color.black));
+//
+
+//        switch (position) {
+//            case 0:
+//                ((TextView) convertView.findViewById(R.id.spinnerText)).setText("position");
+//                Log.e("position TEst",position+"");
+//            case 1:
+//                ((TextView) convertView.findViewById(R.id.spinnerText)).setText("position1");
+//                Log.e("position TEst",position+"");
+//            case 2:
+//                ((TextView) convertView.findViewById(R.id.spinnerText)).setText("position2");
+//                Log.e("position TEst",position+"");
+//        }
+
 
         return convertView;
     }

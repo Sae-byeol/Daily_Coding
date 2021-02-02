@@ -11,7 +11,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
-        android:background="@drawable/ic_left_arrow">
+        android:background="@drawable/ic_bk_arrow_left">
 
     </ImageButton>
 
@@ -103,8 +103,9 @@
         android:layout_height="80dp"
         android:text="@string/news_activity_button"
         android:textStyle="bold"
+        android:textSize="18sp"
         android:textColor="@color/black"
-        android:backgroundTint="@color/color_primary_light"
+        android:background="@color/color_primary_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

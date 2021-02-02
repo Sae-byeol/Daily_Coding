@@ -44,12 +44,12 @@ public class MainActivity extends BaseActivity {
         initNavigation();
         setListener();
 
-        //잠시 추가
+        //잠시 추가 (ProfileActivity로 잠시 수정)
         btn=findViewById(R.id.main_imageview_account);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, AgreeCheckActivity.class);
+                Intent intent=new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         });

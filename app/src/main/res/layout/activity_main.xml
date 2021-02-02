@@ -16,33 +16,31 @@
             android:id="@+id/main_imageview_menu"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:adjustViewBounds="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/transparent_light"
-            app:srcCompat="@drawable/menu" />
+            android:background="@drawable/ic_hamburger" />
 
         <ImageButton
             android:id="@+id/main_imageview_account"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:background="@color/transparent_light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@drawable/ic_user"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/account" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageButton
             android:id="@+id/main_imageview_noti"
             android:layout_marginEnd="23dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent_light"
+            android:layout_width="24dp"
+            android:layout_height="25.5dp"
+            android:background="@drawable/ic_bell"
             app:layout_constraintEnd_toStartOf="@+id/main_imageview_account"
-            app:layout_constraintTop_toTopOf="@+id/main_imageview_account"
-            app:srcCompat="@drawable/notification" />
+            app:layout_constraintTop_toTopOf="@+id/main_imageview_account"/>
 
         <FrameLayout
             android:id="@+id/main_framelayout"

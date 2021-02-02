@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ public class AgreeCheckActivity extends BaseActivity {
     private AgreeCheckAdapter mainAdapter;
     private RecyclerView recyclerView;
     private Button btn;
+    private TextView textView_expanded;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +30,13 @@ public class AgreeCheckActivity extends BaseActivity {
     }
     private void initControls(){
         recyclerView=(RecyclerView)findViewById((R.id.agree_recyclerView));
-        check_all=(CheckBox)findViewById(R.id.agree_checkBox);
+        check_all=(CheckBox)findViewById(R.id.profile_checkBox);
         btn=(Button)findViewById(R.id.agree_btn);
 
-        item_list.add(new CheckModel(R.string.agree1, false));
-        item_list.add(new CheckModel(R.string.agree2, false));
-        item_list.add(new CheckModel(R.string.agree3, false));
+        item_list.add(new CheckModel(R.string.agree1, false,R.string.agree_check_cont1));
+        item_list.add(new CheckModel(R.string.agree2, false,R.string.agree_check_cont2));
+        //일단 cont1 넣어둠
+        item_list.add(new CheckModel(R.string.agree3, false,R.string.agree_check_cont3));
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

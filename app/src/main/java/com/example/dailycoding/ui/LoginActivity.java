@@ -99,7 +99,7 @@ public class LoginActivity extends BaseActivity implements GoogleApiClient.OnCon
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
 
 
                             startActivity(intent);
@@ -132,7 +132,6 @@ public class LoginActivity extends BaseActivity implements GoogleApiClient.OnCon
         textView = findViewById(R.id.course_textview);
         textView = findViewById(R.id.course_number);
         kakaoLogin = findViewById(R.id.login_kakao);
-        register = findViewById(R.id.login_register);
 
         kakaoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,7 +164,7 @@ public class LoginActivity extends BaseActivity implements GoogleApiClient.OnCon
                     Glide.with(profileImage).load(user.getKakaoAccount().getProfile().getThumbnailImageUrl()).circleCrop().into(profileImage);*/
                 }
                 else{
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
 
                 }
                 return null;

@@ -1,12 +1,17 @@
 package com.example.dailycoding.ui;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,11 +28,15 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 
-public class CourseFragment extends BaseFragment {
+public class CourseFragment extends BaseFragment implements
+    DiscreteScrollView.ScrollListener<CourseSelectAdapter.SliderViewHolder>,
+    DiscreteScrollView.OnItemChangedListener<CourseSelectAdapter.SliderViewHolder>{
 
     public final static int PAGES=5;
-    public final static int LOOPS=1000;
+    public final static int LOOPS=1;
     public final static int FIRST_PAGE=PAGES*LOOPS/2;
+    private final static String TAG="CourseFragment";
+
     private DiscreteScrollView scrollView;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -52,24 +61,44 @@ public class CourseFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Log.d(TAG, "onViewCreated");
+
         initData();
         showCourseTitle();
         showCourseList();
+//        scrollEvent();
+
+        Log.d(TAG, "현재 아이템: "+scrollView.getCurrentItem());
     }
+
+//    private void scrollEvent(){
+//        scrollView.addScrollListener(listener);
+//        scrollView.removeScrollListener(listener);
+//
+//        public interface ScrollListener<T extends ViewHolder> {
+//            //The same as ScrollStateChangeListener, but for the cases when you are interested only in onScroll()
+//            void onScroll(float scrollPosition, int currentIndex, int newIndex, @Nullable T currentHolder, @Nullable T newCurrentHolder);
+//        }
+//    }
 
     private void showCourseTitle(){
         scrollView = getView().findViewById(R.id.DiscreteScrollView_course);
         CourseSelectAdapter courseSelectAdapter=new CourseSelectAdapter(list_courseTitle, LOOPS);
-//        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(courseSelectAdapter);
-//        scrollView.setAdapter(wrapper);
-        scrollView.setAdapter(courseSelectAdapter);
+        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(courseSelectAdapter);
+        scrollView.setAdapter(wrapper);
+//        scrollView.setAdapter(courseSelectAdapter);
         scrollView.scrollToPosition(LOOPS*3/2);
         scrollView.setItemTransformer(new ScaleTransformer.Builder()
-                .setMaxScale(1.05f)
-                .setMinScale(0.8f)
+                .setMaxScale(1.0f)
+                .setMinScale(3f/4f)
                 .setPivotX(Pivot.X.CENTER) // CENTER is a default one
                 .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
                 .build());
+        scrollView.setOffscreenItems(3);
+
+        scrollView.addScrollListener(this);
+        scrollView.addOnItemChangedListener(this);
+//        scrollView.setOverScrollEnabled(false);
 
 //        viewPager2=getView().findViewById(R.id.ViewPager2_course);
 //        viewPager2.setAdapter(new CourseSelectAdapter(list_courseTitle, viewPager2, LOOPS));
@@ -108,6 +137,7 @@ public class CourseFragment extends BaseFragment {
     }
 
     private void initData(){
+
         list_courseTitle = new ArrayList<>();
         list_course=new ArrayList<>();
 
@@ -128,4 +158,20 @@ public class CourseFragment extends BaseFragment {
     }
 
 
+    @Override
+    public void onScroll(float scrollPosition, int currentPosition, int newPosition, @Nullable CourseSelectAdapter.SliderViewHolder currentHolder, @Nullable CourseSelectAdapter.SliderViewHolder newCurrent) {
+//        Log.d(TAG, "scrollPosition"+scrollPosition+", currentPosition: "+currentPosition);
+    }
+
+    @SuppressLint("ResourceAsColor")
+    @Override
+    public void onCurrentItemChanged(@Nullable CourseSelectAdapter.SliderViewHolder viewHolder, int adapterPosition) {
+        Log.d(TAG, "adapterPosition: "+adapterPosition);
+        TextView textview=viewHolder.itemView.findViewById(R.id.TextView_course_title);
+        ConstraintLayout constraintLayout=viewHolder.itemView.findViewById(R.id.ConstraintLayout_item_select);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            textview.setTextColor(getContext().getColor(R.color.color_primary_light));
+            constraintLayout.setBackground(getContext().getDrawable(R.drawable.round_border_black));
+        }
+    }
 }

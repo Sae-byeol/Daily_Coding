@@ -85,8 +85,23 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                         Course course = dataList.get(getAdapterPosition());
                         course.setExpanded(!course.isExpanded());
                         notifyItemChanged(getAdapterPosition());
-                        if(course.isExpanded()) imageView.setBackground(context.getDrawable(R.drawable.arrow_down));
-                        else    imageView.setBackground(context.getDrawable(R.drawable.arrow_up));
+                        if(course.isExpanded()) {
+                            imageView.setBackground(context.getDrawable(R.drawable.arrow_down));
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                TextView_title.setTextColor(context.getColor(R.color.black));
+//                                TextView_content.setTextColor(context.getColor(R.color.white));
+                                constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_white));
+                            }
+                        }
+                        else    {
+                            imageView.setBackground(context.getDrawable(R.drawable.arrow_up));
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                TextView_title.setTextColor(context.getColor(R.color.color_primary_light));
+                                TextView_content.setTextColor(context.getColor(R.color.white));
+                                constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_black));
+
+                            }
+                        }
                     }
                 }
             });
@@ -153,6 +168,20 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
 //            layoutParams.topMargin=20;
 //            layoutParams.bottomMargin=20;
             holder.TextView_content.setVisibility(isExpanded?View.VISIBLE: View.GONE);
+            if(isExpanded){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.TextView_title.setTextColor(context.getColor(R.color.color_primary_light));
+                    holder.TextView_content.setTextColor(context.getColor(R.color.white));
+                    holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_black));
+                }
+            }
+            else{
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.TextView_title.setTextColor(context.getColor(R.color.black));
+//                    holder.TextView_content.setTextColor(context.getColor(R.color.white));
+                    holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_white));
+                }
+            }
 //            holder.TextView_title.setLayoutParams(layoutParams);
         }
 

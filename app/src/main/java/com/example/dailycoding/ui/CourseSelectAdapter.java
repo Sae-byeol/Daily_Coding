@@ -87,7 +87,7 @@ public class CourseSelectAdapter extends RecyclerView.Adapter<CourseSelectAdapte
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder holder, int position) {
         holder.textView.setText(dataList.get(position));
-
+        holder.textView.bringToFront();
 //        if (position == dataList.size() - 2) {
 //            viewPager2.post(runnable);
 //        }
@@ -100,9 +100,11 @@ public class CourseSelectAdapter extends RecyclerView.Adapter<CourseSelectAdapte
 
     class SliderViewHolder extends RecyclerView.ViewHolder{
         private TextView textView;
+        private ConstraintLayout constraintLayout;
         SliderViewHolder(View itemView){
             super(itemView);
             textView = itemView.findViewById(R.id.TextView_course_title);
+            constraintLayout=itemView.findViewById(R.id.ConstraintLayout_item_select);
         }
     }
 

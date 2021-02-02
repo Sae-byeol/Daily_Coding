@@ -62,6 +62,8 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
             this.position=position;
             //이용약관 내용에 스크롤바 붙이기
             textView_expanded.setMovementMethod(new ScrollingMovementMethod());
+            //스크롤 유연하게 , 근데 별로 효과 없는 것 같음
+            //textView_expanded.setNestedScrollingEnabled(false);
 
             item_name.setText(model.getItemName());
             chkSelected.setChecked(model.isSelected());

@@ -36,7 +36,7 @@ public class AgreeCheckActivity extends BaseActivity {
         item_list.add(new CheckModel(R.string.agree1, false,R.string.agree_check_cont1));
         item_list.add(new CheckModel(R.string.agree2, false,R.string.agree_check_cont2));
         //일단 cont1 넣어둠
-        item_list.add(new CheckModel(R.string.agree3, false,R.string.agree_check_cont1));
+        item_list.add(new CheckModel(R.string.agree3, false,R.string.agree_check_cont3));
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

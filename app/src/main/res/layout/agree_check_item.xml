@@ -58,6 +58,8 @@
         android:paddingVertical="25dp"
         android:text="@string/agree_check_content"
         android:scrollbars="vertical"
+        android:scrollbarThumbVertical="@color/color_primary_light"
+        android:scrollbarSize="2dp"
         android:textColor="@color/white"
         android:textSize="8dp"
         app:layout_constraintEnd_toEndOf="parent"

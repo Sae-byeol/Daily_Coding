@@ -11,7 +11,6 @@ public class WrongAnswerData {
         this.isCorrect = isCorrect;
         this.content=content;
         this.isExpanded=isExpanded;
-
     }
 
 

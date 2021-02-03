@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -63,7 +62,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @NonNull
     @Override
     public NewsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LinearLayout view= (LinearLayout)LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item,parent,false);
+        LinearLayout view= (LinearLayout)LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news,parent,false);
         ViewHolder holder=new ViewHolder(view);//view로 생성자 호출-> 각 내용 저장됨
         //CustomViewHolder 클래스 객체의 holder 리턴됨
         return holder;

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -101,7 +100,7 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
     @NonNull
     @Override
     public WrongAnswerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wrong_answer_item,null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wrong_answer,null);
         WrongAnswerAdapter.ViewHolder viewHolder=new WrongAnswerAdapter.ViewHolder(view);
         return viewHolder;
     }

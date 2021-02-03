@@ -21,6 +21,7 @@ public class AgreeCheckActivity extends BaseActivity {
     private RecyclerView recyclerView;
     private Button btn;
     private TextView textView_expanded;
+    private LinearLayoutManager linearLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +39,15 @@ public class AgreeCheckActivity extends BaseActivity {
         //일단 cont1 넣어둠
         item_list.add(new CheckModel(R.string.agree3, false,R.string.agree_check_cont3));
 
+
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        linearLayoutManager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        recyclerView.setLayoutManager(linearLayoutManager);
         mainAdapter=new AgreeCheckAdapter(item_list,this);
         recyclerView.setAdapter(mainAdapter);
 

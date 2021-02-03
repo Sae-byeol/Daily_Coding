@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/item_textView"
-            android:layout_width="250dp"
+            android:layout_width="248dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
             android:text="@string/agree1"
@@ -37,8 +37,9 @@
         <ImageButton
             android:id="@+id/item_imageButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_height="14dp"
+            android:scaleY="0.5"
+            android:scaleType="center"
             android:background="@drawable/arrow_down"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -47,25 +48,33 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/cl_item_expanded"
-        android:layout_width="match_parent"
-        android:layout_height="141dp"
-        android:layout_marginVertical="19dp"
+    <ScrollView
+        android:id="@+id/agree_check_scroll"
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
         android:maxWidth="279dp"
+        android:layout_marginVertical="19dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_item_default"
         android:background="@drawable/round_border_black"
         android:paddingHorizontal="12dp"
         android:paddingVertical="25dp"
-        android:text="@string/agree_check_content"
-        android:scrollbars="vertical"
         android:scrollbarThumbVertical="@color/color_primary_light"
         android:scrollbarSize="2dp"
-        android:textColor="@color/white"
-        android:textSize="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_item_default">
+        >
+        <TextView
+            android:id="@+id/cl_item_expanded"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/agree_check_content"
+            android:textColor="@color/white"
+            android:textSize="8dp"
+            >
 
-    </TextView>
+        </TextView>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

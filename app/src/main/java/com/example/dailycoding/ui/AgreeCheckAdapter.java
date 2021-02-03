@@ -11,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
@@ -44,6 +46,7 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
         public CheckBox chkSelected;
         public ImageButton button;
         public TextView textView_expanded;
+        public ScrollView scrollView;
         public CheckModel model;
         public int position;
         public ViewHolder(@NonNull View itemView) {
@@ -52,8 +55,7 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
             chkSelected=(CheckBox)itemView.findViewById(R.id.item_checkBox);
             button=(ImageButton)itemView.findViewById(R.id.item_imageButton);
             textView_expanded=(TextView)itemView.findViewById(R.id.cl_item_expanded);
-            textView_expanded=(TextView)itemView.findViewById(R.id.cl_item_expanded);
-
+            scrollView=(ScrollView)itemView.findViewById(R.id.agree_check_scroll);
 
         }
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -61,9 +63,7 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
             this.model=model;
             this.position=position;
             //이용약관 내용에 스크롤바 붙이기
-            textView_expanded.setMovementMethod(new ScrollingMovementMethod());
-            //스크롤 유연하게 , 근데 별로 효과 없는 것 같음
-            //textView_expanded.setNestedScrollingEnabled(false);
+            //textView_expanded.setMovementMethod(new ScrollingMovementMethod());
 
             item_name.setText(model.getItemName());
             chkSelected.setChecked(model.isSelected());
@@ -79,8 +79,9 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
                 button.setBackground(ContextCompat.getDrawable(context,R.drawable.arrow_up));
             }
             else{
-                button.setBackground(ContextCompat.getDrawable(context, R.drawable.arrow_down));
+                button.setBackground(ContextCompat.getDrawable(context,R.drawable.arrow_down));
             }
+
 
         }
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -118,10 +119,11 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
                     // value는 height 값
                     int value = (int) animation.getAnimatedValue();
                     // imageView의 높이 변경
-                    textView_expanded.getLayoutParams().height = value;
-                    textView_expanded.requestLayout();
+                    //textView_expanded-> scrollView
+                    scrollView.getLayoutParams().height = value;
+                    scrollView.requestLayout();
                     // imageView가 실제로 사라지게하는 부분
-                    textView_expanded.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+                    scrollView.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
                 }
             });
             // Animation start

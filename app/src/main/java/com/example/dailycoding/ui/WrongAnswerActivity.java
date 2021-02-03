@@ -18,7 +18,7 @@ public class WrongAnswerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.wrong_answer);
+        setContentView(R.layout.activity_wrong_answer);
         arrayList=new ArrayList<>();
         arrayList.add(new WrongAnswerData("변수 생성 예제 1",true,"오답 문제 1",false));
         arrayList.add(new WrongAnswerData("변수 생성 예제 2",false,"오답 문제 2",false));

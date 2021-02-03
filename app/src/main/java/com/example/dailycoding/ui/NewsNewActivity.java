@@ -2,9 +2,7 @@ package com.example.dailycoding.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -13,13 +11,11 @@ import androidx.annotation.Nullable;
 import com.example.dailycoding.R;
 import com.example.dailycoding.util.BaseActivity;
 
-import org.w3c.dom.Text;
-
 public class NewsNewActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.news_activity);
+        setContentView(R.layout.activity_news);
         //전환될 액티비티의 텍스트뷰에 데이터 전달하기
         TextView activity_title=findViewById(R.id.news_activity_title);
         TextView activity_content=findViewById(R.id.news_activity_code_it_content);

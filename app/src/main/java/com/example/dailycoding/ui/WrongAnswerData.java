@@ -11,7 +11,9 @@ public class WrongAnswerData {
         this.isCorrect = isCorrect;
         this.content=content;
         this.isExpanded=isExpanded;
+
     }
+
 
     public String getContent() {
         return content;

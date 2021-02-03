@@ -1,12 +1,15 @@
 package com.example.dailycoding.ui;
 
+import android.animation.LayoutTransition;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,13 +33,14 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private ImageView imageView;
-        private TextView textView;
-        private ImageButton imageButton;
-        private TextView contentText;
+        private TextView textView,contentText,tv1,tv2,tv3;
+        private ImageButton imageButton,closebtn;
         private WrongAnswerData data;
         private int position;
         private ConstraintLayout constraintLayout;
         private CardView cardView;
+        private LinearLayout btns;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView=(ImageView)itemView.findViewById(R.id.wrong_answer_item_image);
@@ -45,6 +49,12 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
             contentText=(TextView)itemView.findViewById(R.id.wrong_answer_content);
             constraintLayout=(ConstraintLayout)itemView.findViewById(R.id.wrong_answer_bar);
             cardView=(CardView)itemView.findViewById(R.id.wrong_answer_item_bar);
+            btns=(LinearLayout)itemView.findViewById(R.id.wrong_answer_btn);
+            closebtn=(ImageButton)itemView.findViewById(R.id.wrong_answer_close);
+            tv1=(TextView)itemView.findViewById(R.id.wrong_answer_tv1);
+            tv2=(TextView)itemView.findViewById(R.id.wrong_answer_tv2);
+            tv3=(TextView)itemView.findViewById(R.id.wrong_answer_tv3);
+
         }
         public void onBind(WrongAnswerData data, int position){
             this.data=data;
@@ -53,9 +63,21 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
             textView.setText(data.getText());
             contentText.setText(data.getContent());
 
-            constraintLayout.setOnClickListener(this);
 
+            applyLayoutTransition();
+
+            constraintLayout.setOnClickListener(this);
+            closebtn.setOnClickListener(this);
         }
+
+
+        private void applyLayoutTransition() {
+            LayoutTransition transition = new LayoutTransition();
+            transition.setDuration(300);
+            transition.enableTransitionType(LayoutTransition.CHANGING);
+            cardView.setLayoutTransition(transition);
+        }
+
         //오답노트 문제 클릭 시 레이아웃 확장 및 색 변경
         @Override
         public void onClick(View v) {
@@ -71,25 +93,33 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
                 cardView.setCardBackgroundColor(v.getResources().getColor(R.color.white));
                 textView.setTextColor(v.getResources().getColor(R.color.black));
                 contentText.setTextColor(v.getResources().getColor(R.color.black));
+                //내용 접기
                 contentText.setVisibility(View.GONE);
-                Log.d("tag","펼쳐진 상태를 클릭");
+                btns.setVisibility(View.GONE);
+                closebtn.setVisibility(View.GONE);
+
             }
             //접혀있는 상태를 클릭한 경우-> 펼쳐져야 함
             else    {
 
                 imageButton.setBackground(context.getDrawable(R.drawable.arrow_up));
-
+                //맞은 문제인 경우의 색
                 if(data.isCorrect()==true){
                     cardView.setCardBackgroundColor(v.getResources().getColor(R.color.color_primary_light));
                 }
+                //틀린문제인 경우의 색
                 else if (data.isCorrect()==false){
                     cardView.setCardBackgroundColor(v.getResources().getColor(R.color.black));
                     textView.setTextColor(v.getResources().getColor(R.color.color_primary_light));
-                    contentText.setTextColor(v.getResources().getColor(R.color.color_primary_light));
+                    contentText.setTextColor(v.getResources().getColor(R.color.white));
+                    closebtn.setBackgroundColor(v.getResources().getColor(R.color.color_primary_light));
+                    imageButton.setBackgroundColor(v.getResources().getColor(R.color.color_primary_light));
                 }
                 //내용 펼치기
                 contentText.setVisibility(View.VISIBLE);
-                Log.d("tag","접힌 상태를 클릭");
+                btns.setVisibility(View.VISIBLE);
+                closebtn.setVisibility(View.VISIBLE);
+
             }
 
             data.setExpanded(!data.isExpanded());

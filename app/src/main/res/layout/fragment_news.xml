@@ -24,6 +24,7 @@
                 android:background="@drawable/round_border"
                 android:backgroundTint="@color/white"
                 android:hint="@string/search"
+                android:elevation="1dp"
                 android:padding="10dp"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -1,82 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingTop="3dp"
-    >
+    android:paddingTop="3dp">
+
     <ImageView
         android:id="@+id/wrong_answer_item_image"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:background="@drawable/correct"
         android:layout_marginTop="19dp"
+        android:background="@drawable/correct"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@id/wrong_answer_item_bar"
 
         >
 
     </ImageView>
+
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/wrong_answer_item_bar"
-        app:layout_constraintLeft_toRightOf="@id/wrong_answer_item_image"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="293dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="1dp"
         app:cardUseCompatPadding="true"
-
-        >
+        app:contentPaddingBottom="19dp"
+        app:layout_constraintLeft_toRightOf="@id/wrong_answer_item_image"
+        app:layout_constraintTop_toTopOf="parent"
+        android:animateLayoutChanges="true"
+       >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/wrong_answer_bar"
-            android:layout_width="286dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:layout_marginLeft="10dp"
-            >
-            <TextView
-                android:id="@+id/wrong_answer_item_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="변수 생성 예제 1번"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/wrong_answer_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginVertical="19dp"
-                />
-            <ImageButton
-                android:id="@+id/wrong_answer_item_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/arrow_down"
-                app:layout_constraintEnd_toEndOf="@id/wrong_answer_bar"
-                app:layout_constraintTop_toTopOf="@id/wrong_answer_item_textView"
-                app:layout_constraintBottom_toBottomOf="@id/wrong_answer_item_textView"
-                android:layout_marginRight="20dp">
+            android:id="@+id/wrong_answer_cons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            </ImageButton>
-            <TextView
-                android:id="@+id/wrong_answer_content"
-                android:layout_width="286dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/wrong_answer_bar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/wrong_answer"
-                app:layout_constraintTop_toBottomOf="@id/wrong_answer_item_textView"
-                app:layout_constraintStart_toStartOf="@id/wrong_answer_item_textView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="16dp"
+                android:layout_margin="19dp"
+                android:backgroundTint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/wrong_answer_item_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="변수 생성 예제 1번"
+
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/wrong_answer_item_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/arrow_down"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/wrong_answer_item_textView"
+                    app:layout_constraintEnd_toEndOf="@id/wrong_answer_bar"
+                    app:layout_constraintTop_toTopOf="@id/wrong_answer_item_textView">
+
+                </ImageButton>
+
+                <TextView
+                    android:id="@+id/wrong_answer_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp"
+                    android:text="집합의 특징은 중복이 안되며 순서가 없다는 것입니다. \n s1=set('banana') \n s2=set('hello') \n print(s1) \n print(s2)\n\n  #결과값\n {'a','n','b'}"
+                    android:lineSpacingExtra="9sp"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/wrong_answer_item_textView"
+                    >
+
+                </TextView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/wrong_answer_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="13dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/wrong_answer_bar"
                 android:visibility="gone"
                 >
 
-            </TextView>
+                <TextView
+                    android:id="@+id/wrong_answer_tv1"
+                    android:layout_width="82dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/round_border_light_stroke"
+                    android:gravity="center"
+                    android:text="correct"
+                    android:textSize="9sp"
+                    >
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/wrong_answer_tv2"
+                    android:layout_width="82dp"
+                    android:layout_height="34dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/round_border_gray_stroke"
+                    android:text="correct"
+                    android:textColor="@color/white"
+                    android:textSize="9sp"
+                    android:gravity="center">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/wrong_answer_tv3"
+                    android:layout_width="82dp"
+                    android:layout_height="34dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/round_border_red_stroke"
+                    android:text="correct"
+                    android:textColor="@color/white"
+                    android:textSize="9sp"
+                    android:gravity="center">
+
+                </TextView>
+            </LinearLayout>
+            <ImageButton
+                android:id="@+id/wrong_answer_close"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@drawable/arrow_up"
+                android:backgroundTint="@color/black"
+                android:background="@color/transparent"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/wrong_answer_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                >
+
+            </ImageButton>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

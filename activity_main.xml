@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText,UseSwitchCompatOrMaterialXml">
+    <Button
+        android:src="@drawable/image1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="left"
+        android:background="@drawable/drop_shadow"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:backgroundTint="@color/white" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image1"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline1"
+        app:layout_constraintVertical_bias="0.475" />
+
+    <TextView
+        android:layout_width="145dp"
+        android:layout_height="10dp"
+        android:layout_gravity="center"
+        android:text=" " />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="가나다"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="145dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center"
+        android:text=" " />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#B8B8B8"
+        android:background="@drawable/round"
+        android:text=" abc1234@naver.com " />
+
+
+    <TextView
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=" " />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/drop_shadow"
+        android:backgroundTint="#FFFFFF"
+        android:stateListAnimator="@null"
+
+        android:switchMinWidth="50dp"
+        android:switchPadding="20dp"
+        android:text="                             알림 수신 동의"
+        android:textSize="15sp"
+        tools:targetApi="lollipop" />
+
+    <TextView
+        android:layout_width="141dp"
+        android:layout_height="10dp"
+        android:layout_gravity="center"
+        android:text=" " />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/drop_shadow"
+        android:backgroundTint="#FFFFFF"
+        android:switchMinWidth="50dp"
+        android:switchPadding="20dp"
+        android:text="                                화면모드"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="145dp"
+        android:layout_height="10dp"
+        android:layout_gravity="center"
+        android:text=" " />
+
+    <Button
+        android:id="@+id/editText"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/drop_shadow"
+        android:backgroundTint="#FFFFFF"
+        android:text="문의하기"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:backgroundTint="@color/white" />
+
+    <TextView
+        android:layout_width="145dp"
+        android:layout_height="10dp"
+        android:layout_gravity="center"
+        android:text=" " />
+
+    <Button
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/drop_shadow"
+        android:backgroundTint="#FFFFFF"
+        android:text="로그아웃"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:backgroundTint="@color/white" />
+
+
+</LinearLayout>

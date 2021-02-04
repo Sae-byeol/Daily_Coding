@@ -2,6 +2,8 @@ package com.example.dailycoding.ui;
 
 import android.animation.LayoutTransition;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
@@ -40,6 +43,7 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
         private ConstraintLayout constraintLayout;
         private CardView cardView;
         private LinearLayout btns;
+        private TextView[] tv;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +58,8 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
             tv1=(TextView)itemView.findViewById(R.id.wrong_answer_tv1);
             tv2=(TextView)itemView.findViewById(R.id.wrong_answer_tv2);
             tv3=(TextView)itemView.findViewById(R.id.wrong_answer_tv3);
+            tv=new TextView[3];
+            tv[0]=tv1; tv[1]=tv2; tv[2]=tv3;
 
         }
         public void onBind(WrongAnswerData data, int position){
@@ -62,9 +68,12 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
 
             textView.setText(data.getText());
             contentText.setText(data.getContent());
-
+            for (int i=0;i<3;i++){
+                tv[i].setText(arrayList.get(position).getCorrectArrayList().get(i).getAnswer());
+            }
 
             applyLayoutTransition();
+
 
             constraintLayout.setOnClickListener(this);
             closebtn.setOnClickListener(this);
@@ -101,19 +110,19 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
             }
             //접혀있는 상태를 클릭한 경우-> 펼쳐져야 함
             else    {
-
-                imageButton.setBackground(context.getDrawable(R.drawable.arrow_up));
                 //맞은 문제인 경우의 색
                 if(data.isCorrect()==true){
                     cardView.setCardBackgroundColor(v.getResources().getColor(R.color.color_primary_light));
+                    imageButton.setBackground(context.getDrawable(R.drawable.arrow_up_black));
                 }
                 //틀린문제인 경우의 색
                 else if (data.isCorrect()==false){
                     cardView.setCardBackgroundColor(v.getResources().getColor(R.color.black));
                     textView.setTextColor(v.getResources().getColor(R.color.color_primary_light));
                     contentText.setTextColor(v.getResources().getColor(R.color.white));
-                    closebtn.setBackgroundColor(v.getResources().getColor(R.color.color_primary_light));
-                    imageButton.setBackgroundColor(v.getResources().getColor(R.color.color_primary_light));
+                    imageButton.setBackground(context.getDrawable(R.drawable.arrow_up_primary_light));
+                    closebtn.setImageResource(R.drawable.arrow_up_primary_light);
+
                 }
                 //내용 펼치기
                 contentText.setVisibility(View.VISIBLE);
@@ -139,14 +148,56 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
     public void onBindViewHolder(@NonNull WrongAnswerAdapter.ViewHolder holder, int position) {
         boolean isExpanded=arrayList.get(position).isExpanded();
         boolean isCorrect=arrayList.get(position).isCorrect();
+        boolean isCorrectAnswer,isChosen;
         holder.onBind(arrayList.get(position),position);
         //holder.contentText.setVisibility(isExpanded?View.VISIBLE: View.GONE);
         //뷰홀더 안의 내용이 맞은 문제라면
         if(isCorrect==true){
             holder.imageView.setImageResource(R.drawable.correct);
+            for(int i=0;i<3;i++){
+                //맞은 문제의 선택지 세개 하나씩 확인하며 색 결정
+                isCorrectAnswer=arrayList.get(position).getCorrectArrayList().get(i).isCorrect();
+                isChosen=arrayList.get(position).getCorrectArrayList().get(i).isChosen();
+                if (isCorrectAnswer && isChosen){
+                    holder.tv[i].setBackgroundResource(R.drawable.round_border_blue_stroke);
+                    holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.white));
+                }
+                else{
+                    holder.tv[i].setBackgroundResource(R.drawable.round_border_transparent_stroke);
+                    holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.black));
+                }
+
+            }
         }
+        //틀렸던 문제라면
         else{
             holder.imageView.setImageResource(R.drawable.uncorrect);
+
+            /*for (int i=0;i<3;i++) {
+                isCorrectAnswer=arrayList.get(position).getCorrectArrayList().get(i).isCorrect();
+                isChosen=arrayList.get(position).getCorrectArrayList().get(i).isChosen();
+                if (isChosen ){
+                    holder.tv[i].setBackgroundResource(R.drawable.round_border_red_stroke);
+                    holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.white));
+                }
+                else if (isCorrect){
+                    holder.tv[i].setBackgroundResource(R.drawable.round_border_light_stroke);
+                    holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.black));
+                }
+                else {
+                    holder.tv[i].setBackgroundResource(R.drawable.round_border_gray_stroke);
+                    holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.white));
+                }
+
+            }*/
+            //activity에서 준 값들을 잘 받긴 하는데 이 부분에서 자꾸 틀린문제들도 액티비티에서 준 arrayList의 첫번째 정보를 가져와서 색칠됨
+            //계속 안되니까 일단은 하드코딩 하겠음
+            holder.tv[0].setBackgroundResource(R.drawable.round_border_light_stroke);
+            holder.tv[0].setTextColor(ContextCompat.getColor(context, R.color.black));
+            holder.tv[1].setBackgroundResource(R.drawable.round_border_gray_stroke);
+            holder.tv[1].setTextColor(ContextCompat.getColor(context, R.color.white));
+            holder.tv[2].setBackgroundResource(R.drawable.round_border_red_stroke);
+            holder.tv[2].setTextColor(ContextCompat.getColor(context, R.color.white));
         }
     }
 

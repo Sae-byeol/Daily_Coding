@@ -97,7 +97,7 @@
         android:textSize="10sp"
         android:layout_marginTop="8dp"/>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/news_item_button"
         android:layout_width="match_parent"
         android:layout_height="80dp"

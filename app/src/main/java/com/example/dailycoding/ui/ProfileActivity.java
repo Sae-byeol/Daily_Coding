@@ -1,7 +1,5 @@
 package com.example.dailycoding.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +43,7 @@ public class ProfileActivity extends BaseActivity {
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this, AgreeCheckActivity.class));
+                startActivity(new Intent(ProfileActivity.this, AgreeCheckFragment.class));
             }
         });
     }

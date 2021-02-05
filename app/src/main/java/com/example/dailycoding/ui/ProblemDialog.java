@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.text.Html;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.dailycoding.R;
@@ -30,13 +31,20 @@ public class ProblemDialog {
 
         dialog.show();
 
+        ImageButton ImageButton_close=dialog.findViewById(R.id.ImageButton_problemDialog_close);
         TextView message0=dialog.findViewById(R.id.TextView_problemDialog_message0);
         TextView message1=dialog.findViewById(R.id.TextView_problemDialog_message1);
-
         //이어서 풀기, 바로종료
         TextView btn_left=dialog.findViewById(R.id.TextView_problemDialog_left);
         //처음부터풀기, 저장하고 종료하기
         TextView btn_right=dialog.findViewById(R.id.TextView_problemDialog_right);
+
+        ImageButton_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         if(type==0){
 //            message.setText(Html.fromHtml(context.getString(R.string.problemDialog_message0)));
@@ -62,7 +70,7 @@ public class ProblemDialog {
 //            message.setText(Html.fromHtml(context.getString(R.string.problemDialog_message1)));
             message0.setVisibility(View.INVISIBLE);
             message1.setVisibility(View.VISIBLE);
-            btn_left.setText("처음부터 풀기");
+            btn_left.setText("바로 종료하기");
             btn_right.setText("저장하고 종료하기");
 //            message.setText(context.getString(R.string.problemDialog_message1));
             btn_left.setOnClickListener(new View.OnClickListener() {

@@ -71,35 +71,35 @@
         android:layout_marginTop="36dp"
         />
 
-    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/ConstraintLayout_courseSelect_viewPager2"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="150dp"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/TextView_problemSelection"-->
-<!--        >-->
-<!--        <androidx.viewpager2.widget.ViewPager2-->
-<!--            android:id="@+id/ViewPager2_course"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            android:layout_marginTop="12dp"-->
-<!--            android:paddingStart="80dp"-->
-<!--            android:paddingEnd="80dp"-->
-<!--            />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-    <com.yarolegovich.discretescrollview.DiscreteScrollView
-        android:id="@+id/DiscreteScrollView_course"
+        <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout_courseSelect_viewPager2"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="12dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextView_problemSelection" />
+        app:layout_constraintTop_toBottomOf="@id/TextView_problemSelection"
+        >
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/ViewPager2_course"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="12dp"
+            android:paddingStart="80dp"
+            android:paddingEnd="80dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <com.yarolegovich.discretescrollview.DiscreteScrollView-->
+<!--        android:id="@+id/DiscreteScrollView_course"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/TextView_problemSelection" />-->
 
     <ProgressBar
         android:id="@+id/ProgressBar_course"
@@ -107,7 +107,7 @@
         android:layout_height="6dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/DiscreteScrollView_course"
+        app:layout_constraintTop_toBottomOf="@id/ConstraintLayout_courseSelect_viewPager2"
         app:layout_constraintBottom_toTopOf="@id/TextView_course_progress"
         android:layout_marginTop="15dp"
         style="@android:style/Widget.ProgressBar.Horizontal"

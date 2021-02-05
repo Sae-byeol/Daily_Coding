@@ -48,9 +48,7 @@ public class SpinnerAdapter extends BaseAdapter {
             String text = data.get(position);
             currentPos = position;
             ((TextView) convertView.findViewById(R.id.spinnerText)).setText(text);
-            Log.e("currentText",text);
-            Log.e("currentText",position+"");
-            Log.e("currentText",currentPos+"");
+
         }
 
         return convertView;
@@ -98,22 +96,6 @@ public class SpinnerAdapter extends BaseAdapter {
                 ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.black));
             }
         }
-//        ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_light);
-//        ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context,R.color.black));
-//
-
-//        switch (position) {
-//            case 0:
-//                ((TextView) convertView.findViewById(R.id.spinnerText)).setText("position");
-//                Log.e("position TEst",position+"");
-//            case 1:
-//                ((TextView) convertView.findViewById(R.id.spinnerText)).setText("position1");
-//                Log.e("position TEst",position+"");
-//            case 2:
-//                ((TextView) convertView.findViewById(R.id.spinnerText)).setText("position2");
-//                Log.e("position TEst",position+"");
-//        }
-
 
         return convertView;
     }

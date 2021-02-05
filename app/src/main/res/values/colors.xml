@@ -15,4 +15,5 @@
     <color name="color_primary_gray">#C4C4C4</color>
     <color name="red">#CD1900</color>
     <color name="dark_gray">#838383</color>
+    <color name="dialog_button_text">#8C8C8C</color>
 </resources>

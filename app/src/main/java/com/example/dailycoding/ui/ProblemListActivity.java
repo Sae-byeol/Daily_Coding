@@ -27,8 +27,14 @@ public class ProblemListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_problem_list);
 
+        showDialog();
         initData();
         init();
+    }
+
+    private void showDialog(){
+        ProblemDialog problemDialog=new ProblemDialog(this);
+        problemDialog.makeDialog(0);
     }
 
     private void init(){

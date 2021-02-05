@@ -56,38 +56,38 @@ import java.util.ArrayList;
 public class CourseSelectAdapter extends RecyclerView.Adapter<CourseSelectAdapter.SliderViewHolder>{
 
     private ArrayList<String> dataList;
-//    private ViewPager2 viewPager2;
+    private ViewPager2 viewPager2;
 
-    public CourseSelectAdapter(ArrayList<String> dataList, int loop) {
+    public CourseSelectAdapter(ArrayList<String> dataList, ViewPager2 viewPager2, int loop) {
         this.dataList = new ArrayList<>();
 //        this.dataList=dataList;
         for(int i=0;i<loop;i++){
             this.dataList.addAll(dataList);
         }
-//        this.viewPager2=viewPager2;
+        this.viewPager2=viewPager2;
     }
 
     @NonNull
     @Override
     public SliderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new SliderViewHolder(
-                LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.item_course_title,
-                        parent,
-                        false
-                )
-        );
-//        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-//        View v = inflater.inflate(R.layout.item_course_title, parent, false);
-////       Pages must fill the whole ViewPager2 (use match_parent) => 이 에러 해결
-//        v.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-//        return new SliderViewHolder(v);
+//        return new SliderViewHolder(
+//                LayoutInflater.from(parent.getContext()).inflate(
+//                        R.layout.item_course_title,
+//                        parent,
+//                        false
+//                )
+//        );
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View v = inflater.inflate(R.layout.item_course_title, parent, false);
+//       Pages must fill the whole ViewPager2 (use match_parent) => 이 에러 해결
+        v.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        return new SliderViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder holder, int position) {
         holder.textView.setText(dataList.get(position));
-        holder.textView.bringToFront();
+//        holder.textView.bringToFront();
 //        if (position == dataList.size() - 2) {
 //            viewPager2.post(runnable);
 //        }

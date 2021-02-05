@@ -24,10 +24,10 @@
     </LinearLayout>
 
     <ImageView
-        android:src="@drawable/ic_down_arrow"
+        android:src="@drawable/ic_arrow_down_small"
         android:layout_marginStart="5dp"
         android:scaleType="centerInside"
-        android:layout_width="12dp"
-        android:layout_height="6dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

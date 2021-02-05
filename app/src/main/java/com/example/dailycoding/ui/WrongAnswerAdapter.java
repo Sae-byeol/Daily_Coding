@@ -97,7 +97,7 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
             //펼쳐진 상태에서 클릭한 경우
             if(data.isExpanded()==true) {
 
-                imageButton.setBackground(context.getDrawable(R.drawable.arrow_down));
+                imageButton.setBackground(context.getDrawable(R.drawable.ic_arrow_down_small));
                 //접으면 색상 다시 하얗게 돌아오기
                 cardView.setCardBackgroundColor(v.getResources().getColor(R.color.white));
                 textView.setTextColor(v.getResources().getColor(R.color.black));
@@ -113,15 +113,15 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
                 //맞은 문제인 경우의 색
                 if(data.isCorrect()==true){
                     cardView.setCardBackgroundColor(v.getResources().getColor(R.color.color_primary_light));
-                    imageButton.setBackground(context.getDrawable(R.drawable.arrow_up_black));
+                    imageButton.setBackground(context.getDrawable(R.drawable.ic_arrow_up_small));
                 }
                 //틀린문제인 경우의 색
                 else if (data.isCorrect()==false){
                     cardView.setCardBackgroundColor(v.getResources().getColor(R.color.black));
                     textView.setTextColor(v.getResources().getColor(R.color.color_primary_light));
                     contentText.setTextColor(v.getResources().getColor(R.color.white));
-                    imageButton.setBackground(context.getDrawable(R.drawable.arrow_up_primary_light));
-                    closebtn.setImageResource(R.drawable.arrow_up_primary_light);
+                    imageButton.setBackground(context.getDrawable(R.drawable.ic_arrow_up_light));
+                    closebtn.setImageResource(R.drawable.ic_arrow_up_light);
 
                 }
                 //내용 펼치기
@@ -153,7 +153,7 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
         //holder.contentText.setVisibility(isExpanded?View.VISIBLE: View.GONE);
         //뷰홀더 안의 내용이 맞은 문제라면
         if(isCorrect==true){
-            holder.imageView.setImageResource(R.drawable.correct);
+            holder.imageView.setImageResource(R.drawable.ic_correct);
             for(int i=0;i<3;i++){
                 //맞은 문제의 선택지 세개 하나씩 확인하며 색 결정
                 isCorrectAnswer=arrayList.get(position).getCorrectArrayList().get(i).isCorrect();

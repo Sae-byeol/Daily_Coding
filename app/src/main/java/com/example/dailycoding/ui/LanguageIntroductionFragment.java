@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
@@ -33,7 +34,9 @@ import retrofit2.Retrofit;
 
 public class LanguageIntroductionFragment extends BaseFragment {
 
-    private static final int LOOPS=1000;
+//    public final static int PAGES=3;
+//    public final static int LOOPS=100000;
+//    public final static int FIRST_PAGE=PAGES*LOOPS/2;
     private static final String TAG="LanguageIntroductionFragment";
 
     private DiscreteScrollView scrollView;
@@ -44,6 +47,8 @@ public class LanguageIntroductionFragment extends BaseFragment {
 //    private static final String[] DATA={"변수활용1", "변수활용2", "변수활용3"};
     private static ArrayList<String> list_courseTitle;
     private static ArrayList<Course> list_course;
+
+    private ViewPager2 viewPager2;
 
 //    private Retrofit retrofit;
 
@@ -74,6 +79,28 @@ public class LanguageIntroductionFragment extends BaseFragment {
     }
 
     private void showCourseTitle(){
+        viewPager2=getView().findViewById(R.id.ViewPager2_languageSelect);
+//        viewPager2.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        viewPager2.setAdapter(new CourseSelectAdapter(list_courseTitle, viewPager2));
+
+        viewPager2.setCurrentItem(1);
+        viewPager2.setClipToPadding(false);
+        viewPager2.setClipChildren(false);
+        viewPager2.setOffscreenPageLimit(3);
+        viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+
+        OverlapTransformer overlapTransformer=new OverlapTransformer(getContext());
+        viewPager2.setPageTransformer(overlapTransformer);
+
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+//                Log.d(TAG, "현재 선택된 포지션:"+position);
+            }
+
+        });
+
 //        scrollView = getView().findViewById(R.id.DiscreteScrollView_language);
 //        scrollView.setAdapter(new CourseSelectAdapter(list_courseTitle));
 //        scrollView.setOffscreenItems(3);
@@ -84,18 +111,20 @@ public class LanguageIntroductionFragment extends BaseFragment {
 //                .setPivotX(Pivot.X.CENTER) // CENTER is a default one
 //                .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
 //                .build());
-        scrollView = getView().findViewById(R.id.DiscreteScrollView_language);
-        CourseSelectAdapter courseSelectAdapter=new CourseSelectAdapter(list_courseTitle, LOOPS);
-//        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(courseSelectAdapter);
-//        scrollView.setAdapter(wrapper);
-        scrollView.setAdapter(courseSelectAdapter);
-        scrollView.scrollToPosition(LOOPS*3/2);
-        scrollView.setItemTransformer(new ScaleTransformer.Builder()
-                .setMaxScale(1.05f)
-                .setMinScale(0.8f)
-                .setPivotX(Pivot.X.CENTER) // CENTER is a default one
-                .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
-                .build());
+
+
+//        scrollView = getView().findViewById(R.id.DiscreteScrollView_language);
+//        CourseSelectAdapter courseSelectAdapter=new CourseSelectAdapter(list_courseTitle, LOOPS);
+////        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(courseSelectAdapter);
+////        scrollView.setAdapter(wrapper);
+//        scrollView.setAdapter(courseSelectAdapter);
+//        scrollView.scrollToPosition(LOOPS*3/2);
+//        scrollView.setItemTransformer(new ScaleTransformer.Builder()
+//                .setMaxScale(1.05f)
+//                .setMinScale(0.8f)
+//                .setPivotX(Pivot.X.CENTER) // CENTER is a default one
+//                .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
+//                .build());
     }
 
     private void showCourseList(){
@@ -140,12 +169,12 @@ public class LanguageIntroductionFragment extends BaseFragment {
 
         serviceApi=ApiUtils.getServiceApi();
         //        로딩
-        progressOn();
+        //progressOn();
         serviceApi.getData("python").enqueue(new Callback<ArrayList<CategoryResponse>>() {
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(Call<ArrayList<CategoryResponse>> call, Response<ArrayList<CategoryResponse>> response) {
-                progressOff();
+                //progressOff();
                 ArrayList<CategoryResponse> result=response.body();
 
                 Log.d(TAG, result.size()+"");

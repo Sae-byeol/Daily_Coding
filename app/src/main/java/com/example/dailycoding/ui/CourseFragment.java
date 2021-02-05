@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,13 +29,15 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 
-public class CourseFragment extends BaseFragment implements
-    DiscreteScrollView.ScrollListener<CourseSelectAdapter.SliderViewHolder>,
-    DiscreteScrollView.OnItemChangedListener<CourseSelectAdapter.SliderViewHolder>{
+public class CourseFragment extends BaseFragment
+//        implements
+//    DiscreteScrollView.ScrollListener<CourseSelectAdapter.SliderViewHolder>,
+//    DiscreteScrollView.OnItemChangedListener<CourseSelectAdapter.SliderViewHolder>
+{
 
-    public final static int PAGES=5;
-    public final static int LOOPS=1;
-    public final static int FIRST_PAGE=PAGES*LOOPS/2;
+    public final static int PAGES=3;
+//    public final static int LOOPS=100000;
+//    public final static int FIRST_PAGE=PAGES*LOOPS/2;
     private final static String TAG="CourseFragment";
 
     private DiscreteScrollView scrollView;
@@ -61,16 +64,13 @@ public class CourseFragment extends BaseFragment implements
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Log.d(TAG, "onViewCreated");
-
         initData();
         showCourseTitle();
         showCourseList();
 //        scrollEvent();
 
-        Log.d(TAG, "현재 아이템: "+scrollView.getCurrentItem());
+//        Log.d(TAG, "현재 아이템: "+scrollView.getCurrentItem());
     }
-
 
 //    private void scrollEvent(){
 //        scrollView.addScrollListener(listener);
@@ -83,42 +83,55 @@ public class CourseFragment extends BaseFragment implements
 //    }
 
     private void showCourseTitle(){
-        scrollView = getView().findViewById(R.id.DiscreteScrollView_course);
-        CourseSelectAdapter courseSelectAdapter=new CourseSelectAdapter(list_courseTitle, LOOPS);
-        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(courseSelectAdapter);
-        scrollView.setAdapter(wrapper);
-//        scrollView.setAdapter(courseSelectAdapter);
-        scrollView.scrollToPosition(LOOPS*3/2);
-        scrollView.setItemTransformer(new ScaleTransformer.Builder()
-                .setMaxScale(1.0f)
-                .setMinScale(3f/4f)
-                .setPivotX(Pivot.X.CENTER) // CENTER is a default one
-                .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
-                .build());
-        scrollView.setOffscreenItems(3);
-
-        scrollView.addScrollListener(this);
-        scrollView.addOnItemChangedListener(this);
+//        scrollView = getView().findViewById(R.id.DiscreteScrollView_course);
+//        CourseSelectAdapter courseSelectAdapter=new CourseSelectAdapter(list_courseTitle, LOOPS);
+//        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(courseSelectAdapter);
+//        scrollView.setAdapter(wrapper);
+////        scrollView.setAdapter(courseSelectAdapter);
+//        scrollView.scrollToPosition(LOOPS*3/2);
+//        scrollView.setItemTransformer(new ScaleTransformer.Builder()
+//                .setMaxScale(1.0f)
+//                .setMinScale(3f/4f)
+//                .setPivotX(Pivot.X.CENTER) // CENTER is a default one
+//                .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
+//                .build());
+//        scrollView.setOffscreenItems(3);
+//
+//        scrollView.addScrollListener(this);
+//        scrollView.addOnItemChangedListener(this);
 //        scrollView.setOverScrollEnabled(false);
 
-//        viewPager2=getView().findViewById(R.id.ViewPager2_course);
-//        viewPager2.setAdapter(new CourseSelectAdapter(list_courseTitle, viewPager2, LOOPS));
-//
-//        viewPager2.setCurrentItem(FIRST_PAGE);
-//        viewPager2.setClipToPadding(false);
-//        viewPager2.setClipChildren(false);
-//        viewPager2.setOffscreenPageLimit(3);
+        viewPager2=getView().findViewById(R.id.ViewPager2_course);
+//        viewPager2.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        viewPager2.setAdapter(new CourseSelectAdapter(list_courseTitle, viewPager2));
+
+        viewPager2.setCurrentItem(1);
+        viewPager2.setClipToPadding(false);
+        viewPager2.setClipChildren(false);
+        viewPager2.setOffscreenPageLimit(3);
 //        viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-//
+
 //        CompositePageTransformer compositePageTransformer=new CompositePageTransformer();
 ////        compositePageTransformer.addTransformer(new MarginPageTransformer(0));
 //        compositePageTransformer.addTransformer((page, position) -> {
 //            float r=1-Math.abs(position);
 //            page.setScaleY(0.85f+r*0.15f);
 //        });
-////        compositePageTransformer.addTransformer(new MarginPageTransformer(-150));
+//        compositePageTransformer.addTransformer(new MarginPageTransformer(150));
 //        viewPager2.setPageTransformer(compositePageTransformer);
+//        DepthPageTransformer depthPageTransformer=new DepthPageTransformer();
+//        viewPager2.setPageTransformer(depthPageTransformer);
+        OverlapTransformer overlapTransformer=new OverlapTransformer(getContext());
+        viewPager2.setPageTransformer(overlapTransformer);
 
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                Log.d(TAG, "현재 선택된 포지션:"+position);
+            }
+
+        });
     }
 
     private void showCourseList(){
@@ -159,20 +172,20 @@ public class CourseFragment extends BaseFragment implements
     }
 
 
-    @Override
-    public void onScroll(float scrollPosition, int currentPosition, int newPosition, @Nullable CourseSelectAdapter.SliderViewHolder currentHolder, @Nullable CourseSelectAdapter.SliderViewHolder newCurrent) {
-//        Log.d(TAG, "scrollPosition"+scrollPosition+", currentPosition: "+currentPosition);
-    }
-
-    @SuppressLint("ResourceAsColor")
-    @Override
-    public void onCurrentItemChanged(@Nullable CourseSelectAdapter.SliderViewHolder viewHolder, int adapterPosition) {
-        Log.d(TAG, "adapterPosition: "+adapterPosition);
-        TextView textview=viewHolder.itemView.findViewById(R.id.TextView_course_title);
-        ConstraintLayout constraintLayout=viewHolder.itemView.findViewById(R.id.ConstraintLayout_item_select);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            textview.setTextColor(getContext().getColor(R.color.color_primary_light));
-            constraintLayout.setBackground(getContext().getDrawable(R.drawable.round_border_black));
-        }
-    }
+//    @Override
+//    public void onScroll(float scrollPosition, int currentPosition, int newPosition, @Nullable CourseSelectAdapter.SliderViewHolder currentHolder, @Nullable CourseSelectAdapter.SliderViewHolder newCurrent) {
+////        Log.d(TAG, "scrollPosition"+scrollPosition+", currentPosition: "+currentPosition);
+//    }
+//
+//    @SuppressLint("ResourceAsColor")
+//    @Override
+//    public void onCurrentItemChanged(@Nullable CourseSelectAdapter.SliderViewHolder viewHolder, int adapterPosition) {
+//        Log.d(TAG, "adapterPosition: "+adapterPosition);
+//        TextView textview=viewHolder.itemView.findViewById(R.id.TextView_course_title);
+//        ConstraintLayout constraintLayout=viewHolder.itemView.findViewById(R.id.ConstraintLayout_item_select);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            textview.setTextColor(getContext().getColor(R.color.color_primary_light));
+//            constraintLayout.setBackground(getContext().getDrawable(R.drawable.round_border_black));
+//        }
+//    }
 }

@@ -9,12 +9,12 @@
 
     <ImageButton
         android:id="@+id/ImageButton_problemDetail_back"
-        android:layout_width="8dp"
-        android:layout_height="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="23dp"
-        android:background="@drawable/ic_bk_arrow_left"
+        android:background="@drawable/ic_arrow_left"
         />
     <TextView
         android:id="@+id/TextView_problemDetail_leftProblems"
@@ -45,13 +45,13 @@
 
     <ImageButton
         android:id="@+id/ImageButton_problemDetail_leftProblems"
-        android:layout_width="9dp"
-        android:layout_height="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ProgressBar_problemDetail"
         android:layout_marginTop="9dp"
-        android:background="@drawable/arrow_down"
+        android:background="@drawable/ic_arrow_down"
         />
     <TextView
         android:id="@+id/TextView_problemDetail_explain"
@@ -97,6 +97,7 @@
         android:layout_marginHorizontal="12dp"
         >
         <TextView
+            android:id="@+id/TextView_problemDetail_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="다음 결과물을 갖기 위해서 빈칸에 어떤 코드가 들어가야 할까?\n          (Hello world)"
@@ -159,26 +160,35 @@
             android:textSize="12sp"
             android:textStyle="bold"
             />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintStart_toStartOf="@id/TextView_detail_currentProblem"
+            app:layout_constraintEnd_toEndOf="@id/TextView_detail_currentProblem"
+            app:layout_constraintTop_toBottomOf="@id/TextView_detail_currentProblem"
+            android:layout_marginTop="3dp"
+            android:background="#000000"
+            />
         <ImageButton
             android:id="@+id/ImageButton_problemDetail_previous"
-            android:layout_width="4dp"
-            android:layout_height="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="13dp"
-            android:background="@drawable/ic_bk_arrow_left"
+            android:background="@drawable/ic_arrow_left_small"
             />
+
         <ImageButton
             android:id="@+id/ImageButton_problemDetail_next"
             android:layout_width="4dp"
             android:layout_height="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginEnd="13dp"
-            android:background="@drawable/ic_bk_arrow_left"
-            />
+            android:background="@drawable/ic_arrow_right_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <android.widget.Button
             android:id="@+id/Button_problemDetail_option1"
             android:layout_width="0dp"

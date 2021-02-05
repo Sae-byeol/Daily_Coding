@@ -36,8 +36,8 @@
 
         <ImageView
             android:id="@+id/rank_imageview_exclamation"
-            android:layout_width="11dp"
-            android:layout_height="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             app:layout_constraintStart_toStartOf="@+id/rank_textview_check"
             app:layout_constraintTop_toBottomOf="@+id/rank_textview_check"
@@ -168,7 +168,7 @@
                 android:layout_marginTop="6dp"
                 app:layout_constraintStart_toStartOf="@+id/rank_textview_name"
                 app:layout_constraintTop_toBottomOf="@+id/rank_textview_name"
-                app:srcCompat="@drawable/blakc_star" />
+                app:srcCompat="@drawable/ic_star_black" />
 
             <TextView
                 android:id="@+id/rank_textview_star"
@@ -237,7 +237,7 @@
                 android:layout_marginTop="6dp"
                 app:layout_constraintStart_toStartOf="@+id/rank_textview_name2"
                 app:layout_constraintTop_toBottomOf="@+id/rank_textview_name2"
-                app:srcCompat="@drawable/green_star" />
+                app:srcCompat="@drawable/ic_star_light" />
 
             <TextView
                 android:id="@+id/rank_textview_star2"
@@ -307,7 +307,7 @@
                 android:layout_marginTop="6dp"
                 app:layout_constraintStart_toStartOf="@+id/rank_textview_name3"
                 app:layout_constraintTop_toBottomOf="@+id/rank_textview_name3"
-                app:srcCompat="@drawable/green_star" />
+                app:srcCompat="@drawable/ic_star_light" />
 
             <TextView
                 android:id="@+id/rank_textview_star3"

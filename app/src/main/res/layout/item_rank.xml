@@ -62,5 +62,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/green_star" />
+        app:srcCompat="@drawable/ic_star_light" />
 </androidx.constraintlayout.widget.ConstraintLayout>

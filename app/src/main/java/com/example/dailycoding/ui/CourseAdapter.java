@@ -86,7 +86,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                         course.setExpanded(!course.isExpanded());
                         notifyItemChanged(getAdapterPosition());
                         if(course.isExpanded()) {
-                            imageView.setBackground(context.getDrawable(R.drawable.arrow_down));
+                            imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_down_small));
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                 TextView_title.setTextColor(context.getColor(R.color.black));
 //                                TextView_content.setTextColor(context.getColor(R.color.white));
@@ -94,7 +94,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                             }
                         }
                         else    {
-                            imageView.setBackground(context.getDrawable(R.drawable.arrow_up));
+                            imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_up_small));
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                 TextView_title.setTextColor(context.getColor(R.color.color_primary_light));
                                 TextView_content.setTextColor(context.getColor(R.color.white));
@@ -135,7 +135,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
         holder.TextView_title.setText(dataList.get(position).getTitle());
         boolean isExpanded = dataList.get(position).isExpanded();
         if(type==1||type==0){
-            holder.imageView.setBackground(context.getDrawable(R.drawable.news_arrow));
+            holder.imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_right));
 
 //            holder.recyclerView.setHasFixedSize(true);
 //

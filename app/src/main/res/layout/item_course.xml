@@ -7,6 +7,16 @@
     android:layout_marginBottom="9dp"
     android:elevation="@dimen/button_elevation"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/ImageView_course_lock"
+        android:layout_width="14.04dp"
+        android:layout_height="19dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="31dp"
+        android:background="@drawable/ic_lock"
+        />
     <TextView
         android:id="@+id/TextView_course_list"
         android:layout_width="wrap_content"
@@ -26,7 +36,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/TextView_course_list"
         app:layout_constraintBottom_toBottomOf="@id/TextView_course_list"
-        android:background="@drawable/arrow_down"
+        android:background="@drawable/ic_arrow_right"
         android:layout_marginEnd="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView

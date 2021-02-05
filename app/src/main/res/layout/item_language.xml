@@ -26,7 +26,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/TextView_language_list"
         app:layout_constraintBottom_toBottomOf="@id/TextView_language_list"
-        android:background="@drawable/arrow_down"
+        android:background="@drawable/ic_arrow_down_small"
         android:layout_marginEnd="10dp"/>
     <TextView
         android:id="@+id/TextView_languageIntroduction_content"

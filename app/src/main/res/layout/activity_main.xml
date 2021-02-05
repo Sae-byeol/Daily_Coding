@@ -19,7 +19,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/ic_icon_text02"
+            app:srcCompat="@drawable/ic_hamburger"
             android:background="@color/transparent_light"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
             android:layout_marginEnd="23dp"
             android:layout_width="24dp"
             android:layout_height="25.5dp"
-            android:background="@drawable/ic_bell"
+            android:background="@drawable/ic_noti"
             app:layout_constraintEnd_toStartOf="@+id/main_imageview_account"
             app:layout_constraintTop_toTopOf="@+id/main_imageview_account"/>
 
@@ -60,7 +60,7 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/main_navigation"
-        android:layout_width="200dp"
+        android:layout_width="220dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/navigation_drawer" />

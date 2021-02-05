@@ -7,18 +7,23 @@
         <item
             android:id="@+id/drawer_home"
             android:title="@string/home"
+            android:icon="@drawable/ic_home"
             android:checked="true" />
         <item
             android:id="@+id/drawer_news"
+            android:icon="@drawable/ic_news"
             android:title="@string/course" />
         <item
             android:id="@+id/drawer_course"
+            android:icon="@drawable/ic_course"
             android:title="@string/news" />
         <item
             android:id="@+id/drawer_languages"
+            android:icon="@drawable/ic_language"
             android:title="@string/languages" />
         <item
             android:id="@+id/drawer_setting"
+            android:icon="@drawable/ic_tool"
             android:title="@string/setting" />
     </group>
 

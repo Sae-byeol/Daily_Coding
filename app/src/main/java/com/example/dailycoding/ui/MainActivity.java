@@ -38,6 +38,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTheme(R.style.Theme_DailyCodingNight);
         setContentView(R.layout.activity_main);
 
         init();
@@ -119,6 +121,11 @@ public class MainActivity extends BaseActivity {
                     case R.id.drawer_languages:
                         navigationView.setCheckedItem(R.id.drawer_languages);
                         replaceFragment(LanguageIntroductionFragment.newInstance());
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.drawer_setting:
+                        navigationView.setCheckedItem(R.id.drawer_setting);
+                        replaceFragment(WelcomeFragment.newInstance());
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 

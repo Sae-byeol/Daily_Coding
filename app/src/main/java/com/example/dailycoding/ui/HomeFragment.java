@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -94,7 +95,7 @@ public class HomeFragment extends BaseFragment {
         initAdapter();
         
         // Retrofit2 Test
-        loadData("python");
+        //loadData("python");
     }
 
     private void init() {
@@ -110,6 +111,7 @@ public class HomeFragment extends BaseFragment {
                 ((MainActivity)getActivity()).replaceFragment(RankFragment.newInstance());
             }
         });
+
     }
 
     private void initAdapter() {
@@ -149,8 +151,7 @@ public class HomeFragment extends BaseFragment {
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), data.get(position), Toast.LENGTH_SHORT).show();
-
+                //Toast.makeText(getContext(), data.get(position), Toast.LENGTH_SHORT).show();
                 switch (position) {
                     case 0:
                         selected = 0;

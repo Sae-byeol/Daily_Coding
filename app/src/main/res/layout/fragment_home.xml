@@ -140,7 +140,7 @@
             android:layout_marginTop="34dp"
             android:textSize="18sp"
             android:fontFamily="@font/robotoregular"
-            android:textColor="@color/black"
+            android:textColor="?attr/textAppearanceBody1"
             android:textFontWeight="700"
             android:text="@string/hotNews"
             app:layout_constraintStart_toStartOf="parent"

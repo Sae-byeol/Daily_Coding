@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.dailycoding.ui.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_rankFragment"
+            app:destination="@id/rankFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_courseFragment"
+            app:destination="@id/courseFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_languageIntroductionFragment"
+            app:destination="@id/languageIntroductionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_self"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rankFragment"
+        android:name="com.example.dailycoding.ui.RankFragment"
+        android:label="RankFragment" />
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.example.dailycoding.ui.CourseFragment"
+        android:label="CourseFragment" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.dailycoding.ui.NewsFragment"
+        android:label="NewsFragment" />
+    <fragment
+        android:id="@+id/languageIntroductionFragment"
+        android:name="com.example.dailycoding.ui.LanguageIntroductionFragment"
+        android:label="LanguageIntroductionFragment" />
+</navigation>

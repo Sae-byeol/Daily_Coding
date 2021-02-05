@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +27,8 @@ public class AgreeCheckFragment extends BaseFragment {
     private Button btn;
     private TextView textView_expanded;
     private LinearLayoutManager linearLayoutManager;
+
+    private boolean checked_all = false;
 
 
     public static AgreeCheckFragment newInstance() {
@@ -48,6 +51,10 @@ public class AgreeCheckFragment extends BaseFragment {
 
     private void initControls(){
 
+        /**
+         * 기존 데이터 삭제
+         * */
+        item_list.clear();
 
         item_list.add(new CheckModel(R.string.agree1, false,R.string.agree_check_cont1));
         item_list.add(new CheckModel(R.string.agree2, false,R.string.agree_check_cont2));
@@ -86,6 +93,18 @@ public class AgreeCheckFragment extends BaseFragment {
                     }
                 }
                 mainAdapter.notifyDataSetChanged();
+            }
+        });
+
+        /**
+        * 임시 이동 버튼. 각 체크박스 동작 구현 후 다시 구현할것
+        * */
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(check_all.isChecked()) {
+                    Navigation.findNavController(v).navigate(R.id.action_agreeCheckFragment_to_welcomeFragment);
+                }
             }
         });
     }

@@ -8,7 +8,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -30,7 +33,10 @@ public class MainActivity extends BaseActivity {
     private ImageButton btnMenu;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private View mainView;
     private View header;
+
+    private Context context;
 
     //잠시 추가
     private ImageButton btn;
@@ -58,8 +64,10 @@ public class MainActivity extends BaseActivity {
 
     }
 
+
     private void init() {
         btnMenu = findViewById(R.id.main_imageview_menu);
+        context = this;
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -80,8 +88,8 @@ public class MainActivity extends BaseActivity {
 
     }
 
-
     public void replaceFragment(Fragment fragment) {
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.main_framelayout, fragment).commit();      // Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
@@ -94,12 +102,14 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.START);
+
             }
         });
 
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {

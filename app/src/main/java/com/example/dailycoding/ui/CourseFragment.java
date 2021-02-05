@@ -71,6 +71,7 @@ public class CourseFragment extends BaseFragment implements
         Log.d(TAG, "현재 아이템: "+scrollView.getCurrentItem());
     }
 
+
 //    private void scrollEvent(){
 //        scrollView.addScrollListener(listener);
 //        scrollView.removeScrollListener(listener);

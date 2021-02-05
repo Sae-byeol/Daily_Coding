@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/welcomeFragment">
+    app:startDestination="@id/agreeCheckFragment">
 
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.dailycoding.ui.WelcomeFragment"
         android:label="WelcomeFragment" />
+    <fragment
+        android:id="@+id/agreeCheckFragment"
+        android:name="com.example.dailycoding.ui.AgreeCheckFragment"
+        android:label="AgreeCheckFragment" >
+        <action
+            android:id="@+id/action_agreeCheckFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
 </navigation>

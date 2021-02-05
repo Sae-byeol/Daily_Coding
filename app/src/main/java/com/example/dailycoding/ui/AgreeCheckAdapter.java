@@ -2,9 +2,7 @@ package com.example.dailycoding.ui;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.ColorSpace;
 import android.os.Build;
-import android.text.method.ScrollingMovementMethod;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
-import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
@@ -134,7 +131,7 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
     @NonNull
     @Override
     public AgreeCheckAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =LayoutInflater.from(parent.getContext()).inflate(R.layout.agree_check_item,null);
+        View view =LayoutInflater.from(parent.getContext()).inflate(R.layout.item_agree_check,null);
         ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
 

@@ -62,7 +62,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/arrow_down"
-                    android:backgroundTint="@color/black"
                     app:layout_constraintBottom_toBottomOf="@id/wrong_answer_item_textView"
                     app:layout_constraintEnd_toEndOf="@id/wrong_answer_bar"
                     app:layout_constraintTop_toTopOf="@id/wrong_answer_item_textView">
@@ -141,12 +140,11 @@
                 android:id="@+id/wrong_answer_close"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:src="@drawable/arrow_up"
-                android:backgroundTint="@color/black"
+                android:src="@drawable/arrow_up_black"
                 android:background="@color/transparent"
-                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/wrong_answer_btn"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="gone"
                 >
 
             </ImageButton>

@@ -41,7 +41,7 @@
         </activity>
         <activity android:name=".ui.NewsNewActivity" />
         <activity android:name=".ui.WrongAnswerActivity" />
-        <activity android:name=".ui.AgreeCheckActivity" />
+        <activity android:name=".ui.AgreeCheckFragment" />
     </application>
 
 </manifest>

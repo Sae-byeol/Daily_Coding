@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, ProfileActivity.class);
+                Intent intent=new Intent(MainActivity.this, WrongAnswerActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,18 +1,30 @@
 package com.example.dailycoding.ui;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class WrongAnswerData {
     private String text;
     private boolean isCorrect;
     private String content;
     private boolean isExpanded;
+    private ArrayList<WrongAnswerCorrect> correctArrayList;
 
-    public WrongAnswerData(String text, boolean isCorrect,String content,boolean isExpanded) {
+    public WrongAnswerData(String text, boolean isCorrect,String content,boolean isExpanded,ArrayList<WrongAnswerCorrect> correctArrayList) {
         this.text = text;
         this.isCorrect = isCorrect;
         this.content=content;
         this.isExpanded=isExpanded;
+        this.correctArrayList=correctArrayList;
     }
 
+    public ArrayList<WrongAnswerCorrect> getCorrectArrayList() {
+        return correctArrayList;
+    }
+
+    public void setCorrectArrayList(ArrayList<WrongAnswerCorrect> correctArrayList) {
+        this.correctArrayList = correctArrayList;
+    }
 
     public String getContent() {
         return content;

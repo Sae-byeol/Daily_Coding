@@ -1,7 +1,6 @@
 package com.example.dailycoding.ui;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -15,9 +14,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.example.dailycoding.R;
 import com.example.dailycoding.util.BaseActivity;
@@ -44,12 +41,12 @@ public class MainActivity extends BaseActivity {
         initNavigation();
         setListener();
 
-        //잠시 추가 (ProfileActivity로 잠시 수정)
+        //잠시 추가
         btn=findViewById(R.id.main_imageview_account);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, WrongAnswerActivity.class);
+                Intent intent=new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

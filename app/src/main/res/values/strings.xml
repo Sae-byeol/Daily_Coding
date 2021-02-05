@@ -98,6 +98,7 @@
     <string name="news_activity_button">사이트 방문하기</string>
     <string name="news_text">개발자들의 <font color="#48FF51">Pick! </font></string>
     <string name="agree_check_content">이용약관 내용</string>
+    <string name="profile_input">회원님의  <font color="#48FF51"> <b>프로필</b></font>을 입력해주세요</string>
 
     <string name="agree_check_cont2">
         개인정보처리방침\n수집하는 개인정보의 항목\n\n

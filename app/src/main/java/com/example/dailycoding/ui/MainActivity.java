@@ -132,7 +132,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.drawer_setting:
                         navigationView.setCheckedItem(R.id.drawer_setting);
-                        replaceFragment(WelcomeFragment.newInstance());
+//                        replaceFragment(WelcomeFragment.newInstance());
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 

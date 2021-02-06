@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_frameout"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -19,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="141dp"
             android:text="공부 중인 프로그래머"
+            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="202dp"
+            android:textColor="@color/black"
             android:text="공부할 수 있는 코드"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -67,8 +65,15 @@ public class LoginActivity extends BaseActivity implements GoogleApiClient.OnCon
         view1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                startActivityForResult(intent, REQ_SIGN_GOOGLE);
+
+                /*
+                화면 전환을 위해 임시 주석처리. by.예섭
+                * */
+//                Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+//                startActivityForResult(intent, REQ_SIGN_GOOGLE);
+
+                Intent tempintent = new Intent(getApplicationContext(), InitActivity.class);
+                startActivity(tempintent);
             }
         });
 
@@ -146,7 +151,7 @@ public class LoginActivity extends BaseActivity implements GoogleApiClient.OnCon
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), InitActivity.class);
 
 
                             startActivity(intent);

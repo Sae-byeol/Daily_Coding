@@ -149,7 +149,7 @@ public class LanguageIntroductionFragment extends BaseFragment {
         list_course=new ArrayList<>();
 
         list_courseTitle.add("Python");
-        list_courseTitle.add("Java");
+        list_courseTitle.add("JAVA");
         list_courseTitle.add("C++");
 
         ArrayList tempList=new ArrayList();

@@ -72,7 +72,21 @@ public class CourseFragment extends BaseFragment
 //        Log.d(TAG, "현재 아이템: "+scrollView.getCurrentItem());
     }
 
-//    private void scrollEvent(){
+    @Override
+    public void onResume() {
+        super.onResume();
+        /**
+         * set init viewpager2 item
+         * */
+        viewPager2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                viewPager2.setCurrentItem(1,true);
+            }
+        },10);
+    }
+
+    //    private void scrollEvent(){
 //        scrollView.addScrollListener(listener);
 //        scrollView.removeScrollListener(listener);
 //
@@ -105,7 +119,6 @@ public class CourseFragment extends BaseFragment
 //        viewPager2.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         viewPager2.setAdapter(new CourseSelectAdapter(list_courseTitle, viewPager2));
 
-        viewPager2.setCurrentItem(1);
         viewPager2.setClipToPadding(false);
         viewPager2.setClipChildren(false);
         viewPager2.setOffscreenPageLimit(3);
@@ -156,7 +169,7 @@ public class CourseFragment extends BaseFragment
         list_course=new ArrayList<>();
 
         list_courseTitle.add("Python");
-        list_courseTitle.add("Java");
+        list_courseTitle.add("JAVA");
         list_courseTitle.add("C++");
 
         ArrayList tempList=new ArrayList();

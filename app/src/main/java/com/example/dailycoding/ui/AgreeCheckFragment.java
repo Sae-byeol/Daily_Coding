@@ -81,8 +81,6 @@ public class AgreeCheckFragment extends BaseFragment {
                 if (check_all.isChecked()){
                     for (CheckModel model:item_list){
                         model.setSelected(true);
-                        //'다음'버튼을 '시작하기'버튼으로 변경
-                        btn.setText("시작하기");
                         btn.setTextColor(getResources().getColor(R.color.black));
                         btn.setBackgroundColor(getResources().getColor(R.color.color_primary_light));
                     }

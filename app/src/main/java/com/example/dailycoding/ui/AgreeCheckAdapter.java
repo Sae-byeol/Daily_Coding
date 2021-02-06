@@ -73,7 +73,7 @@ public class  AgreeCheckAdapter extends RecyclerView.Adapter<AgreeCheckAdapter.V
 
             if (selectedItems.get(position)){
                 //펼쳐진 아이템인 경우
-                button.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_arrow_up_small));
+                button.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_arrow_up));
             }
             else{
                 button.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_arrow_down));

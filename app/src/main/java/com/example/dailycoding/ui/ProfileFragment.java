@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 
 import com.example.dailycoding.R;
 import com.example.dailycoding.util.BaseActivity;
@@ -49,7 +50,7 @@ public class ProfileFragment extends BaseFragment {
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_agreeCheckFragment);
             }
         });
 

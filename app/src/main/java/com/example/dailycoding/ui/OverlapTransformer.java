@@ -45,7 +45,8 @@ public class OverlapTransformer implements ViewPager2.PageTransformer {
         else if(position==-1f){
             constraintLayout.setBackgroundResource(R.drawable.round_border_light);
             textView.setTextColor(ContextCompat.getColor(context, R.color.black));
-            imageView.setImageResource(R.drawable.ic_black);
+            //imageView.setImageResource(R.drawable.ic_haru_black);
+            imageView.setBackgroundResource(R.drawable.ic_haru_black);
             page.setAlpha(MIN_FADE);
             float scaleFactor=(MIN_SCALE + (MAX_SCALE - MIN_SCALE) * (1 - Math.abs(position)));
             page.setScaleX(scaleFactor);
@@ -63,7 +64,9 @@ public class OverlapTransformer implements ViewPager2.PageTransformer {
         else if(position==0f){
             constraintLayout.setBackgroundResource(R.drawable.round_border_black);
             textView.setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
-            imageView.setImageResource(R.drawable.ic_light);
+//            imageView.setImageResource(R.drawable.ic_light);
+//            imageView.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_haru_light));
+            imageView.setBackgroundResource(R.drawable.ic_haru_light);
             page.setAlpha(1f);
             page.setTranslationX(0f);
             ViewCompat.setTranslationZ(page, 0f);
@@ -82,7 +85,8 @@ public class OverlapTransformer implements ViewPager2.PageTransformer {
         else if(position==1f){
             constraintLayout.setBackgroundResource(R.drawable.round_border_light);
             textView.setTextColor(ContextCompat.getColor(context, R.color.black));
-            imageView.setImageResource(R.drawable.ic_black);
+            //imageView.setImageResource(R.drawable.ic_haru_black);
+            imageView.setBackgroundResource(R.drawable.ic_haru_black);
             page.setAlpha(1 - position * (1 - MIN_FADE));
             page.setTranslationX(-pageWidth * MAX_SCALE * position * (1f));
             ViewCompat.setTranslationZ(page, -position);

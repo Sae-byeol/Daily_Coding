@@ -10,6 +10,8 @@
     <string name="welcome04"><b>다양한 프로그래밍 예제</b>들을 풀어보며\n코딩에 익숙해져 보세요.</string>
     <string name="welcome05">개발자들이 직접 경험해보고\n<b>검증한 강의</b>들을 추천 받을 수 있습니다.</string>
 
+    <string name="profile_agree">개인정보 수집에 동의합니다.</string>
+
     <!-- Home -->
     <string name="ready">자, 준비 되셨나요?</string>
     <string name="start">문제풀기</string>

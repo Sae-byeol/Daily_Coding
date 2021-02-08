@@ -12,14 +12,12 @@
         android:id="@+id/profileText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
-        android:layout_marginBottom="617dp"
+        android:layout_marginTop="70dp"
         android:text="@string/profile_input"
         android:textAlignment="center"
         android:textSize="15sp"
         android:textStyle="bold"
          android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,83 +27,82 @@
         android:id="@+id/profileText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="117dp"
+        android:layout_marginTop="10dp"
         android:text="입력된 프로필은 랭킹 서비스에 이용됩니다."
         android:textSize="10sp"
         android:textColor="#8C8C8C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/profileText1"/>
 
 
     <ImageView
         android:id="@+id/profileImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="175dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileText2"
+        android:elevation="@dimen/button_elevation"
+        android:background="@drawable/round_border_white"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <EditText
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/profileNameInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
-        android:background="@color/transparent"
+        android:layout_width="90dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="58dp"
+        android:background="@drawable/round_border_white"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="Name"
+        android:elevation="@dimen/button_elevation"
         android:textAlignment="center"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/profileNameCheckBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="360dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="313dp"
+        android:layout_width="50dp"
+        android:layout_height="26dp"
         android:background="@drawable/round_border_black"
         android:text="중복확인"
-        android:visibility="invisible"
+        android:layout_marginStart="7dp"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="8sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/profileNameInput"
+        app:layout_constraintStart_toEndOf="@+id/profileNameInput"
+        app:layout_constraintTop_toTopOf="@+id/profileNameInput" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@id/profile_agree_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNameCheckBtn">
+        app:layout_constraintStart_toStartOf="parent">
 
         <CheckBox
             android:id="@+id/profile_checkBox"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/check"
-            android:button="@color/transparent" />
+            android:button="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/profileText3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/total_agree"
             android:layout_marginStart="10dp"
+            android:text="@string/profile_agree"
             android:textColor="#8C8C8C"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"

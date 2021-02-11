@@ -2,30 +2,28 @@ package com.example.dailycoding.ui;
 
 
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
-import com.example.dailycoding.api.ServiceApi;
-import com.example.dailycoding.model.CategoryResponse;
+import com.example.dailycoding.api.ServiceUserApi;
+import com.example.dailycoding.model.UserRank;
+import com.example.dailycoding.model.UserRankResponse;
 import com.example.dailycoding.util.BaseFragment;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -63,8 +61,22 @@ public class RankFragment extends BaseFragment {
     private ImageButton btnC;
     private ImageButton btnPython;
 
+    //Rank 1~3
+    private ImageView ivRank1;
+    private TextView tvNameRank1;
+    private TextView tvStarRank1;
+
+    private ImageView ivRank2;
+    private TextView tvNameRank2;
+    private TextView tvStarRank2;
+
+    private ImageView ivRank3;
+    private TextView tvNameRank3;
+    private TextView tvStarRank3;
+
     // retrofit2
-    private ServiceApi service;
+    private ServiceUserApi userService;
+    private ArrayList<UserRank> rankData = new ArrayList<>();
 
     public static RankFragment newInstance() {
         return new RankFragment();
@@ -82,7 +94,7 @@ public class RankFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         //retrofit2 객체 할당
-        service = ApiUtils.getServiceApi();
+        userService = ApiUtils.getServiceUserApi();
 
 //        init();
         //initSpinner();
@@ -90,7 +102,8 @@ public class RankFragment extends BaseFragment {
         initListener();
         initChart();
         initMultiline();
-        initAdapter();
+
+        loadData();
 //
 //        // Retrofit2 Test
 //        loadData("python");
@@ -105,6 +118,17 @@ public class RankFragment extends BaseFragment {
 
         btnJava.setBackgroundResource(R.drawable.bg_black_java);
 
+        ivRank1 = getView().findViewById(R.id.rank_imageview_profile);
+        ivRank2 = getView().findViewById(R.id.rank_imageview_profile2);
+        ivRank3 = getView().findViewById(R.id.rank_imageview_profile3);
+
+        tvNameRank1 = getView().findViewById(R.id.rank_textview_name);
+        tvNameRank2 = getView().findViewById(R.id.rank_textview_name2);
+        tvNameRank3 = getView().findViewById(R.id.rank_textview_name3);
+
+        tvStarRank1 = getView().findViewById(R.id.rank_textview_star);
+        tvStarRank2 = getView().findViewById(R.id.rank_textview_star2);
+        tvStarRank3 = getView().findViewById(R.id.rank_textview_star3);
     }
 
     private void initListener() {
@@ -142,15 +166,6 @@ public class RankFragment extends BaseFragment {
 
     private void initAdapter() {
 
-        data = new ArrayList<>();
-
-        data.add("0");
-        data.add("0");
-        data.add("0");
-        data.add("0");
-        data.add("0");
-        data.add("0");
-
         recyclerView = (RecyclerView) getView().findViewById(R.id.rank_recyclerview);
         recyclerView.setHasFixedSize(true);
 
@@ -158,7 +173,7 @@ public class RankFragment extends BaseFragment {
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new RankAdapter(data);
+        mAdapter = new RankAdapter(rankData);
         recyclerView.setAdapter(mAdapter);
 
     }
@@ -315,34 +330,44 @@ public class RankFragment extends BaseFragment {
 
 
     // retrofit2 사용예시
-    private void loadData(String language) {
-        service.getData(language).enqueue(new Callback<ArrayList<CategoryResponse>>() {
+    private void loadData() {
+        progressOn();
+        userService.getRank().enqueue(new Callback<UserRankResponse>() {
             @Override
-            public void onResponse(Call<ArrayList<CategoryResponse>> call, Response<ArrayList<CategoryResponse>> response) {
+            public void onResponse(Call<UserRankResponse> call, Response<UserRankResponse> response) {
                 if(response.isSuccessful()) {
-                    ArrayList<CategoryResponse> result = response.body();
-                    /**
-                     * [
-                     *     {
-                     *         "category": "something python"     //result[0]
-                     *     },
-                     *     {
-                     *         "category": "category?"            //result[1]
-                     *     },
-                     *     {
-                     *         "category": "category01"
-                     *     }
-                     * ]
-                     */
-                    tv_temp.setText(result.get(0).getCategory()); // 임시로 텍스트 변경
+                    ArrayList<UserRank> result = response.body().getData();
+//                    tv_temp.setText(result.get(0).getCategory()); // 임시로 텍스트 변경
+//                    rankData.add(result);
+
+                    for(int i = 3; i<result.size(); i++) {
+                        rankData.add(result.get(i));
+                    }
+
+                    Glide.with(getActivity()).load(result.get(0).getProfileUrl()).into(ivRank1);
+                    Glide.with(getActivity()).load(result.get(1).getProfileUrl()).into(ivRank2);
+                    Glide.with(getActivity()).load(result.get(2).getProfileUrl()).into(ivRank3);
+
+                    tvNameRank1.setText(result.get(0).getName());
+                    tvNameRank2.setText(result.get(1).getName());
+                    tvNameRank3.setText(result.get(2).getName());
+
+                    tvStarRank1.setText(result.get(0).getStar());
+                    tvStarRank2.setText(result.get(1).getStar());
+                    tvStarRank3.setText(result.get(2).getStar());
+
+                    initAdapter();
+
+                    Log.e("RankDataCheck", result.toString());
                 }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<CategoryResponse>> call, Throwable t) {
+            public void onFailure(Call<UserRankResponse> call, Throwable t) {
                 Log.e("onFailure", t.getMessage());
             }
         });
+        progressOff();
     }
 
 }

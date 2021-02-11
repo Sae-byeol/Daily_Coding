@@ -1,7 +1,6 @@
 package com.example.dailycoding.ui;
 
 import android.annotation.SuppressLint;
-import android.app.Service;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,27 +9,22 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
-import com.example.dailycoding.api.RetrofitClient;
-import com.example.dailycoding.api.ServiceApi;
+import com.example.dailycoding.api.ServiceProblemApi;
 import com.example.dailycoding.model.CategoryResponse;
 import com.example.dailycoding.util.BaseFragment;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
-import com.yarolegovich.discretescrollview.transform.Pivot;
-import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class LanguageIntroductionFragment extends BaseFragment {
 
@@ -55,7 +49,7 @@ public class LanguageIntroductionFragment extends BaseFragment {
 //    private RetrofitClient retrofitClient;
 //    private Retrofit retrofit;
 //    private ApiUtils apiUtils;
-    private ServiceApi serviceApi;
+    private ServiceProblemApi serviceProblemApi;
 
     public static LanguageIntroductionFragment newInstance() {
         return new LanguageIntroductionFragment();
@@ -167,10 +161,10 @@ public class LanguageIntroductionFragment extends BaseFragment {
 
     private void loadData(String language){
 
-        serviceApi=ApiUtils.getServiceApi();
+        serviceProblemApi =ApiUtils.getServiceProblemApi();
         //        로딩
         //progressOn();
-        serviceApi.getData("python").enqueue(new Callback<ArrayList<CategoryResponse>>() {
+        serviceProblemApi.getData("python").enqueue(new Callback<ArrayList<CategoryResponse>>() {
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(Call<ArrayList<CategoryResponse>> call, Response<ArrayList<CategoryResponse>> response) {

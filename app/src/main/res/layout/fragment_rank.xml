@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/rank"
+                android:text="@string/rank1"
                 android:textFontWeight="700"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -156,6 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/rank_tempName"
+                android:gravity="center"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -163,23 +164,28 @@
 
             <ImageView
                 android:id="@+id/rank_imageview_star"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
                 android:layout_marginTop="6dp"
-                app:layout_constraintStart_toStartOf="@+id/rank_textview_name"
+                android:layout_marginEnd="54dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rank_textview_name"
                 app:srcCompat="@drawable/ic_star_black" />
 
             <TextView
                 android:id="@+id/rank_textview_star"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="3dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginEnd="30dp"
                 android:gravity="center"
                 android:text="230"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_star"
-                app:layout_constraintStart_toEndOf="@+id/rank_imageview_star"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/rank_imageview_star" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -199,7 +205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/rank"
+                android:text="@string/rank2"
                 android:textFontWeight="700"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -224,6 +230,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/rank_tempName"
+                android:gravity="center"
                 android:textSize="12sp"
                 android:textColor="@color/color_primary_gray"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -232,24 +239,29 @@
 
             <ImageView
                 android:id="@+id/rank_imageview_star2"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
                 android:layout_marginTop="6dp"
-                app:layout_constraintStart_toStartOf="@+id/rank_textview_name2"
+                android:layout_marginEnd="42dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rank_textview_name2"
                 app:srcCompat="@drawable/ic_star_light" />
 
             <TextView
                 android:id="@+id/rank_textview_star2"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="3dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="19dp"
                 android:gravity="center"
                 android:text="230"
-                android:textSize="12sp"
                 android:textColor="@color/color_primary_gray"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_star2"
-                app:layout_constraintStart_toEndOf="@+id/rank_imageview_star2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/rank_imageview_star2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -269,7 +281,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/rank"
+                android:text="@string/rank3"
                 android:textFontWeight="700"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -293,33 +305,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:gravity="center"
                 android:text="@string/rank_tempName"
-                android:textSize="12sp"
                 android:textColor="@color/color_primary_gray"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rank_imageview_profile3" />
 
             <ImageView
                 android:id="@+id/rank_imageview_star3"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
                 android:layout_marginTop="6dp"
-                app:layout_constraintStart_toStartOf="@+id/rank_textview_name3"
+                android:layout_marginEnd="42dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rank_textview_name3"
                 app:srcCompat="@drawable/ic_star_light" />
 
             <TextView
                 android:id="@+id/rank_textview_star3"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="3dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="19dp"
                 android:gravity="center"
                 android:text="230"
                 android:textColor="@color/color_primary_gray"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_star3"
-                app:layout_constraintStart_toEndOf="@+id/rank_imageview_star3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/rank_imageview_star3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceUserApi;
@@ -350,9 +351,9 @@ public class RankFragment extends BaseFragment {
 //                    tv_temp.setText(result.get(0).getCategory()); // 임시로 텍스트 변경
 //                    rankData.add(result);
 
-                    Glide.with(getActivity()).load(result.get(0).getProfileUrl()).into(ivRank1);
-                    Glide.with(getActivity()).load(result.get(1).getProfileUrl()).into(ivRank2);
-                    Glide.with(getActivity()).load(result.get(2).getProfileUrl()).into(ivRank3);
+                    Glide.with(getActivity()).load(result.get(0).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank1);
+                    Glide.with(getActivity()).load(result.get(1).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank2);
+                    Glide.with(getActivity()).load(result.get(2).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank3);
 
                     tvNameRank1.setText(result.get(0).getName());
                     tvNameRank2.setText(result.get(1).getName());

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.dailycoding.R;
 import com.example.dailycoding.model.UserRank;
 import com.example.dailycoding.util.App;
@@ -49,7 +50,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankViewHolder> {
             holder.tv_star.setText(0+"");
         }
         if(data.get(position).getProfileUrl() != null) {
-            Glide.with(context).load(data.get(position).getProfileUrl()).into(holder.iv);
+            Glide.with(context).load(data.get(position).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(holder.iv);
         } else {
             // 기본 이미지 설정?
         }

@@ -3,7 +3,7 @@
     android:id="@+id/ConstraintLayout_item_select"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/round_border_light"
+    android:background="@drawable/round_border_primary"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
         android:id="@+id/TextView_course_title"

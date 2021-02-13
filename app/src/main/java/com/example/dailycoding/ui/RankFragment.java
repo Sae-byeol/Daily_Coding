@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -104,6 +105,8 @@ public class RankFragment extends BaseFragment {
         initMultiline();
 
         loadData();
+
+//        progressOff();
 //
 //        // Retrofit2 Test
 //        loadData("python");
@@ -226,8 +229,13 @@ public class RankFragment extends BaseFragment {
         LineDataSet lineDataSet = new LineDataSet(entries, null);
         lineDataSet.setLineWidth(2);
         lineDataSet.setCircleRadius(6);
-        lineDataSet.setColor(Color.BLACK);
-        int[] colors = {Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK, ContextCompat.getColor(getContext(),R.color.color_primary_light)};
+
+        int circleColor = ContextCompat.getColor(getContext(),R.color.primary_chart);
+        int firstLineColor = ContextCompat.getColor(getContext(),R.color.secondary_font);
+
+        lineDataSet.setColor(firstLineColor);
+
+        int[] colors = {circleColor,circleColor,circleColor,circleColor,circleColor,circleColor,ContextCompat.getColor(getContext(),R.color.color_primary_light)};
         lineDataSet.setCircleColors(colors);
         lineDataSet.setCircleHoleRadius(100);
 
@@ -302,9 +310,11 @@ public class RankFragment extends BaseFragment {
         lineChart.setScaleEnabled(false); // zoom disable
         //lineChart.setXAxisRenderer(new CustomXAxisRenderer(lineChart.getViewPortHandler(), lineChart.getXAxis(), lineChart.getTransformer(YAxis.AxisDependency.LEFT) ));
 
+        int firstLineColor = ContextCompat.getColor(getContext(),R.color.secondary_chart);
+
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.TOP);
-        xAxis.setTextColor(Color.BLACK);
+        xAxis.setTextColor(firstLineColor);
         xAxis.setDrawAxisLine(false);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);
@@ -340,10 +350,6 @@ public class RankFragment extends BaseFragment {
 //                    tv_temp.setText(result.get(0).getCategory()); // 임시로 텍스트 변경
 //                    rankData.add(result);
 
-                    for(int i = 3; i<result.size(); i++) {
-                        rankData.add(result.get(i));
-                    }
-
                     Glide.with(getActivity()).load(result.get(0).getProfileUrl()).into(ivRank1);
                     Glide.with(getActivity()).load(result.get(1).getProfileUrl()).into(ivRank2);
                     Glide.with(getActivity()).load(result.get(2).getProfileUrl()).into(ivRank3);
@@ -356,18 +362,20 @@ public class RankFragment extends BaseFragment {
                     tvStarRank2.setText(result.get(1).getStar());
                     tvStarRank3.setText(result.get(2).getStar());
 
+                    for(int i = 3; i<result.size(); i++) {
+                        rankData.add(result.get(i));
+                    }
                     initAdapter();
-
-                    Log.e("RankDataCheck", result.toString());
+                    progressOff();
                 }
             }
 
             @Override
             public void onFailure(Call<UserRankResponse> call, Throwable t) {
                 Log.e("onFailure", t.getMessage());
+                progressOff();
             }
         });
-        progressOff();
     }
 
 }

@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.dailycoding.R;
 import com.example.dailycoding.model.UserRank;
+import com.example.dailycoding.util.App;
+import com.example.dailycoding.util.BaseFragment;
 
 import java.util.ArrayList;
 
@@ -46,7 +48,13 @@ public class RankAdapter extends RecyclerView.Adapter<RankViewHolder> {
         } else {
             holder.tv_star.setText(0+"");
         }
-        if(data.get(position).getProfileUrl() != null) Glide.with(context).load(data.get(position).getProfileUrl()).into(holder.iv);
+        if(data.get(position).getProfileUrl() != null) {
+            Glide.with(context).load(data.get(position).getProfileUrl()).into(holder.iv);
+        } else {
+            // 기본 이미지 설정?
+        }
+
+//        App.getInstance().progressOFF();
 
 
     }

@@ -43,7 +43,7 @@ public class OverlapTransformer implements ViewPager2.PageTransformer {
             page.setScaleY(scaleFactor);
         }
         else if(position==-1f){
-            constraintLayout.setBackgroundResource(R.drawable.round_border_light);
+            constraintLayout.setBackgroundResource(R.drawable.round_border_primary);
             textView.setTextColor(ContextCompat.getColor(context, R.color.black));
             //imageView.setImageResource(R.drawable.ic_haru_black);
             imageView.setBackgroundResource(R.drawable.ic_haru_black);
@@ -83,7 +83,7 @@ public class OverlapTransformer implements ViewPager2.PageTransformer {
             page.setScaleY(scaleFactorY);
         }
         else if(position==1f){
-            constraintLayout.setBackgroundResource(R.drawable.round_border_light);
+            constraintLayout.setBackgroundResource(R.drawable.round_border_primary);
             textView.setTextColor(ContextCompat.getColor(context, R.color.black));
             //imageView.setImageResource(R.drawable.ic_haru_black);
             imageView.setBackgroundResource(R.drawable.ic_haru_black);

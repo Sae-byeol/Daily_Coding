@@ -1,13 +1,11 @@
 package com.example.dailycoding.ui;
 
 import android.content.Context;
-import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -16,11 +14,14 @@ import com.example.dailycoding.R;
 
 import java.util.List;
 
+import retrofit2.http.PATCH;
+
 public class SpinnerAdapter extends BaseAdapter {
 
     Context context;
     List<String> data;
     LayoutInflater inflater;
+    public View itemView;
     int currentPos;
 
 
@@ -51,13 +52,17 @@ public class SpinnerAdapter extends BaseAdapter {
 
         }
 
-        return convertView;
+        itemView = convertView;
+        return itemView;
     }
+
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
+
             convertView = inflater.inflate(R.layout.spinner_dropdown, parent, false);
+
         }
 
         //데이터세팅
@@ -66,38 +71,39 @@ public class SpinnerAdapter extends BaseAdapter {
 
         if (((TextView) convertView.findViewById(R.id.spinnerText)).getText() == "JAVA") {
             if(currentPos == 0) {
-                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_black);
-                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_clicked);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.click_font));
             }
             else {
-                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_light);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_unclicked);
                 ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.black));
             }
         }
 
         if (((TextView) convertView.findViewById(R.id.spinnerText)).getText() == "C++") {
             if(currentPos == 1) {
-                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_black);
-                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_clicked);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.click_font));
             }
             else {
-                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_light);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_unclicked);
                 ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.black));
             }
         }
 
         if (((TextView) convertView.findViewById(R.id.spinnerText)).getText() == "Python") {
             if(currentPos == 2) {
-                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_black);
-                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_clicked);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.click_font));
             }
             else {
-                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_light);
+                ((TextView) convertView.findViewById(R.id.spinnerText)).setBackgroundResource(R.drawable.round_border_unclicked);
                 ((TextView) convertView.findViewById(R.id.spinnerText)).setTextColor(ContextCompat.getColor(context, R.color.black));
             }
         }
 
         return convertView;
+
     }
 
     @Override

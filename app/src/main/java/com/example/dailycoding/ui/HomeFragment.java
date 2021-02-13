@@ -61,7 +61,6 @@ public class HomeFragment extends BaseFragment {
     private Button btnC;
     private Button btnPython;
 
-
     // retrofit2
     private ServiceProblemApi service;
 
@@ -144,6 +143,7 @@ public class HomeFragment extends BaseFragment {
 
         spinnerAdapter = new SpinnerAdapter(requireContext(), data);
         mSpinner.setAdapter(spinnerAdapter);
+
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -166,7 +166,6 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -186,8 +185,13 @@ public class HomeFragment extends BaseFragment {
         LineDataSet lineDataSet = new LineDataSet(entries, null);
         lineDataSet.setLineWidth(2);
         lineDataSet.setCircleRadius(6);
-        lineDataSet.setColor(Color.BLACK);
-        int[] colors = {Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,ContextCompat.getColor(getContext(),R.color.color_primary_light)};
+
+        int circleColor = ContextCompat.getColor(getContext(),R.color.primary_chart);
+        int firstLineColor = ContextCompat.getColor(getContext(),R.color.secondary_font);
+
+        lineDataSet.setColor(firstLineColor);
+
+        int[] colors = {circleColor,circleColor,circleColor,circleColor,circleColor,circleColor,ContextCompat.getColor(getContext(),R.color.color_primary_light)};
         lineDataSet.setCircleColors(colors);
         lineDataSet.setCircleHoleRadius(100);
 
@@ -262,9 +266,11 @@ public class HomeFragment extends BaseFragment {
         lineChart.setScaleEnabled(false); // zoom disable
         //lineChart.setXAxisRenderer(new CustomXAxisRenderer(lineChart.getViewPortHandler(), lineChart.getXAxis(), lineChart.getTransformer(YAxis.AxisDependency.LEFT) ));
 
+        int firstLineColor = ContextCompat.getColor(getContext(),R.color.secondary_chart);
+
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.TOP);
-        xAxis.setTextColor(Color.BLACK);
+        xAxis.setTextColor(firstLineColor);
         xAxis.setDrawAxisLine(false);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);

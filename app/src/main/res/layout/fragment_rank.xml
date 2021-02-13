@@ -17,11 +17,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/rank_check"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_font"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/rank_textview_info"
@@ -30,6 +31,7 @@
             android:layout_marginStart="3dp"
             android:text="@string/rank_info"
             android:textSize="10sp"
+            android:textColor="@color/secondary_font"
             app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_exclamation"
             app:layout_constraintStart_toEndOf="@+id/rank_imageview_exclamation"
             app:layout_constraintTop_toTopOf="@id/rank_imageview_exclamation" />
@@ -49,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="@string/ranking"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_font"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/rank_imageview_exclamation"
             app:layout_constraintTop_toBottomOf="@+id/rank_imageview_exclamation" />
@@ -79,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/rankDate"
+            android:textColor="@color/secondary_font"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/rank_textview_rank"
             app:layout_constraintTop_toBottomOf="@+id/rank_textview_rank" />
@@ -101,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="39dp"
             android:text="@string/rank_other"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_font"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/rank_textview_time"
             app:layout_constraintTop_toBottomOf="@+id/rank_chart_multiline" />
@@ -113,6 +116,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/rankDate"
             android:textSize="12sp"
+            android:textColor="@color/secondary_font"
             app:layout_constraintStart_toStartOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -121,7 +125,7 @@
             android:layout_width="95dp"
             android:layout_height="149dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/round_border_light"
+            android:background="@drawable/round_border_primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8">
@@ -140,27 +144,36 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/rank_imageview_profile"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/rank_cardview"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="6dp"
+                app:cardCornerRadius="75dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rank_textview_toprank"
-                app:srcCompat="@drawable/account" />
+                app:layout_constraintTop_toBottomOf="@+id/rank_textview_toprank" >
+
+                <ImageView
+                    android:id="@+id/rank_imageview_profile"
+                    android:src="@color/color_primary_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/rank_textview_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="@string/rank_tempName"
                 android:gravity="center"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rank_imageview_profile" />
+                app:layout_constraintTop_toBottomOf="@+id/rank_cardview" />
 
             <ImageView
                 android:id="@+id/rank_imageview_star"
@@ -181,8 +194,8 @@
                 android:layout_marginStart="44dp"
                 android:layout_marginEnd="30dp"
                 android:gravity="center"
-                android:text="230"
                 android:textSize="12sp"
+                android:textColor="@color/tertiary_font"
                 app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_star"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -196,7 +209,7 @@
             android:layout_height="119dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="18dp"
-            android:background="@drawable/round_border_black"
+            android:background="@drawable/round_border_second"
             app:layout_constraintBottom_toBottomOf="@+id/rank_layout_info1"
             app:layout_constraintEnd_toStartOf="@+id/rank_layout_info1">
 
@@ -214,28 +227,37 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/rank_imageview_profile2"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/rank_cardview2"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="4dp"
+                app:cardCornerRadius="75dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rank_textview_toprank2"
-                app:srcCompat="@drawable/account" />
+                app:layout_constraintTop_toBottomOf="@+id/rank_textview_toprank2" >
+
+                <ImageView
+                    android:id="@+id/rank_imageview_profile2"
+                    android:src="@drawable/round_border_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/rank_textview_name2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="@string/rank_tempName"
                 android:gravity="center"
                 android:textSize="12sp"
                 android:textColor="@color/color_primary_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rank_imageview_profile2" />
+                app:layout_constraintTop_toBottomOf="@+id/rank_cardview2" />
 
             <ImageView
                 android:id="@+id/rank_imageview_star2"
@@ -256,7 +278,6 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="19dp"
                 android:gravity="center"
-                android:text="230"
                 android:textColor="@color/color_primary_gray"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_star2"
@@ -272,7 +293,7 @@
             android:layout_height="119dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/round_border_black"
+            android:background="@drawable/round_border_second"
             app:layout_constraintBottom_toBottomOf="@+id/rank_layout_info1"
             app:layout_constraintStart_toEndOf="@id/rank_layout_info1">
 
@@ -290,15 +311,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/rank_imageview_profile3"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/rank_cardview3"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="4dp"
+                app:cardCornerRadius="75dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rank_textview_toprank3"
-                app:srcCompat="@drawable/account" />
+                app:layout_constraintTop_toBottomOf="@+id/rank_textview_toprank3"  >
+
+                <ImageView
+                    android:id="@+id/rank_imageview_profile3"
+                    android:src="@drawable/round_border_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/rank_textview_name3"
@@ -306,12 +337,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:gravity="center"
-                android:text="@string/rank_tempName"
                 android:textColor="@color/color_primary_gray"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rank_imageview_profile3" />
+                app:layout_constraintTop_toBottomOf="@+id/rank_cardview3" />
 
             <ImageView
                 android:id="@+id/rank_imageview_star3"
@@ -332,7 +362,6 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="19dp"
                 android:gravity="center"
-                android:text="230"
                 android:textColor="@color/color_primary_gray"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/rank_imageview_star3"

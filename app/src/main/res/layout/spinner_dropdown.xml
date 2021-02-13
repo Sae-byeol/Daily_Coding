@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,7 +9,7 @@
         android:gravity="center_vertical"
         android:paddingBottom="10dp"
         android:orientation="horizontal"
-        android:background="@color/transparent_light"
+        android:background="@color/primary_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,15 +18,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/round_border_black"
+            android:background="@drawable/round_border_clicked"
             android:fontFamily="@font/robotoregular"
             android:gravity="center"
             android:textStyle="bold"
+            android:textFontWeight="500"
             android:textColor="@color/color_primary_light"
             android:textSize="10sp" />
 
         <ImageView
-            android:src="@color/transparent_light"
+            android:src="@color/transparent"
             android:visibility="invisible"
             android:layout_marginStart="5dp"
             android:scaleType="centerInside"

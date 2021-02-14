@@ -4,11 +4,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/primary_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.dailycoding.ui.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/primary_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,7 +22,7 @@
             android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_hamburger"
-            android:background="@color/transparent_light"
+            android:background="@color/transparent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

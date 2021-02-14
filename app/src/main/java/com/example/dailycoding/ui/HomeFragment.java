@@ -1,14 +1,11 @@
 package com.example.dailycoding.ui;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,11 +18,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
-import com.example.dailycoding.api.ServiceApi;
+import com.example.dailycoding.api.ServiceProblemApi;
 import com.example.dailycoding.model.CategoryResponse;
 import com.example.dailycoding.util.BaseFragment;
 import com.github.mikephil.charting.charts.LineChart;
@@ -65,9 +61,8 @@ public class HomeFragment extends BaseFragment {
     private Button btnC;
     private Button btnPython;
 
-
     // retrofit2
-    private ServiceApi service;
+    private ServiceProblemApi service;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -85,7 +80,7 @@ public class HomeFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         //retrofit2 객체 할당
-        service = ApiUtils.getServiceApi();
+//        service = ApiUtils.getServiceApi();
 
         init();
         initListener();
@@ -148,6 +143,7 @@ public class HomeFragment extends BaseFragment {
 
         spinnerAdapter = new SpinnerAdapter(requireContext(), data);
         mSpinner.setAdapter(spinnerAdapter);
+
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -170,7 +166,6 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -190,8 +185,13 @@ public class HomeFragment extends BaseFragment {
         LineDataSet lineDataSet = new LineDataSet(entries, null);
         lineDataSet.setLineWidth(2);
         lineDataSet.setCircleRadius(6);
-        lineDataSet.setColor(Color.BLACK);
-        int[] colors = {Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,Color.BLACK,ContextCompat.getColor(getContext(),R.color.color_primary_light)};
+
+        int circleColor = ContextCompat.getColor(getContext(),R.color.primary_chart);
+        int firstLineColor = ContextCompat.getColor(getContext(),R.color.secondary_font);
+
+        lineDataSet.setColor(firstLineColor);
+
+        int[] colors = {circleColor,circleColor,circleColor,circleColor,circleColor,circleColor,ContextCompat.getColor(getContext(),R.color.color_primary_light)};
         lineDataSet.setCircleColors(colors);
         lineDataSet.setCircleHoleRadius(100);
 
@@ -266,9 +266,11 @@ public class HomeFragment extends BaseFragment {
         lineChart.setScaleEnabled(false); // zoom disable
         //lineChart.setXAxisRenderer(new CustomXAxisRenderer(lineChart.getViewPortHandler(), lineChart.getXAxis(), lineChart.getTransformer(YAxis.AxisDependency.LEFT) ));
 
+        int firstLineColor = ContextCompat.getColor(getContext(),R.color.secondary_chart);
+
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.TOP);
-        xAxis.setTextColor(Color.BLACK);
+        xAxis.setTextColor(firstLineColor);
         xAxis.setDrawAxisLine(false);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);

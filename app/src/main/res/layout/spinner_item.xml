@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:background="@drawable/round_border_black"
+        android:background="@drawable/round_border_clicked"
         android:orientation="vertical"
         android:layout_weight="1"
         android:layout_width="0dp"
@@ -14,7 +14,7 @@
         <TextView
             android:id="@+id/spinnerText"
             android:textSize="10sp"
-            android:textColor="@color/color_primary_light"
+            android:textColor="@color/click_font"
             android:gravity="center"
             android:layout_gravity="center"
             android:fontFamily="@font/robotoregular"

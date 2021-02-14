@@ -14,7 +14,7 @@ import retrofit2.http.Path;
  * api를 입력하고 해당 api를 호출할 함수, 응답받을 데이터 형태 작성
  */
 
-public interface ServiceApi{
+public interface ServiceProblemApi {
 
     @GET("/problem/theory/{lang}")
     Call<ArrayList<CategoryResponse>> getData(@Path("lang") String language);

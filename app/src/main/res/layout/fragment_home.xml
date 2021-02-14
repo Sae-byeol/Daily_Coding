@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/primary_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,7 +20,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
-            android:background="@drawable/round_border_light"
+            android:background="@drawable/round_border_primary"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +33,7 @@
                 android:layout_marginTop="47dp"
                 android:fontFamily="@font/robotoregular"
                 android:text="@string/ready"
-                android:textColor="@color/black"
+                android:textColor="@color/fixed_black"
                 android:textFontWeight="400"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +47,7 @@
                 android:layout_marginBottom="46dp"
                 android:fontFamily="@font/robotoregular"
                 android:text="@string/start"
-                android:textColor="@color/black"
+                android:textColor="@color/fixed_black"
                 android:textFontWeight="700"
                 android:textSize="22sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -72,7 +73,7 @@
             android:layout_marginEnd="185dp"
             android:fontFamily="@font/robotoregular"
             android:text="@string/ranking"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_font"
             android:textFontWeight="700"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +85,7 @@
             android:layout_width="52dp"
             android:layout_height="16dp"
             android:layout_marginStart="10dp"
-            android:background="@color/transparent_light"
+            android:background="@color/transparent"
             android:popupBackground="@null"
             app:layout_constraintBottom_toBottomOf="@+id/home_textview_ranking"
             app:layout_constraintStart_toEndOf="@+id/home_textview_ranking"
@@ -115,11 +116,14 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="15dp"
-            android:background="@color/gray"
+            android:background="@color/temp_ad"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home_chart_multiline" />
+            app:layout_constraintTop_toBottomOf="@id/home_chart_multiline" >
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/home_textview_toplate"
@@ -140,7 +144,7 @@
             android:layout_marginTop="34dp"
             android:textSize="18sp"
             android:fontFamily="@font/robotoregular"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_font"
             android:textFontWeight="700"
             android:text="@string/hotNews"
             app:layout_constraintStart_toStartOf="parent"

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginHorizontal="15dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageButton
         android:id="@+id/wrong_answer_left"
@@ -10,7 +11,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
         android:background="@drawable/ic_arrow_left">
 
     </ImageButton>
@@ -34,9 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/wrong_answer_left"
+        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="6dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         >
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -24,6 +24,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         myApp = this;
+//
+//        ThemeUtil.applyTheme(ThemeUtil.DARK_MODE);
 
         KakaoSdk.init(this, "b8635a4704737dec5e7018a56f0fa289");
     }

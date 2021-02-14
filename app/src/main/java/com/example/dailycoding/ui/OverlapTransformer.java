@@ -46,7 +46,8 @@ public class OverlapTransformer implements ViewPager2.PageTransformer {
             constraintLayout.setBackgroundResource(R.drawable.round_border_light);
             textView.setTextColor(ContextCompat.getColor(context, R.color.black));
             //imageView.setImageResource(R.drawable.ic_haru_black);
-            imageView.setBackgroundResource(R.drawable.ic_haru_black);
+//            imageView.setBackgroundResource(R.drawable.ic_haru_black);
+            imageView.setVisibility(View.INVISIBLE);
             page.setAlpha(MIN_FADE);
             float scaleFactor=(MIN_SCALE + (MAX_SCALE - MIN_SCALE) * (1 - Math.abs(position)));
             page.setScaleX(scaleFactor);
@@ -67,6 +68,7 @@ public class OverlapTransformer implements ViewPager2.PageTransformer {
 //            imageView.setImageResource(R.drawable.ic_light);
 //            imageView.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_haru_light));
             imageView.setBackgroundResource(R.drawable.ic_haru_light);
+            imageView.setVisibility(View.VISIBLE);
             page.setAlpha(1f);
             page.setTranslationX(0f);
             ViewCompat.setTranslationZ(page, 0f);
@@ -86,7 +88,8 @@ public class OverlapTransformer implements ViewPager2.PageTransformer {
             constraintLayout.setBackgroundResource(R.drawable.round_border_light);
             textView.setTextColor(ContextCompat.getColor(context, R.color.black));
             //imageView.setImageResource(R.drawable.ic_haru_black);
-            imageView.setBackgroundResource(R.drawable.ic_haru_black);
+//            imageView.setBackgroundResource(R.drawable.ic_haru_black);
+            imageView.setVisibility(View.INVISIBLE);
             page.setAlpha(1 - position * (1 - MIN_FADE));
             page.setTranslationX(-pageWidth * MAX_SCALE * position * (1f));
             ViewCompat.setTranslationZ(page, -position);

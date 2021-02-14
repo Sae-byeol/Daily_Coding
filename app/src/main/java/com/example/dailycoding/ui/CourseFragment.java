@@ -75,13 +75,14 @@ public class CourseFragment extends BaseFragment
     @Override
     public void onResume() {
         super.onResume();
+//        viewPager2.setCurrentItem(1);
         /**
          * set init viewpager2 item
          * */
         viewPager2.postDelayed(new Runnable() {
             @Override
             public void run() {
-                viewPager2.setCurrentItem(1,true);
+                viewPager2.setCurrentItem(1);
             }
         },10);
     }
@@ -122,6 +123,7 @@ public class CourseFragment extends BaseFragment
         viewPager2.setClipToPadding(false);
         viewPager2.setClipChildren(false);
         viewPager2.setOffscreenPageLimit(3);
+
 //        viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
 //        CompositePageTransformer compositePageTransformer=new CompositePageTransformer();
@@ -142,9 +144,13 @@ public class CourseFragment extends BaseFragment
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 Log.d(TAG, "현재 선택된 포지션:"+position);
+//                viewPager2.setCurrentItem(1, false);
             }
 
         });
+
+
+
     }
 
     private void showCourseList(){

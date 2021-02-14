@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -87,20 +88,15 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                         notifyItemChanged(getAdapterPosition());
                         if(course.isExpanded()) {
                             imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_down_small));
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                TextView_title.setTextColor(context.getColor(R.color.black));
-//                                TextView_content.setTextColor(context.getColor(R.color.white));
-                                constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_white));
-                            }
+                            constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_white));
+                            TextView_title.setTextColor(ContextCompat.getColor(context, R.color.black));
                         }
                         else    {
                             imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_up_small));
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                TextView_title.setTextColor(context.getColor(R.color.color_primary_light));
-                                TextView_content.setTextColor(context.getColor(R.color.white));
-                                constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_black));
+                            constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_black));
 
-                            }
+                            TextView_title.setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
+                            TextView_content.setTextColor(ContextCompat.getColor(context, R.color.white));
                         }
                     }
                 }
@@ -169,18 +165,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
 //            layoutParams.bottomMargin=20;
             holder.TextView_content.setVisibility(isExpanded?View.VISIBLE: View.GONE);
             if(isExpanded){
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    holder.TextView_title.setTextColor(context.getColor(R.color.color_primary_light));
-                    holder.TextView_content.setTextColor(context.getColor(R.color.white));
-                    holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_black));
-                }
+                holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_black));
+                holder.TextView_title.setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
+                holder.TextView_content.setTextColor(ContextCompat.getColor(context, R.color.white));
             }
             else{
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    holder.TextView_title.setTextColor(context.getColor(R.color.black));
+                holder.TextView_title.setTextColor(ContextCompat.getColor(context, R.color.black));
 //                    holder.TextView_content.setTextColor(context.getColor(R.color.white));
-                    holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_white));
-                }
+                holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_white));
             }
 //            holder.TextView_title.setLayoutParams(layoutParams);
         }

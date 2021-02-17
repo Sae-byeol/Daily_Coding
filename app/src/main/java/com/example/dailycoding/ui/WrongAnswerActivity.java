@@ -8,7 +8,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.dailycoding.R;
+import com.example.dailycoding.api.ApiUtils;
+import com.example.dailycoding.api.ServiceProblemApi;
+import com.example.dailycoding.api.ServiceUserApi;
+import com.example.dailycoding.model.TheoryProblem;
+import com.example.dailycoding.model.UserRank;
+
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class WrongAnswerActivity extends AppCompatActivity {
     private ArrayList<WrongAnswerData> arrayList;
@@ -17,13 +27,22 @@ public class WrongAnswerActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<WrongAnswerCorrect> correctArrayList;
 
+    // retrofit2
+    private ServiceProblemApi problemService;
+    private ArrayList<TheoryProblem> problemData = new ArrayList<>();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wrong_answer);
 
+        //retrofit2 객체 할당
+        problemService = ApiUtils.getServiceProblemApi();
+
 
         initData();
+
+        loadData();
 
         recyclerView=(RecyclerView)findViewById(R.id.wrong_answer_recyclerView);
         linearLayoutManager=new LinearLayoutManager(this);
@@ -74,6 +93,25 @@ public class WrongAnswerActivity extends AppCompatActivity {
                 arrayList.get(i).getCorrectArrayList().get(2).setCorrect(false);
             }
         }
+
+    }
+    private void loadData(){
+        problemService.getProblem("python","자료형").enqueue(new Callback<ArrayList<TheoryProblem>>() {
+            @Override
+            public void onResponse(Call<ArrayList<TheoryProblem>> call, Response<ArrayList<TheoryProblem>> response) {
+                if(response.isSuccessful()){
+                    problemData=response.body();
+                    Log.d("!!!","성공"+problemData.toString());
+                }
+                else
+                    Log.d("!!!","실패");
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<TheoryProblem>> call, Throwable t) {
+                Log.d("!!!","아예 실패");
+            }
+        });
 
     }
 

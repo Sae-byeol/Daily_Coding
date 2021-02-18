@@ -18,4 +18,5 @@ public interface ServiceProblemApi {
 
     @GET("/problem/theory/{lang}")
     Call<ArrayList<CategoryResponse>> getData(@Path("lang") String language);
+
 }

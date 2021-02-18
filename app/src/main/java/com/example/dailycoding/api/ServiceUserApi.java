@@ -9,4 +9,5 @@ public interface ServiceUserApi {
 
     @GET("/user/allranking")
     Call<UserRankResponse> getRank();
+
 }

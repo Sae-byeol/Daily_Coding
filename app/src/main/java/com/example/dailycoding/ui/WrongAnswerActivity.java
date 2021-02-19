@@ -11,8 +11,10 @@ import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceProblemApi;
 import com.example.dailycoding.api.ServiceUserApi;
+import com.example.dailycoding.model.GetOneProblem;
 import com.example.dailycoding.model.TheoryProblem;
 import com.example.dailycoding.model.UserRank;
+import com.google.gson.internal.bind.ArrayTypeAdapter;
 
 import java.util.ArrayList;
 
@@ -26,10 +28,12 @@ public class WrongAnswerActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<WrongAnswerCorrect> correctArrayList;
+    private Integer []ids=new Integer[50];
 
     // retrofit2
     private ServiceProblemApi problemService;
     private ArrayList<TheoryProblem> problemData = new ArrayList<>();
+    private ArrayList<GetOneProblem> getOneProblems=new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -102,6 +106,12 @@ public class WrongAnswerActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     problemData=response.body();
                     Log.d("!!!","성공"+problemData.toString());
+                    //데이터의 멤버 중 id 값만 필요
+                    Log.d("!!!","성공"+problemData.get(0).getId());
+                    //이게 안되는 것 같음
+                    for (int i=0;i<problemData.size();i++){
+                        ids[i]=problemData.get(i).getId();
+                    }
                 }
                 else
                     Log.d("!!!","실패");
@@ -112,6 +122,28 @@ public class WrongAnswerActivity extends AppCompatActivity {
                 Log.d("!!!","아예 실패");
             }
         });
+
+        //위에서 저장한 id들을 가지고 단일문제 api 사용하여 문제 내용 가져오기
+        /*for (int i=0;i<ids.length;i++){
+            problemService.getOneProblem(ids[i].intValue()).enqueue(new Callback<ArrayList<GetOneProblem>>() {
+                @Override
+                public void onResponse(Call<ArrayList<GetOneProblem>> call, Response<ArrayList<GetOneProblem>> response) {
+                    if (response.isSuccessful()){
+                        getOneProblems=response.body();
+                        Log.d("getOne!!","성공"+getOneProblems.toString());
+                    }
+                    else{
+                        Log.d("getOne!!","실패");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ArrayList<GetOneProblem>> call, Throwable t) {
+                    Log.d("getOne!!","아예 실패");
+                }
+            });
+
+        }*/
 
     }
 

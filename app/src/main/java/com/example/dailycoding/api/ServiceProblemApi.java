@@ -1,6 +1,7 @@
 package com.example.dailycoding.api;
 
 import com.example.dailycoding.model.CategoryResponse;
+import com.example.dailycoding.model.GetOneProblem;
 import com.example.dailycoding.model.TheoryProblem;
 
 import java.util.ArrayList;
@@ -23,4 +24,7 @@ public interface ServiceProblemApi {
 
     @GET("/problem/theory/detail/{lang}")
     Call <ArrayList<TheoryProblem>> getProblem(@Path("lang") String language, @Query("category") String category);
+
+    @GET("/problem/getOne/:id")
+    Call <ArrayList<GetOneProblem>> getOneProblem(@Path("id") int id);
 }

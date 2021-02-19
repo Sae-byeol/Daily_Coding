@@ -18,6 +18,7 @@ import com.example.dailycoding.R;
 import com.google.gson.internal.bind.ArrayTypeAdapter;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>  {
     private ArrayList<NewsData> mDataset;
@@ -62,6 +63,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>  {
     public NewsAdapter(Context context,ArrayList<NewsData> myDataset){
         this.context=context;
         mDataset=myDataset;
+
     }
     @NonNull
     @Override
@@ -83,5 +85,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>  {
     public int getItemCount() {
         return mDataset ==null ? 0 : mDataset.size();
     }
+
+
 
 }

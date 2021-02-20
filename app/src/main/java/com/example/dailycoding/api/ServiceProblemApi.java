@@ -25,6 +25,6 @@ public interface ServiceProblemApi {
     @GET("/problem/theory/detail/{lang}")
     Call <ArrayList<TheoryProblem>> getProblem(@Path("lang") String language, @Query("category") String category);
 
-    @GET("/problem/getOne/:id")
+    @GET("/problem/getOne/{id}")
     Call <ArrayList<GetOneProblem>> getOneProblem(@Path("id") int id);
 }

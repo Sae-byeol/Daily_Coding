@@ -8,6 +8,7 @@ public class WrongAnswerData {
     private boolean isCorrect;
     private String content;
     private boolean isExpanded;
+    //세개의 선택지
     private ArrayList<WrongAnswerCorrect> correctArrayList;
 
     public WrongAnswerData(String text, boolean isCorrect,String content,boolean isExpanded,ArrayList<WrongAnswerCorrect> correctArrayList) {

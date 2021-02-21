@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.model.GetOneProblem;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,8 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
     private ArrayList<WrongAnswerData> arrayList;
     private Context context;
 
-    public WrongAnswerAdapter(ArrayList<WrongAnswerData> arrayList,Context context) {
+    //각 문제의 정보 담는 arrayList를 어댑터의 인수로 주기 -> 이 데이터로 Bind 하게 됨
+    public WrongAnswerAdapter(ArrayList<WrongAnswerData> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context=context;
     }
@@ -65,16 +67,15 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
         public void onBind(WrongAnswerData data, int position){
             this.data=data;
             this.position=position;
-
+            //data 중에서 제목과 내용, 세개의 선택지 붙이기 -> 다 붙임
             textView.setText(data.getText());
             contentText.setText(data.getContent());
             for (int i=0;i<3;i++){
                 tv[i].setText(arrayList.get(position).getCorrectArrayList().get(i).getAnswer());
             }
 
+            //애니메이션, 클릭 이벤트
             applyLayoutTransition();
-
-
             constraintLayout.setOnClickListener(this);
             closebtn.setOnClickListener(this);
         }

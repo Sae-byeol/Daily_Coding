@@ -146,16 +146,16 @@ public class LanguageIntroductionFragment extends BaseFragment {
         list_courseTitle.add("JAVA");
         list_courseTitle.add("C++");
 
-        ArrayList tempList=new ArrayList();
-        tempList.add("변수활용11");
-        tempList.add("변수활용12");
-        tempList.add("변수활용13");
-        tempList.add("변수활용14");
+//        ArrayList tempList=new ArrayList();
+//        tempList.add("변수활용11");
+//        tempList.add("변수활용12");
+//        tempList.add("변수활용13");
+//        tempList.add("변수활용14");
 
-        list_course.add(new Course(getString(R.string.languageIntro_title1), tempList,false));
-        list_course.add(new Course(getString(R.string.languageIntro_title2), tempList,false));
-        list_course.add(new Course(getString(R.string.languageIntro_title3), tempList,false));
-        list_course.add(new Course(getString(R.string.languageIntro_title4), tempList,false));
+        list_course.add(new Course(getString(R.string.languageIntro_title1), false));
+        list_course.add(new Course(getString(R.string.languageIntro_title2), false));
+        list_course.add(new Course(getString(R.string.languageIntro_title3), false));
+        list_course.add(new Course(getString(R.string.languageIntro_title4),false));
 
     }
 

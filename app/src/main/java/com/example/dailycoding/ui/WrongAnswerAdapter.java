@@ -71,7 +71,7 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
             textView.setText(data.getText());
             contentText.setText(data.getContent());
             for (int i=0;i<3;i++){
-                tv[i].setText(arrayList.get(position).getCorrectArrayList().get(i).getAnswer());
+                tv[i].setText(data.getCorrectArrayList().get(i).getAnswer());
             }
 
             //애니메이션, 클릭 이벤트
@@ -173,15 +173,14 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
         //틀렸던 문제라면
         else{
             holder.imageView.setImageResource(R.drawable.uncorrect);
-
-            /*for (int i=0;i<3;i++) {
+            for (int i=0;i<3;i++) {
                 isCorrectAnswer=arrayList.get(position).getCorrectArrayList().get(i).isCorrect();
                 isChosen=arrayList.get(position).getCorrectArrayList().get(i).isChosen();
                 if (isChosen ){
                     holder.tv[i].setBackgroundResource(R.drawable.round_border_red_stroke);
                     holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.white));
                 }
-                else if (isCorrect){
+                else if (isCorrectAnswer){
                     holder.tv[i].setBackgroundResource(R.drawable.round_border_light_stroke);
                     holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.black));
                 }
@@ -190,15 +189,15 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
                     holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.white));
                 }
 
-            }*/
+            }
             //activity에서 준 값들을 잘 받긴 하는데 이 부분에서 자꾸 틀린문제들도 액티비티에서 준 arrayList의 첫번째 정보를 가져와서 색칠됨
             //계속 안되니까 일단은 하드코딩 하겠음
-            holder.tv[0].setBackgroundResource(R.drawable.round_border_light_stroke);
+            /*holder.tv[0].setBackgroundResource(R.drawable.round_border_light_stroke);
             holder.tv[0].setTextColor(ContextCompat.getColor(context, R.color.black));
             holder.tv[1].setBackgroundResource(R.drawable.round_border_gray_stroke);
             holder.tv[1].setTextColor(ContextCompat.getColor(context, R.color.white));
             holder.tv[2].setBackgroundResource(R.drawable.round_border_red_stroke);
-            holder.tv[2].setTextColor(ContextCompat.getColor(context, R.color.white));
+            holder.tv[2].setTextColor(ContextCompat.getColor(context, R.color.white));*/
         }
     }
 

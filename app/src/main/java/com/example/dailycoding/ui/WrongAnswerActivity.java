@@ -17,31 +17,40 @@ import com.example.dailycoding.api.ServiceUserApi;
 import com.example.dailycoding.model.GetOneProblem;
 import com.example.dailycoding.model.TheoryProblem;
 import com.example.dailycoding.model.UserRank;
+import com.example.dailycoding.util.BaseActivity;
 import com.google.gson.internal.bind.ArrayTypeAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WrongAnswerActivity extends AppCompatActivity {
+public class WrongAnswerActivity extends BaseActivity {
     private static ArrayList<WrongAnswerData> arrayList;
     private WrongAnswerAdapter mainAdapter;
-    private RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
-    private  ArrayList<WrongAnswerCorrect> correctArrayList=new ArrayList<>();
-    private Integer []ids=new Integer[50];
-    private Context context;
+    private final ArrayList<WrongAnswerCorrect> correctArrayList=new ArrayList<>();
+    private final Integer []ids=new Integer[50];
     private WrongAnswerData wrongAnswerData;
 
     // retrofit2
-    private static ServiceProblemApi problemService, problemService2;
+    private static ServiceProblemApi problemService;
     private static ArrayList<TheoryProblem> problemData = new ArrayList<>();
     private static ArrayList<GetOneProblem> getOneProblems=new ArrayList<>();
+
+    compare Compare=new compare();
+    class compare implements Comparator<WrongAnswerData>{
+
+        @Override
+        public int compare(WrongAnswerData o1, WrongAnswerData o2) {
+            return o1.getId().compareTo(o2.getId());
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,12 +65,11 @@ public class WrongAnswerActivity extends AppCompatActivity {
         for (int i=0;i<3;i++){
             correctArrayList.add(new WrongAnswerCorrect("",true,false));
         }
-        recyclerView=(RecyclerView)findViewById(R.id.wrong_answer_recyclerView);
-        recyclerView.setHasFixedSize(true);
-        linearLayoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
 
-        context=this;
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.wrong_answer_recyclerView);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         loadData();
 
@@ -72,34 +80,95 @@ public class WrongAnswerActivity extends AppCompatActivity {
 
     private void loadData(){
         Log.d("처음 시작","처음 시작");
-
+        progressOn();
         problemService.getProblem("python","자료형").enqueue(new Callback<ArrayList<TheoryProblem>>() {
             @Override
             public void onResponse(Call<ArrayList<TheoryProblem>> call, Response<ArrayList<TheoryProblem>> response) {
                 if(response.isSuccessful()) {
                     problemData = response.body();
+                    assert problemData != null;
                     Log.d("!!!", "성공" + problemData.toString());
                     for (int i = 0; i < problemData.size(); i++) {
                         ids[i] = problemData.get(i).getId();
-                        //Log.d("ids","ids"+ids[i]);
+
                     }
                     for (int i=0;i<problemData.size();i++) {
                         int finalI = i;
+                        Log.d("ids","ids"+ids[i]);
                         problemService.getOneProblem(ids[i]).enqueue(new Callback<ArrayList<GetOneProblem>>() {
                             @Override
                             public void onResponse(Call<ArrayList<GetOneProblem>> call, Response<ArrayList<GetOneProblem>> response) {
                                 if (response.isSuccessful()) {
-                                    //그래도 getOneProblems는 '한' 문제
                                     getOneProblems = response.body();
                                     Log.d("getOne!!", "성공" + getOneProblems.toString());
-                                    wrongAnswerData=new WrongAnswerData("예제"+getOneProblems.get(0).getProblemNumber(),true,getOneProblems.get(0).getQuestion()+getOneProblems.get(0).getCode(),
-                                            false,correctArrayList);
-                                    arrayList.add(wrongAnswerData);
-                                    Log.d("arrayList",arrayList.toString());
-                                    if (finalI ==problemData.size()-1){
-                                        Log.d("마지막","마지막");
-                                        mainAdapter.notifyDataSetChanged();
 
+                                    /*String [] answerOption=getOneProblems.get(0).getOption().split("\\|",3);
+                                    for (int i=0;i<3;i++){
+                                        correctArrayList.add(new WrongAnswerCorrect(answerOption[i],true,false));
+                                    }*/
+
+                                    Log.d("선택지",getOneProblems.get(0).getOption());
+                                    if (finalI==1){
+                                        //임의로 틀린 문제 만들기
+                                        wrongAnswerData=new WrongAnswerData("예제 "+getOneProblems.get(0).getProblemNumber(),false,getOneProblems.get(0).getQuestion()+getOneProblems.get(0).getCode(),
+                                                false,correctArrayList,getOneProblems.get(0).getId());
+                                        wrongAnswerData.getCorrectArrayList().get(0).setAnswer("틀린답1");
+                                        wrongAnswerData.getCorrectArrayList().get(0).setChosen(false);
+                                        wrongAnswerData.getCorrectArrayList().get(0).setCorrect(true);
+                                        wrongAnswerData.getCorrectArrayList().get(1).setAnswer("h,e,l,o");
+                                        wrongAnswerData.getCorrectArrayList().get(1).setChosen(false);
+                                        wrongAnswerData.getCorrectArrayList().get(1).setCorrect(false);
+                                        wrongAnswerData.getCorrectArrayList().get(2).setAnswer("{'hello'}");
+                                        wrongAnswerData.getCorrectArrayList().get(2).setChosen(true);
+                                        wrongAnswerData.getCorrectArrayList().get(2).setCorrect(false);
+                                    }
+                                    else{
+                                        wrongAnswerData=new WrongAnswerData("예제 "+getOneProblems.get(0).getProblemNumber(),true,getOneProblems.get(0).getQuestion()+getOneProblems.get(0).getCode(),
+                                                false,correctArrayList,getOneProblems.get(0).getId());
+                                        wrongAnswerData.getCorrectArrayList().get(0).setAnswer("{'h','e','l','o'}");
+                                        wrongAnswerData.getCorrectArrayList().get(0).setChosen(true);
+                                        wrongAnswerData.getCorrectArrayList().get(0).setCorrect(true);
+                                        wrongAnswerData.getCorrectArrayList().get(1).setAnswer("h,e,l,o");
+                                        wrongAnswerData.getCorrectArrayList().get(1).setChosen(false);
+                                        wrongAnswerData.getCorrectArrayList().get(1).setCorrect(false);
+                                        wrongAnswerData.getCorrectArrayList().get(2).setAnswer("{'hello'}");
+                                        wrongAnswerData.getCorrectArrayList().get(2).setChosen(false);
+                                        wrongAnswerData.getCorrectArrayList().get(2).setCorrect(false);
+                                    }
+                                    //각 문제마다 세개의 선택지 줌 ->split이 잘 안되니까 임의로 선택지 주기
+                                    //split()해결되면 for문 사용해서 get(i).set~(~)이렇게 세줄로만 간략히 코드 작성
+                                        /*if(wrongAnswerData.isCorrect()){
+                                            //맞은 문제인경우의 임시 선택지
+                                            wrongAnswerData.getCorrectArrayList().get(0).setAnswer("{'h','e','l','o'}");
+                                            wrongAnswerData.getCorrectArrayList().get(0).setChosen(true);
+                                            wrongAnswerData.getCorrectArrayList().get(0).setCorrect(true);
+                                            wrongAnswerData.getCorrectArrayList().get(1).setAnswer("h,e,l,o");
+                                            wrongAnswerData.getCorrectArrayList().get(1).setChosen(false);
+                                            wrongAnswerData.getCorrectArrayList().get(1).setCorrect(false);
+                                            wrongAnswerData.getCorrectArrayList().get(2).setAnswer("{'hello'}");
+                                            wrongAnswerData.getCorrectArrayList().get(2).setChosen(false);
+                                            wrongAnswerData.getCorrectArrayList().get(2).setCorrect(false);
+                                        }
+                                        else if (!wrongAnswerData.isCorrect()) {
+                                            wrongAnswerData.getCorrectArrayList().get(0).setAnswer("{'h','e','l',}");
+                                            wrongAnswerData.getCorrectArrayList().get(0).setChosen(false);
+                                            wrongAnswerData.getCorrectArrayList().get(0).setCorrect(true);
+                                            wrongAnswerData.getCorrectArrayList().get(1).setAnswer("h,e,l,o");
+                                            wrongAnswerData.getCorrectArrayList().get(1).setChosen(false);
+                                            wrongAnswerData.getCorrectArrayList().get(1).setCorrect(false);
+                                            wrongAnswerData.getCorrectArrayList().get(2).setAnswer("{'hello'}");
+                                            wrongAnswerData.getCorrectArrayList().get(2).setChosen(true);
+                                            wrongAnswerData.getCorrectArrayList().get(2).setCorrect(false);
+                                        }*/
+                                    arrayList.add(wrongAnswerData);
+
+
+                                    //for문의 마지막에서 어댑터 붙이기
+                                    if (finalI ==problemData.size()-1){
+                                        //마지막에 arrayList 한번 정렬 필요
+                                        Collections.sort(arrayList,Compare);
+                                        progressOff();
+                                        mainAdapter.notifyDataSetChanged();
                                     }
                                 } else {
                                     Log.d("getOne!!", "실패");
@@ -120,10 +189,5 @@ public class WrongAnswerActivity extends AppCompatActivity {
                 Log.d("!!!","아예 실패");
             }
         });
-
-
     }
-
-
-
 }

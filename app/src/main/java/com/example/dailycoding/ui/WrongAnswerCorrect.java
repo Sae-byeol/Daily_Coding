@@ -36,4 +36,13 @@ public class WrongAnswerCorrect {
     public void setChosen(boolean chosen) {
         isChosen = chosen;
     }
+
+    @Override
+    public String toString() {
+        return "WrongAnswerCorrect{" +
+                "answer='" + answer + '\'' +
+                ", isCorrect=" + isCorrect +
+                ", isChosen=" + isChosen +
+                '}';
+    }
 }

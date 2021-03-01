@@ -2,7 +2,6 @@ package com.example.dailycoding.ui;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,7 +35,7 @@ public class ChanelFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(LayoutManager);
 
-        mAdapter=new NewsAdapter(getActivity(),mDataset);
+        mAdapter=new ChanelAdapter(getActivity(),mDataset);
         recyclerView.setAdapter(mAdapter);
         return view;
 

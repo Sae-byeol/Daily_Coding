@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="15dp">
+        <ImageButton
+            android:id="@+id/book_activity_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_arrow_left">
+
+        </ImageButton>
+
+        <TextView
+            android:id="@+id/book_activity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/news_activity_title"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/book_activity_left"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            >
+
+        </TextView>
+        <ImageView
+            android:id="@+id/book_activity_image"
+            android:layout_width="match_parent"
+            android:layout_height="144dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_activity_title"
+            android:background="@drawable/round_border"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginVertical="10dp"
+            />
+        <TextView
+            android:id="@+id/book_activity_intro_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="코린이 탈출 스쿨로 코린이 탈출했어요!"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_activity_image"
+            android:layout_marginTop="8dp"
+            >
+
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/book_activity_code_it_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/code_it_content"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_activity_intro_content"
+            android:layout_marginTop="8dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/book_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/book_activity_code_it_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="책소개"
+            android:layout_marginTop="24dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/book_introduce_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_introduce"
+            android:text="책 소개 내용 "
+            android:maxLines="4"
+            android:ellipsize="end"
+            android:textSize="10sp"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:id="@+id/book_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/book_introduce_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="목차"
+            android:textStyle="bold"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/book_course_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/book_course"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="목차 내용"
+            android:textSize="10sp"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/book_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/book_course_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="추천서평"
+            android:textStyle="bold"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/book_review_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/book_review"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/news_activity_code_it_review"
+            android:textSize="10sp"
+            android:layout_marginTop="8dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <android.widget.Button
+        android:id="@+id/news_item_button"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="책 보러 가기"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:background="@color/color_primary_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

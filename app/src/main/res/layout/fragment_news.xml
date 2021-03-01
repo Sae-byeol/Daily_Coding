@@ -69,7 +69,7 @@
                     android:layout_width="74dp"
                     android:layout_height="34dp"
                     android:layout_marginLeft="60dp"
-                    android:text="@string/promotion_btn"
+                    android:text="@string/fragment_book"
                     android:textColor="@color/color_primary_light"
                     android:background="@drawable/round_border_white"
                     android:textSize="10sp">

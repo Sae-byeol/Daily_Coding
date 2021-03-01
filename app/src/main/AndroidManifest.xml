@@ -42,7 +42,8 @@
                     android:scheme="kakaob8635a4704737dec5e7018a56f0fa289" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.NewsNewActivity" />
+        <activity android:name=".ui.ChanelNewActivity" />
+        <activity android:name=".ui.BookNewActivity"/>
         <activity android:name=".ui.WrongAnswerActivity" />
 
     </application>

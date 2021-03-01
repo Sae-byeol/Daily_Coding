@@ -318,5 +318,6 @@
     휴대전화번호, 이메일주소 - 신규 정보, 각종 이벤트 정보 등 광고성 정보 제공\n
     (시행일) 이 약관은 2021년 3월 15일부터 시행합니다.\n
     </string>
+    <string name="fragment_book">도서</string>
 
 </resources>

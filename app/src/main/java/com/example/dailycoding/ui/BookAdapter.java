@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,12 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
-import com.google.gson.internal.bind.ArrayTypeAdapter;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>  {
+public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>  {
     private ArrayList<NewsData> mDataset;
     private Context context;
 
@@ -47,7 +43,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>  {
                     //클릭한 아이템의 포지션
                     int pos=getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION){
-                        Intent intent=new Intent(context,NewsNewActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Intent intent=new Intent(context, BookNewActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                         intent.putExtra("title",mDataset.get(pos).getTitle());
                         intent.putExtra("content",mDataset.get(pos).getContent());
@@ -60,14 +56,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>  {
             });
         }
     }
-    public NewsAdapter(Context context,ArrayList<NewsData> myDataset){
+    public BookAdapter(Context context, ArrayList<NewsData> myDataset){
         this.context=context;
         mDataset=myDataset;
 
     }
     @NonNull
     @Override
-    public NewsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BookAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LinearLayout view= (LinearLayout)LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news,parent,false);
         ViewHolder holder=new ViewHolder(view);//view로 생성자 호출-> 각 내용 저장됨
         //CustomViewHolder 클래스 객체의 holder 리턴됨
@@ -75,7 +71,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>  {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BookAdapter.ViewHolder holder, int position) {
         holder.textView_title.setText(mDataset.get(position).getTitle());
         holder.textView_content.setText(mDataset.get(position).getContent());
         holder.textView_review.setText(mDataset.get(position).getReview());

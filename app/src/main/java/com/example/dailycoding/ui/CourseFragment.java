@@ -260,10 +260,8 @@ public class CourseFragment extends BaseFragment
 
     private void showCourseList(){
 
-
-
         // specify an adapter (see also next example)
-        mAdapter = new CourseAdapter(list_course, getContext(), 0);
+        mAdapter = new CourseAdapter(list_course, getContext(), 0, currentLanguage);
         recyclerView.setAdapter(mAdapter);
     }
 

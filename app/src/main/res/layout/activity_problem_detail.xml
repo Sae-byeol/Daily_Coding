@@ -64,27 +64,28 @@
         android:textColor="#000000"
         android:layout_marginTop="6dp"
         />
+
     <ScrollView
         android:id="@+id/ScrollView_problemDetail_code"
         android:layout_width="match_parent"
         android:layout_height="144dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextView_problemDetail_explain"
         android:layout_marginTop="6dp"
         android:background="@drawable/round_border_white"
         android:elevation="@dimen/button_elevation"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TextView_problemDetail_explain">
+
         <TextView
             android:id="@+id/TextView_problemDetail_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#소스창\nHello World"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:textSize="12sp"
+            android:text="#소스창\nHello World"
             android:textColor="#000000"
-            />
+            android:textSize="12sp" />
     </ScrollView>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintLayout_problemDetail_problem"
@@ -198,7 +199,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="{‘o’, ‘l’, ‘h’, ‘e’}"
-            android:textSize="9sp"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:textColor="#000000"
             android:background="@drawable/button_detail_option"
             android:layout_marginHorizontal="11dp"
@@ -212,7 +214,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="{‘o’, ‘l’, ‘h’, ‘e’}"
-            android:textSize="9sp"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:textColor="#000000"
             android:background="@drawable/button_detail_option"
             />
@@ -225,7 +228,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="{‘o’, ‘l’, ‘h’, ‘e’}"
-            android:textSize="9sp"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:textColor="#000000"
             android:background="@drawable/button_detail_option"
             android:layout_marginHorizontal="11dp"

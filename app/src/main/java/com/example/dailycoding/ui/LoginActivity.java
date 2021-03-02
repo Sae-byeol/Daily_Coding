@@ -34,7 +34,7 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
-    private static final String TAG = "LoginActivity";
+    private static final String TAG = "InitActivity";
     private static final int RC_SIGN_IN = 9001;
 
     private Button view1, view2;
@@ -52,6 +52,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         auth = FirebaseAuth.getInstance();
         view1 = findViewById(R.id.login_google);
 
+
         //구글 로그인 로직
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -64,31 +65,32 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
 
-                Intent tempintent = new Intent(getApplicationContext(), InitActivity.class);
-                startActivity(tempintent);
+//                Intent tempintent = new Intent(getApplicationContext(), InitActivity.class);
+//                startActivity(tempintent);
 
-//                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-//                startActivityForResult(signInIntent, RC_SIGN_IN);
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent, RC_SIGN_IN);
             }
         });
 
         //카카오 로그인 로직
         view2 = findViewById(R.id.login_kakao);
+
         Function2<OAuthToken, Throwable, Unit> callback = new Function2<OAuthToken, Throwable, Unit>() {
             @Override
             public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
                 if (oAuthToken != null) {
-                    Intent tempintent = new Intent(getApplicationContext(), InitActivity.class);
-                    startActivity(tempintent);
+
                 }
                 if (throwable != null) {
 
+                    Log.w(TAG, "invoke: " + throwable.getLocalizedMessage());
                 }
-                kakaoLoginUi();
+                LoginActivity.this.kakaoLoginUi();
                 return null;
             }
         };
-
+        
         view2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +101,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }
             }
         });
+
+        kakaoLoginUi();
     }
 
     private void updateUI(FirebaseUser user) {
@@ -191,6 +195,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     Log.i(TAG, "invoke: nickname=" + user.getKakaoAccount().getProfile().getNickname());
                     Log.i(TAG, "invoke: gender=" + user.getKakaoAccount().getGender());
                     Log.i(TAG, "invoke: age=" + user.getKakaoAccount().getAgeRange());
+
+                    Intent tempintent = new Intent(getApplicationContext(), InitActivity.class);
+                    startActivity(tempintent);
+                }
+                else {
+
                 }
                 if (throwable != null) {
                     Log.w(TAG, "invoke: " + throwable.getLocalizedMessage());

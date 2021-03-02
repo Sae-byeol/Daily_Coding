@@ -46,6 +46,8 @@ public class ProblemDetailActivity extends BaseActivity {
     private TextView TextView_leftProblems, TextView_currentProblem, TextView_question, TextView_code;
     private Button Button_option1, Button_option2, Button_option3;
     private ProblemDialog problemDialog;
+    private ArrayList<Course> dataList;
+    private int currentProblemNumber;
 
     private ServiceProblemApi serviceProblemApi;
 
@@ -61,7 +63,7 @@ public class ProblemDetailActivity extends BaseActivity {
         problemDialog=new ProblemDialog(ProblemDetailActivity.this);
         init();
         loadData();
-        setData();
+//        setData();
     }
 
     @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor"})
@@ -79,7 +81,14 @@ public class ProblemDetailActivity extends BaseActivity {
 
         Intent gIntent=getIntent();
         currentId=gIntent.getIntExtra("id", -1);
-        Log.d(TAG, currentId+"");
+        dataList=new ArrayList<>();
+        dataList= (ArrayList<Course>) gIntent.getSerializableExtra("dataList");
+
+        for(Course course:dataList){
+            Log.d(TAG, "course Id:"+course.getId());
+        }
+
+        progressBar.setMax(dataList.size());
 
         Button.OnClickListener onClickListener= new Button.OnClickListener() {
             @Override
@@ -99,7 +108,10 @@ public class ProblemDetailActivity extends BaseActivity {
                             ImageButton_leftProblems.setBackgroundResource(R.drawable.ic_arrow_down_small);
                         }
                         else{
-                            final SpannableStringBuilder sb = new SpannableStringBuilder("앞으로 5문제 남았습니다.");
+                            int leftProblems=dataList.size()-currentProblemNumber+1;
+                            String tempString="앞으로 "+leftProblems+"문제 남았습니다.";
+
+                            final SpannableStringBuilder sb = new SpannableStringBuilder(tempString);
 
                             final StyleSpan boldText = new StyleSpan(android.graphics.Typeface.BOLD); // Span to make text bold
 //            final StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
@@ -161,7 +173,11 @@ public class ProblemDetailActivity extends BaseActivity {
                     GetOneProblem getOneProblem=response.body().get(0);
 
                     TextView_code.setText(getOneProblem.getCode());
-                    TextView_currentProblem.setText("Q"+getOneProblem.getProblemNumber());
+                    currentProblemNumber=getOneProblem.getProblemNumber();
+                    TextView_currentProblem.setText("Q"+currentProblemNumber);
+//                    int leftProblems=dataList.size()-currentProblemNumber+1;
+//                    TextView_leftProblems.setText("앞으로 "+leftProblems+"문제 남았습니다.");
+                    progressBar.setProgress(currentProblemNumber);
                     TextView_question.setText(getOneProblem.getQuestion());
 
                     String option=getOneProblem.getOption().replace("|", "`");
@@ -173,6 +189,32 @@ public class ProblemDetailActivity extends BaseActivity {
                     Button_option1.setText(options[0].substring(3));
                     Button_option2.setText(options[1].substring(3));
                     Button_option3.setText(options[2].substring(3));
+
+
+
+                    if(!isLeftProblem) {
+                        TextView_leftProblems.setText("남은 문제 수 보기");
+                        progressBar.setVisibility(View.GONE);
+                        ImageButton_leftProblems.setBackgroundResource(R.drawable.ic_arrow_down_small);
+
+                    }
+                    else {
+//            String str="앞으로  <b>5분제</b> 남았습니다.";
+//            TextView_leftProblems.setText(Html.fromHtml(str));\
+                        int leftProblems=dataList.size()-currentProblemNumber+1;
+                        String tempString="앞으로 "+leftProblems+"문제 남았습니다.";
+                        final SpannableStringBuilder sb = new SpannableStringBuilder(tempString);
+
+                        final StyleSpan boldText = new StyleSpan(android.graphics.Typeface.BOLD); // Span to make text bold
+//            final StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
+                        sb.setSpan(boldText, 4, 6, Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make first 4 characters Bold
+//            sb.setSpan(iss, 4, 6, Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make last 2 characters Italic
+
+                        TextView_leftProblems.setText(sb);
+                        progressBar.setVisibility(View.VISIBLE);
+
+                        ImageButton_leftProblems.setBackgroundResource(R.drawable.ic_arrow_up_small);
+                    }
 
                     progressOff();
                 }
@@ -208,7 +250,9 @@ public class ProblemDetailActivity extends BaseActivity {
         else {
 //            String str="앞으로  <b>5분제</b> 남았습니다.";
 //            TextView_leftProblems.setText(Html.fromHtml(str));
-            final SpannableStringBuilder sb = new SpannableStringBuilder("앞으로 5문제 남았습니다.");
+            int leftProblems=dataList.size()-currentProblemNumber+1;
+            String tempString="앞으로 "+leftProblems+"문제 남았습니다.";
+            final SpannableStringBuilder sb = new SpannableStringBuilder(tempString);
 
             final StyleSpan boldText = new StyleSpan(android.graphics.Typeface.BOLD); // Span to make text bold
 //            final StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
@@ -217,6 +261,7 @@ public class ProblemDetailActivity extends BaseActivity {
 
             TextView_leftProblems.setText(sb);
             progressBar.setVisibility(View.VISIBLE);
+
             ImageButton_leftProblems.setBackgroundResource(R.drawable.ic_arrow_up_small);
         }
     }

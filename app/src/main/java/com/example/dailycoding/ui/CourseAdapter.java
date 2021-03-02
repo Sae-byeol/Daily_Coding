@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHolder> {
 
+    private static final String TAG="CourseAdapter";
+
     private static ArrayList<Course> dataList;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -30,8 +32,6 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     //    isCourse:true이면 기출문제 선택, false이면 언어 소개
     private int type;
     private String language;
-
-    private static final String TAG="CourseAdapter";
 
     public CourseAdapter(ArrayList<Course> dataList, Context context, int type) {
         this.context=context;
@@ -139,8 +139,13 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                 }
                 //문제 리스트 페이지
                 else if(type==1){
+//                    for(Course course:dataList){
+//                        Log.d(TAG, "dataList:");
+//
+//                    }
                     Intent intent=new Intent(context, ProblemDetailActivity.class);
                     intent.putExtra("id", dataList.get(position).getId());
+                    intent.putExtra("dataList", dataList);
                     context.startActivity(intent);
                 }
                 //언어 소개 페이지

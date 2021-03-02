@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dailycoding.R;
@@ -16,6 +17,7 @@ import com.example.dailycoding.api.ServiceProblemApi;
 import com.example.dailycoding.model.TheoryProblem;
 import com.example.dailycoding.util.BaseActivity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -31,7 +33,10 @@ public class ProblemListActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private ImageButton ImageButton_back;
+    private TextView TextView_title;
+
     private ArrayList<Course> dataList;
+    private ArrayList<Integer> arr_id;
     private ServiceProblemApi serviceProblemApi;
 
     private String currentCategory;
@@ -68,12 +73,17 @@ public class ProblemListActivity extends BaseActivity {
                 if(response.isSuccessful()){
                     Log.d(TAG, response.body()+"");
 
+//                    arr_id=new ArrayList<>();
+
                     for(TheoryProblem theoryProblem:response.body()){
                         Course course=new Course();
                         course.setTitle(theoryProblem.getCategory()+" "+theoryProblem.getProblemNumber()+"번");
                         course.setId(theoryProblem.getId());
                         dataList.add(course);
+
+//                        arr_id.add();
                     }
+
 
                     showList();
                     progressOff();
@@ -95,6 +105,7 @@ public class ProblemListActivity extends BaseActivity {
     private void init(){
         recyclerView=findViewById(R.id.RecyclerView_problemList);
         ImageButton_back=findViewById(R.id.ImageButton_problemList_back);
+        TextView_title=findViewById(R.id.TextView_problemList_title);
         dataList=new ArrayList<>();
 
         //현재 카테고리 받아오기기
@@ -102,6 +113,7 @@ public class ProblemListActivity extends BaseActivity {
         currentCategory=gIntent.getStringExtra("category");
         currentLanguage=gIntent.getStringExtra("language");
 
+        TextView_title.setText(currentLanguage+" "+currentCategory);
         recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager

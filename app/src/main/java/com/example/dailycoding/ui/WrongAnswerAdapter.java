@@ -171,7 +171,7 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
         }
         //틀렸던 문제라면
         else{
-            holder.imageView.setImageResource(R.drawable.uncorrect);
+            holder.imageView.setImageResource(R.drawable.ic_incorrect);
 
             /*for (int i=0;i<3;i++) {
                 isCorrectAnswer=arrayList.get(position).getCorrectArrayList().get(i).isCorrect();

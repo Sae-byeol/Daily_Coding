@@ -3,8 +3,6 @@ package com.example.dailycoding.ui;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,6 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
@@ -88,7 +85,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                         notifyItemChanged(getAdapterPosition());
                         if(course.isExpanded()) {
                             imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_down_small));
-                            constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_white));
+                            constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang));
                             TextView_title.setTextColor(ContextCompat.getColor(context, R.color.black));
                         }
                         else    {
@@ -165,14 +162,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
 //            layoutParams.bottomMargin=20;
             holder.TextView_content.setVisibility(isExpanded?View.VISIBLE: View.GONE);
             if(isExpanded){
-                holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_black));
+                holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang02));
                 holder.TextView_title.setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
                 holder.TextView_content.setTextColor(ContextCompat.getColor(context, R.color.white));
             }
             else{
-                holder.TextView_title.setTextColor(ContextCompat.getColor(context, R.color.black));
+                holder.TextView_title.setTextColor(ContextCompat.getColor(context, R.color.primary_font));
 //                    holder.TextView_content.setTextColor(context.getColor(R.color.white));
-                holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_white));
+                holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang));
             }
 //            holder.TextView_title.setLayoutParams(layoutParams);
         }

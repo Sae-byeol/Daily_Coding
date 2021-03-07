@@ -1,13 +1,17 @@
 package com.example.dailycoding.api;
 
 import com.example.dailycoding.model.CategoryResponse;
+import com.example.dailycoding.model.GetOneProblem;
 import com.example.dailycoding.model.TheoryProblem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -24,4 +28,10 @@ public interface ServiceProblemApi {
     @GET("/problem/theory/detail/{lang}")
     Call <ArrayList<TheoryProblem>> getProblem(@Path("lang") String language, @Query("category") String category);
 
+
+    @GET("/problem/getOne/{id}")
+    Call <ArrayList<GetOneProblem>> getOneProblem(@Path("id") int id);
+
+    @POST("/problem/getWrongs")
+    Call <ArrayList<GetOneProblem>> getWrongs(@Body Integer[] ids);
 }

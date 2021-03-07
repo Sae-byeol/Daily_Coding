@@ -19,6 +19,8 @@ import java.util.ArrayList;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHolder> {
 
+    private static final String TAG="CourseAdapter";
+
     private static ArrayList<Course> dataList;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -26,13 +28,19 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     private Context context;
     //    isCourse:true이면 기출문제 선택, false이면 언어 소개
     private int type;
-
-    private static final String TAG="CourseAdapter";
+    private String language;
 
     public CourseAdapter(ArrayList<Course> dataList, Context context, int type) {
         this.context=context;
         this.dataList = dataList;
         this.type=type;
+    }
+
+    public CourseAdapter(ArrayList<Course> dataList, Context context, int type, String language) {
+        this.context=context;
+        this.dataList = dataList;
+        this.type=type;
+        this.language=language;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -64,6 +72,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                 imageView=itemView.findViewById(R.id.ImageVIew_language_arrow);
                 constraintLayout=itemView.findViewById(R.id.ConstraintLayout_item_language);
             }
+
             constraintLayout.setOnClickListener(new View.OnClickListener() {
                 @SuppressLint("UseCompatLoadingForDrawables")
                 @Override
@@ -90,7 +99,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                         }
                         else    {
                             imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_up_small));
-                            constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_black));
+                            constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang02));
 
                             TextView_title.setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
                             TextView_content.setTextColor(ContextCompat.getColor(context, R.color.white));
@@ -129,37 +138,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
         boolean isExpanded = dataList.get(position).isExpanded();
         if(type==1||type==0){
             holder.imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_right));
-
-//            holder.recyclerView.setHasFixedSize(true);
-//
-//            // use a linear layout manager
-//            layoutManager = new LinearLayoutManager(context);
-//            holder.recyclerView.setLayoutManager(layoutManager);
-//
-//            // specify an adapter (see also next example)
-//            mAdapter = new CourseContentAdapter(dataList.get(position).getContent());
-//            holder.recyclerView.setAdapter(mAdapter);
-
-//            ConstraintLayout.LayoutParams layoutParams=new ConstraintLayout.LayoutParams(
-//                    ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT
-//            );
-//            holder.recyclerView.setId(1002);
-//            layoutParams.bottomToTop=1002;
-
-//            holder.recyclerView.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
-//            holder.TextView_title.setLayoutParams(layoutParams);
         }
         else{
-//            ConstraintLayout.LayoutParams layoutParams=new ConstraintLayout.LayoutParams(
-//                    ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT
-//            );
-//            holder.TextView_content.setId(1001);
-//            layoutParams.bottomToTop= Integer.parseInt(context.getString(R.id.TextView_languageIntroduction_content));
-//            layoutParams.leftToLeft=ConstraintLayout.LayoutParams.PARENT_ID;
-//            layoutParams.rightToRight=ConstraintLayout.LayoutParams.PARENT_ID;
-//            layoutParams.topToTop=ConstraintLayout.LayoutParams.PARENT_ID;
-//            layoutParams.topMargin=20;
-//            layoutParams.bottomMargin=20;
             holder.TextView_content.setVisibility(isExpanded?View.VISIBLE: View.GONE);
             if(isExpanded){
                 holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang02));
@@ -173,6 +153,52 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
             }
 //            holder.TextView_title.setLayoutParams(layoutParams);
         }
+
+        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("UseCompatLoadingForDrawables")
+            @Override
+            public void onClick(View v) {
+                //코스 페이지
+                if(type==0){
+                    Intent intent=new Intent(context, ProblemListActivity.class);
+                    // 언어 파라미터 추가 필요
+//                    intent.putExtra()
+                    // 카테고리 파라미터
+                    intent.putExtra("category", dataList.get(position).getTitle());
+                    intent.putExtra("language", language);
+                    context.startActivity(intent);
+                }
+                //문제 리스트 페이지
+                else if(type==1){
+//                    for(Course course:dataList){
+//                        Log.d(TAG, "dataList:");
+//
+//                    }
+                    Intent intent=new Intent(context, ProblemDetailActivity.class);
+                    intent.putExtra("id", dataList.get(position).getId());
+                    intent.putExtra("dataList", dataList);
+                    context.startActivity(intent);
+                }
+                //언어 소개 페이지
+                else if(type==2){
+                    Course course = dataList.get(position);
+                    course.setExpanded(!course.isExpanded());
+                    notifyItemChanged(position);
+                    if(course.isExpanded()) {
+                        holder.imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_down_small));
+                        holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang02));
+                        holder.TextView_title.setTextColor(ContextCompat.getColor(context, R.color.black));
+                    }
+                    else    {
+                        holder.imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_up_small));
+                        holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang));
+
+                        holder.TextView_title.setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
+                        holder.TextView_content.setTextColor(ContextCompat.getColor(context, R.color.white));
+                    }
+                }
+            }
+        });
 
     }
 

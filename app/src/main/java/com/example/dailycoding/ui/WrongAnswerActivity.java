@@ -1,9 +1,12 @@
 package com.example.dailycoding.ui;
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,109 +14,160 @@ import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceProblemApi;
 import com.example.dailycoding.api.ServiceUserApi;
+import com.example.dailycoding.model.GetOneProblem;
 import com.example.dailycoding.model.TheoryProblem;
 import com.example.dailycoding.model.UserRank;
+import com.example.dailycoding.util.BaseActivity;
+import com.google.gson.internal.bind.ArrayTypeAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
+import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WrongAnswerActivity extends AppCompatActivity {
-    private ArrayList<WrongAnswerData> arrayList;
+public class WrongAnswerActivity extends BaseActivity {
+    private static ArrayList<WrongAnswerData> arrayList;
     private WrongAnswerAdapter mainAdapter;
-    private RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
     private ArrayList<WrongAnswerCorrect> correctArrayList;
+    private final Integer []ids=new Integer[50];
+    private WrongAnswerData wrongAnswerData;
 
     // retrofit2
-    private ServiceProblemApi problemService;
-    private ArrayList<TheoryProblem> problemData = new ArrayList<>();
+    private static ServiceProblemApi problemService;
+    private static ArrayList<TheoryProblem> problemData = new ArrayList<>();
+    private static ArrayList<GetOneProblem> getOneProblems=new ArrayList<>();
+
+    compare Compare=new compare();
+    class compare implements Comparator<WrongAnswerData>{
+
+        @Override
+        public int compare(WrongAnswerData o1, WrongAnswerData o2) {
+            return o1.getId().compareTo(o2.getId());
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wrong_answer);
+        arrayList=new ArrayList<>();
 
         //retrofit2 객체 할당
         problemService = ApiUtils.getServiceProblemApi();
 
+        //세개의 선택지 생성 (일단 빈 내용으로 초기화)
+        /*for (int i=0;i<3;i++){
+            correctArrayList.add(new WrongAnswerCorrect("",true,false));
+        }*/
 
-        initData();
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.wrong_answer_recyclerView);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         loadData();
 
-        recyclerView=(RecyclerView)findViewById(R.id.wrong_answer_recyclerView);
-        linearLayoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
         mainAdapter=new WrongAnswerAdapter(arrayList,this);
         recyclerView.setAdapter(mainAdapter);
-    }
-    private void initData(){
-        //디폴트
-        correctArrayList=new ArrayList<>();
-        for (int i=0;i<3;i++){
-            correctArrayList.add(new WrongAnswerCorrect("",true,false));
-        }
-        arrayList=new ArrayList<>();
-        arrayList.add(new WrongAnswerData("변수 생성 예제 1번",true,"집합의 특징은 중복이 안되며 순서가 없다는 것입니다. \n s1=set('banana') \n s2=set('hello') \n print(s1) \n print(s2)\n\n  #결과값\n {'a','n','b'}\n",false,correctArrayList));
-        arrayList.add(new WrongAnswerData("변수 생성 예제 2번",false,"집합의 특징은 중복이 안되며 순서가 없다는 것입니다. \n s1=set('banana') \n s2=set('hello') \n print(s1) \n print(s2)\n\n  #결과값\n {'a','n','b'}\n",false,correctArrayList));
-        arrayList.add(new WrongAnswerData("변수 생성 예제 3번",false,"집합의 특징은 중복이 안되며 순서가 없다는 것입니다. \n s1=set('banana') \n s2=set('hello') \n print(s1) \n print(s2)\n\n  #결과값\n {'a','n','b'}\n",false,correctArrayList));
-        arrayList.add(new WrongAnswerData("변수 생성 예제 4번",true,"집합의 특징은 중복이 안되며 순서가 없다는 것입니다. \n s1=set('banana') \n s2=set('hello') \n print(s1) \n print(s2)\n\n  #결과값\n {'a','n','b'}\n",false,correctArrayList));
-        arrayList.add(new WrongAnswerData("변수 생성 예제 5번",false,"집합의 특징은 중복이 안되며 순서가 없다는 것입니다. \n s1=set('banana') \n s2=set('hello') \n print(s1) \n print(s2)\n\n  #결과값\n {'a','n','b'}\n",false,correctArrayList));
-        arrayList.add(new WrongAnswerData("변수 생성 예제 6번",false,"집합의 특징은 중복이 안되며 순서가 없다는 것입니다. \n s1=set('banana') \n s2=set('hello') \n print(s1) \n print(s2)\n\n  #결과값\n {'a','n','b'}\n",false,correctArrayList));
-        arrayList.add(new WrongAnswerData("변수 생성 예제 7번",true,"집합의 특징은 중복이 안되며 순서가 없다는 것입니다. \n s1=set('banana') \n s2=set('hello') \n print(s1) \n print(s2)\n\n  #결과값\n {'a','n','b'}\n",false,correctArrayList));
-        arrayList.add(new WrongAnswerData("변수 생성 예제 8번",true,"집합의 특징은 중복이 안되며 순서가 없다는 것입니다. \n s1=set('banana') \n s2=set('hello') \n print(s1) \n print(s2)\n\n  #결과값\n {'a','n','b'}\n",false,correctArrayList));
-        //각 문제마다 임시로 선택지 줌
-        for (int i=0;i<arrayList.size();i++){
-            if(arrayList.get(i).isCorrect()==true){
-                //맞은 문제인경우의 임시 선택지
-                arrayList.get(i).getCorrectArrayList().get(0).setAnswer("{'h','e','l','o'}");
-                arrayList.get(i).getCorrectArrayList().get(0).setChosen(true);
-                arrayList.get(i).getCorrectArrayList().get(0).setCorrect(true);
-                arrayList.get(i).getCorrectArrayList().get(1).setAnswer("h,e,l,o");
-                arrayList.get(i).getCorrectArrayList().get(1).setChosen(false);
-                arrayList.get(i).getCorrectArrayList().get(1).setCorrect(false);
-                arrayList.get(i).getCorrectArrayList().get(2).setAnswer("{'hello'}");
-                arrayList.get(i).getCorrectArrayList().get(2).setChosen(false);
-                arrayList.get(i).getCorrectArrayList().get(2).setCorrect(false);
-            }
-            else if (arrayList.get(i).isCorrect()==false){
-                //Log.d("틀린 문제","값 주기 "+i);
-                //틀렸던 문제인 경우
-                arrayList.get(i).getCorrectArrayList().get(0).setAnswer("{'h','e','l','o'}");
-                arrayList.get(i).getCorrectArrayList().get(0).setChosen(false);
-                arrayList.get(i).getCorrectArrayList().get(0).setCorrect(true);
-                arrayList.get(i).getCorrectArrayList().get(1).setAnswer("h,e,l,o");
-                arrayList.get(i).getCorrectArrayList().get(1).setChosen(false);
-                arrayList.get(i).getCorrectArrayList().get(1).setCorrect(false);
-                arrayList.get(i).getCorrectArrayList().get(2).setAnswer("{'hello'}");
-                arrayList.get(i).getCorrectArrayList().get(2).setChosen(true);
-                arrayList.get(i).getCorrectArrayList().get(2).setCorrect(false);
-            }
-        }
 
     }
+
     private void loadData(){
+        Log.d("처음 시작","처음 시작");
+        progressOn();
         problemService.getProblem("python","자료형").enqueue(new Callback<ArrayList<TheoryProblem>>() {
             @Override
             public void onResponse(Call<ArrayList<TheoryProblem>> call, Response<ArrayList<TheoryProblem>> response) {
-                if(response.isSuccessful()){
-                    problemData=response.body();
-                    Log.d("!!!","성공"+problemData.toString());
+                if(response.isSuccessful()) {
+                    problemData = response.body();
+                    assert problemData != null;
+                    Log.d("!!!", "성공" + problemData.toString());
+                    for (int i = 0; i < problemData.size(); i++) {
+                        ids[i] = problemData.get(i).getId();
+
+                    }
+                    for (int i=0;i<problemData.size();i++) {
+                        int finalI = i;
+                        Log.d("ids","ids"+ids[i]);
+                        problemService.getOneProblem(ids[i]).enqueue(new Callback<ArrayList<GetOneProblem>>() {
+                            @Override
+                            public void onResponse(Call<ArrayList<GetOneProblem>> call, Response<ArrayList<GetOneProblem>> response) {
+                                if (response.isSuccessful()) {
+                                    getOneProblems = response.body();
+                                    Log.d("getOne!!", "성공" + getOneProblems.toString());
+                                    String [] answerOption=new String[3];
+
+                                    answerOption=getOneProblems.get(0).getOption().split("\\|",3);
+
+                                    correctArrayList=new ArrayList<>();
+                                    for (int i=0;i<3;i++){
+                                        correctArrayList.add(new WrongAnswerCorrect(answerOption[i],true,false));
+                                        Log.d("선택지",correctArrayList.get(i).toString());
+                                    }
+
+                                    //Log.d("선택지",getOneProblems.get(0).getOption());
+                                    if (finalI==1){
+                                        //임의로 틀린 문제 만들기
+                                        wrongAnswerData=new WrongAnswerData("예제 "+getOneProblems.get(0).getProblemNumber(),false,getOneProblems.get(0).getQuestion()+getOneProblems.get(0).getCode(),
+                                                false,correctArrayList,getOneProblems.get(0).getId());
+                                        /*wrongAnswerData.getCorrectArrayList().get(0).setAnswer("틀린답1");
+                                        wrongAnswerData.getCorrectArrayList().get(0).setChosen(false);
+                                        wrongAnswerData.getCorrectArrayList().get(0).setCorrect(true);
+                                        wrongAnswerData.getCorrectArrayList().get(1).setAnswer("h,e,l,o");
+                                        wrongAnswerData.getCorrectArrayList().get(1).setChosen(false);
+                                        wrongAnswerData.getCorrectArrayList().get(1).setCorrect(false);
+                                        wrongAnswerData.getCorrectArrayList().get(2).setAnswer("{'hello'}");
+                                        wrongAnswerData.getCorrectArrayList().get(2).setChosen(true);
+                                        wrongAnswerData.getCorrectArrayList().get(2).setCorrect(false);*/
+                                    }
+                                    else{
+                                        wrongAnswerData=new WrongAnswerData("예제 "+getOneProblems.get(0).getProblemNumber(),true,getOneProblems.get(0).getQuestion()+getOneProblems.get(0).getCode(),
+                                                false,correctArrayList,getOneProblems.get(0).getId());
+                                        /*wrongAnswerData.getCorrectArrayList().get(0).setAnswer("{'h','e','l','o'}");
+                                        wrongAnswerData.getCorrectArrayList().get(0).setChosen(true);
+                                        wrongAnswerData.getCorrectArrayList().get(0).setCorrect(true);
+                                        wrongAnswerData.getCorrectArrayList().get(1).setAnswer("h,e,l,o");
+                                        wrongAnswerData.getCorrectArrayList().get(1).setChosen(false);
+                                        wrongAnswerData.getCorrectArrayList().get(1).setCorrect(false);
+                                        wrongAnswerData.getCorrectArrayList().get(2).setAnswer("{'hello'}");
+                                        wrongAnswerData.getCorrectArrayList().get(2).setChosen(false);
+                                        wrongAnswerData.getCorrectArrayList().get(2).setCorrect(false);*/
+                                    }
+                                    arrayList.add(wrongAnswerData);
+
+
+                                    //for문의 마지막에서 어댑터 붙이기
+                                    if (finalI ==problemData.size()-1){
+                                        //마지막에 arrayList 한번 정렬 필요
+                                        Collections.sort(arrayList,Compare);
+                                        progressOff();
+                                        mainAdapter.notifyDataSetChanged();
+                                    }
+                                } else {
+                                    Log.d("getOne!!", "실패");
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<ArrayList<GetOneProblem>> call, Throwable t) {
+                                Log.d("getOne!!", "아예 실패");
+                            }
+                        });
+                    }
                 }
                 else
                     Log.d("!!!","실패");
             }
-
             @Override
             public void onFailure(Call<ArrayList<TheoryProblem>> call, Throwable t) {
                 Log.d("!!!","아예 실패");
                 Log.d("???",t.getMessage().toString());
             }
         });
-
     }
-
 }

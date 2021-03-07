@@ -41,7 +41,7 @@ public class NewsFragment extends BaseFragment {
         subButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.child_fragment,new PromotionFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.child_fragment,new BookFragment()).commit();
                 //디자인 변경
                 subButton2.setBackground(getResources().getDrawable(R.drawable.round_border_news02));
                 subButton1.setBackground(getResources().getDrawable(R.drawable.round_border_news));

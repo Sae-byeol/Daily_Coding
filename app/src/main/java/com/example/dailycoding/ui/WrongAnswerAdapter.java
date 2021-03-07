@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.model.GetOneProblem;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,8 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
     private ArrayList<WrongAnswerData> arrayList;
     private Context context;
 
-    public WrongAnswerAdapter(ArrayList<WrongAnswerData> arrayList,Context context) {
+    //각 문제의 정보 담는 arrayList를 어댑터의 인수로 주기 -> 이 데이터로 Bind 하게 됨
+    public WrongAnswerAdapter(ArrayList<WrongAnswerData> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context=context;
     }
@@ -65,16 +67,15 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
         public void onBind(WrongAnswerData data, int position){
             this.data=data;
             this.position=position;
-
+            //data 중에서 제목과 내용, 세개의 선택지 붙이기 -> 다 붙임
             textView.setText(data.getText());
             contentText.setText(data.getContent());
             for (int i=0;i<3;i++){
-                tv[i].setText(arrayList.get(position).getCorrectArrayList().get(i).getAnswer());
+                tv[i].setText(data.getCorrectArrayList().get(i).getAnswer());
             }
 
+            //애니메이션, 클릭 이벤트
             applyLayoutTransition();
-
-
             constraintLayout.setOnClickListener(this);
             closebtn.setOnClickListener(this);
         }
@@ -174,13 +175,17 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
             holder.imageView.setImageResource(R.drawable.ic_incorrect);
 
             /*for (int i=0;i<3;i++) {
+=======
+            holder.imageView.setImageResource(R.drawable.uncorrect);
+            for (int i=0;i<3;i++) {
+>>>>>>> 5eb1dcd5dcbd1b664d7f6a64f741beb397451096
                 isCorrectAnswer=arrayList.get(position).getCorrectArrayList().get(i).isCorrect();
                 isChosen=arrayList.get(position).getCorrectArrayList().get(i).isChosen();
                 if (isChosen ){
                     holder.tv[i].setBackgroundResource(R.drawable.round_border_red_stroke);
                     holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.white));
                 }
-                else if (isCorrect){
+                else if (isCorrectAnswer){
                     holder.tv[i].setBackgroundResource(R.drawable.round_border_light_stroke);
                     holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.black));
                 }
@@ -189,15 +194,15 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
                     holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.white));
                 }
 
-            }*/
+            }
             //activity에서 준 값들을 잘 받긴 하는데 이 부분에서 자꾸 틀린문제들도 액티비티에서 준 arrayList의 첫번째 정보를 가져와서 색칠됨
             //계속 안되니까 일단은 하드코딩 하겠음
-            holder.tv[0].setBackgroundResource(R.drawable.round_border_light_stroke);
+            /*holder.tv[0].setBackgroundResource(R.drawable.round_border_light_stroke);
             holder.tv[0].setTextColor(ContextCompat.getColor(context, R.color.black));
             holder.tv[1].setBackgroundResource(R.drawable.round_border_gray_stroke);
             holder.tv[1].setTextColor(ContextCompat.getColor(context, R.color.white));
             holder.tv[2].setBackgroundResource(R.drawable.round_border_red_stroke);
-            holder.tv[2].setTextColor(ContextCompat.getColor(context, R.color.white));
+            holder.tv[2].setTextColor(ContextCompat.getColor(context, R.color.white));*/
         }
     }
 

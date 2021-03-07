@@ -1,5 +1,7 @@
 package com.example.dailycoding.ui;
 
+//세개의 선택지
+//답 내용, 맞는 답인지 , 내가 선택한 답인지
 public class WrongAnswerCorrect {
     private String answer;
     private boolean isCorrect;
@@ -33,5 +35,14 @@ public class WrongAnswerCorrect {
 
     public void setChosen(boolean chosen) {
         isChosen = chosen;
+    }
+
+    @Override
+    public String toString() {
+        return "WrongAnswerCorrect{" +
+                "answer='" + answer + '\'' +
+                ", isCorrect=" + isCorrect +
+                ", isChosen=" + isChosen +
+                '}';
     }
 }

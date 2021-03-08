@@ -40,7 +40,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTheme(R.style.Theme_DailyCodingNight);
         setContentView(R.layout.activity_main);
 
         init();
@@ -132,6 +131,9 @@ public class MainActivity extends BaseActivity {
                         navigationView.setCheckedItem(R.id.drawer_setting);
 //                        replaceFragment(WelcomeFragment.newInstance());
                         drawerLayout.closeDrawer(GravityCompat.START);
+
+                        Intent tempintent = new Intent(getApplicationContext(), SettingActivity.class);
+                        startActivity(tempintent);
                         break;
 
                 }

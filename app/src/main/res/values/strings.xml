@@ -21,6 +21,14 @@
     <string name="recruit">현재 채용 공고</string>
     <string name="hottest">실시간 인기글</string>
 
+    <!-- Setting -->
+    <string name="mode">화면 모드</string>
+    <string name="alarm">알림 수신 동의</string>
+    <string name="faq">문의하기</string>
+    <string name="logout">로그아웃</string>
+    <string name="email">Daily@google.com</string>
+
+
     <!-- Navigation Drawer -->
     <string name="home">홈</string>
     <string name="course">뉴스</string>

@@ -19,6 +19,8 @@ import com.example.dailycoding.util.BaseActivity;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,11 +81,17 @@ public class ProblemListActivity extends BaseActivity {
                         Course course=new Course();
                         course.setTitle(theoryProblem.getCategory()+" "+theoryProblem.getProblemNumber()+"번");
                         course.setId(theoryProblem.getId());
+                        course.setProblemNumber(theoryProblem.getProblemNumber());
                         dataList.add(course);
 
 //                        arr_id.add();
                     }
-
+                    Collections.sort(dataList, new Comparator<Course>() {
+                        @Override
+                        public int compare(Course o1, Course o2) {
+                            return o1.getProblemNumber()-o2.getProblemNumber();
+                        }
+                    });
 
                     showList();
                     progressOff();

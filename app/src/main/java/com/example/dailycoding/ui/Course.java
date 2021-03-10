@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Course implements Serializable {
     private int id;
+
+    private int problemNumber;
     private String title;
     private boolean isExpanded;
 
@@ -13,6 +15,14 @@ public class Course implements Serializable {
     public Course(String title, boolean isExpanded) {
         this.title = title;
         this.isExpanded = isExpanded;
+    }
+
+    public int getProblemNumber() {
+        return problemNumber;
+    }
+
+    public void setProblemNumber(int problemNumber) {
+        this.problemNumber = problemNumber;
     }
 
     public int getId() {

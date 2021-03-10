@@ -347,10 +347,9 @@ public class RankFragment extends BaseFragment {
             @Override
             public void onResponse(Call<UserRankResponse> call, Response<UserRankResponse> response) {
                 if(response.isSuccessful()) {
-                    ArrayList<UserRank> result = response.body().getData();
-//                    tv_temp.setText(result.get(0).getCategory()); // 임시로 텍스트 변경
-//                    rankData.add(result);
 
+                    ArrayList<UserRank> result = response.body().getData();
+                    
                     Glide.with(getActivity()).load(result.get(0).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank1);
                     Glide.with(getActivity()).load(result.get(1).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank2);
                     Glide.with(getActivity()).load(result.get(2).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank3);

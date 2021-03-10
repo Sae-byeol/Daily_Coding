@@ -7,9 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.Navigation;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -42,7 +40,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTheme(R.style.Theme_DailyCodingNight);
         setContentView(R.layout.activity_main);
 
         init();
@@ -134,6 +131,9 @@ public class MainActivity extends BaseActivity {
                         navigationView.setCheckedItem(R.id.drawer_setting);
 //                        replaceFragment(WelcomeFragment.newInstance());
                         drawerLayout.closeDrawer(GravityCompat.START);
+
+                        Intent tempintent = new Intent(getApplicationContext(), SettingActivity.class);
+                        startActivity(tempintent);
                         break;
 
                 }

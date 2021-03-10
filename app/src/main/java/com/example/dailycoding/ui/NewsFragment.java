@@ -34,8 +34,8 @@ public class NewsFragment extends BaseFragment {
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.child_fragment,new ChanelFragment()).commit();
                 //버튼1 검정색 , 버튼2 하얀색으로
-                subButton1.setBackground(getResources().getDrawable(R.drawable.round_border_black));
-                subButton2.setBackground(getResources().getDrawable(R.drawable.round_border_white));
+                subButton1.setBackground(getResources().getDrawable(R.drawable.round_border_news02));
+                subButton2.setBackground(getResources().getDrawable(R.drawable.round_border_news));
             }
         });
         subButton2.setOnClickListener(new View.OnClickListener() {
@@ -43,8 +43,8 @@ public class NewsFragment extends BaseFragment {
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.child_fragment,new BookFragment()).commit();
                 //디자인 변경
-                subButton2.setBackground(getResources().getDrawable(R.drawable.round_border_black));
-                subButton1.setBackground(getResources().getDrawable(R.drawable.round_border_white));
+                subButton2.setBackground(getResources().getDrawable(R.drawable.round_border_news02));
+                subButton1.setBackground(getResources().getDrawable(R.drawable.round_border_news));
             }
         });
 

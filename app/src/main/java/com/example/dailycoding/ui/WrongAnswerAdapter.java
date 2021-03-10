@@ -172,8 +172,13 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
         }
         //틀렸던 문제라면
         else{
+            holder.imageView.setImageResource(R.drawable.ic_incorrect);
+
+            /*for (int i=0;i<3;i++) {
+=======
             holder.imageView.setImageResource(R.drawable.uncorrect);
             for (int i=0;i<3;i++) {
+>>>>>>> 5eb1dcd5dcbd1b664d7f6a64f741beb397451096
                 isCorrectAnswer=arrayList.get(position).getCorrectArrayList().get(i).isCorrect();
                 isChosen=arrayList.get(position).getCorrectArrayList().get(i).isChosen();
                 if (isChosen ){

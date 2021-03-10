@@ -179,12 +179,14 @@ public class CourseFragment extends BaseFragment
                 }
                 else{
                     Log.d(TAG, "카테고리 데이터 로드에 실패하였습니다.");
+                    progressOff();
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<CategoryResponse>> call, Throwable t) {
                 Log.d(TAG, "카테고리 데이터 로드에 실패하였습니다.\n");
+                progressOff();
             }
         });
     }

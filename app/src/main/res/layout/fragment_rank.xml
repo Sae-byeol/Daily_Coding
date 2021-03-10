@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/robotoregular"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_font"
             android:textFontWeight="700"
             android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="@+id/rank_textview_time"

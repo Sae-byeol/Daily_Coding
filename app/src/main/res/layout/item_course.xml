@@ -3,7 +3,7 @@
     android:id="@+id/ConstraintLayout_item_course"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/round_border_white"
+    android:background="@drawable/round_border_lang"
     android:layout_marginBottom="9dp"
     android:elevation="@dimen/button_elevation"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginVertical="15dp"
-        android:textColor="#000000"
+        android:textColor="@color/primary_font"
         android:textSize="16sp"
         android:textStyle="bold"/>
     <ImageView

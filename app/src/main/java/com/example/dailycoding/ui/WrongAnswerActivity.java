@@ -166,6 +166,7 @@ public class WrongAnswerActivity extends BaseActivity {
             @Override
             public void onFailure(Call<ArrayList<TheoryProblem>> call, Throwable t) {
                 Log.d("!!!","아예 실패");
+                Log.d("???",t.getMessage().toString());
             }
         });
     }

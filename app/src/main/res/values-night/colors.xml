@@ -17,10 +17,13 @@
     <color name="primary_background">#FF171717</color>
     <color name="secondary_background">#FF3C3F43</color>
     <color name="tertiary_background">#FF3C3F43</color>
+    <color name="serach_background">#FF3C3F43</color>
+    <color name="lang_background">#FFFFFFFF</color>
 
     <color name="primary_font">#FFFFFFFF</color>
     <color name="secondary_font">#FF878D95</color>
     <color name="tertiary_font">#FF3C3F43</color>
+    <color name="news_font">#FF878D95</color>
     <color name="click_font">#FF000000</color>
 
     <color name="primary_chart">#FFC4C4C4</color>

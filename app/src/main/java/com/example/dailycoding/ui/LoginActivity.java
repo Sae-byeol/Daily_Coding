@@ -65,11 +65,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
 
-//                Intent tempintent = new Intent(getApplicationContext(), InitActivity.class);
-//                startActivity(tempintent);
+                Intent tempintent = new Intent(getApplicationContext(), InitActivity.class);
+                startActivity(tempintent);
 
-                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, RC_SIGN_IN);
+//                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+//                startActivityForResult(signInIntent, RC_SIGN_IN);
             }
         });
 

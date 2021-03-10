@@ -145,6 +145,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
 //                    }
                     Intent intent=new Intent(context, ProblemDetailActivity.class);
                     intent.putExtra("id", dataList.get(position).getId());
+                    intent.putExtra("position", position);
                     intent.putExtra("dataList", dataList);
                     context.startActivity(intent);
                 }

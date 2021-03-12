@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 
 import com.example.dailycoding.R;
 import com.example.dailycoding.util.BaseActivity;
+import com.example.dailycoding.util.PreferenceManager;
+import com.example.dailycoding.util.ThemeUtil;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -52,6 +54,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         auth = FirebaseAuth.getInstance();
         view1 = findViewById(R.id.login_google);
 
+        // 임시 앱 테마 체크
+        tempAppThemeCheck();
 
         //구글 로그인 로직
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -103,6 +107,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         });
 
         kakaoLoginUi();
+    }
+
+    /**
+    *  임시 앱 테마 체크, 추후에 splash로 이동
+    * */
+    private void tempAppThemeCheck() {
+
+        // 첫 실행인지 확인후 앱 테마 체크
+        if(PreferenceManager.getBoolean(this, "appTheme")) {
+            ThemeUtil.applyTheme(ThemeUtil.DARK_MODE);
+        } else {
+            ThemeUtil.applyTheme(ThemeUtil.LIGHT_MODE);
+        }
     }
 
     private void updateUI(FirebaseUser user) {

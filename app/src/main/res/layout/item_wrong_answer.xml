@@ -30,7 +30,7 @@
         app:layout_constraintLeft_toRightOf="@id/wrong_answer_item_image"
         app:layout_constraintTop_toTopOf="parent"
         android:animateLayoutChanges="true"
-       >
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/wrong_answer_cons"

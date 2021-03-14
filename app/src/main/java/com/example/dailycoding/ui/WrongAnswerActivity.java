@@ -34,7 +34,7 @@ import retrofit2.Response;
 public class WrongAnswerActivity extends BaseActivity {
     private static ArrayList<WrongAnswerData> arrayList;
     private WrongAnswerAdapter mainAdapter;
-    private ArrayList<WrongAnswerCorrect> correctArrayList;
+    private ArrayList<WrongAnswerCorrect> correctArrayList=new ArrayList<>();
     private final Integer []ids=new Integer[50];
     private WrongAnswerData wrongAnswerData;
 
@@ -62,9 +62,9 @@ public class WrongAnswerActivity extends BaseActivity {
         problemService = ApiUtils.getServiceProblemApi();
 
         //세개의 선택지 생성 (일단 빈 내용으로 초기화)
-        /*for (int i=0;i<3;i++){
+        for (int i=0;i<3;i++){
             correctArrayList.add(new WrongAnswerCorrect("",true,false));
-        }*/
+        }
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.wrong_answer_recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -101,22 +101,22 @@ public class WrongAnswerActivity extends BaseActivity {
                                 if (response.isSuccessful()) {
                                     getOneProblems = response.body();
                                     Log.d("getOne!!", "성공" + getOneProblems.toString());
-                                    String [] answerOption=new String[3];
+                                    //String [] answerOption=new String[3];
 
-                                    answerOption=getOneProblems.get(0).getOption().split("\\|",3);
+                                    //answerOption=getOneProblems.get(0).getOption().split("\\|",3);
 
-                                    correctArrayList=new ArrayList<>();
-                                    for (int i=0;i<3;i++){
+
+                                    /*for (int i=0;i<3;i++){
                                         correctArrayList.add(new WrongAnswerCorrect(answerOption[i],true,false));
                                         Log.d("선택지",correctArrayList.get(i).toString());
-                                    }
+                                    }*/
 
                                     //Log.d("선택지",getOneProblems.get(0).getOption());
                                     if (finalI==1){
                                         //임의로 틀린 문제 만들기
                                         wrongAnswerData=new WrongAnswerData("예제 "+getOneProblems.get(0).getProblemNumber(),false,getOneProblems.get(0).getQuestion()+getOneProblems.get(0).getCode(),
                                                 false,correctArrayList,getOneProblems.get(0).getId());
-                                        /*wrongAnswerData.getCorrectArrayList().get(0).setAnswer("틀린답1");
+                                        wrongAnswerData.getCorrectArrayList().get(0).setAnswer("틀린답1");
                                         wrongAnswerData.getCorrectArrayList().get(0).setChosen(false);
                                         wrongAnswerData.getCorrectArrayList().get(0).setCorrect(true);
                                         wrongAnswerData.getCorrectArrayList().get(1).setAnswer("h,e,l,o");
@@ -124,12 +124,12 @@ public class WrongAnswerActivity extends BaseActivity {
                                         wrongAnswerData.getCorrectArrayList().get(1).setCorrect(false);
                                         wrongAnswerData.getCorrectArrayList().get(2).setAnswer("{'hello'}");
                                         wrongAnswerData.getCorrectArrayList().get(2).setChosen(true);
-                                        wrongAnswerData.getCorrectArrayList().get(2).setCorrect(false);*/
+                                        wrongAnswerData.getCorrectArrayList().get(2).setCorrect(false);
                                     }
                                     else{
                                         wrongAnswerData=new WrongAnswerData("예제 "+getOneProblems.get(0).getProblemNumber(),true,getOneProblems.get(0).getQuestion()+getOneProblems.get(0).getCode(),
                                                 false,correctArrayList,getOneProblems.get(0).getId());
-                                        /*wrongAnswerData.getCorrectArrayList().get(0).setAnswer("{'h','e','l','o'}");
+                                        wrongAnswerData.getCorrectArrayList().get(0).setAnswer("{'h','e','l','o'}");
                                         wrongAnswerData.getCorrectArrayList().get(0).setChosen(true);
                                         wrongAnswerData.getCorrectArrayList().get(0).setCorrect(true);
                                         wrongAnswerData.getCorrectArrayList().get(1).setAnswer("h,e,l,o");
@@ -137,7 +137,7 @@ public class WrongAnswerActivity extends BaseActivity {
                                         wrongAnswerData.getCorrectArrayList().get(1).setCorrect(false);
                                         wrongAnswerData.getCorrectArrayList().get(2).setAnswer("{'hello'}");
                                         wrongAnswerData.getCorrectArrayList().get(2).setChosen(false);
-                                        wrongAnswerData.getCorrectArrayList().get(2).setCorrect(false);*/
+                                        wrongAnswerData.getCorrectArrayList().get(2).setCorrect(false);
                                     }
                                     arrayList.add(wrongAnswerData);
 

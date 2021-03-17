@@ -8,6 +8,7 @@ public class Course implements Serializable {
 
     private int problemNumber;
     private String title;
+    private String content;
     private boolean isExpanded;
 
     public Course(){}
@@ -15,6 +16,20 @@ public class Course implements Serializable {
     public Course(String title, boolean isExpanded) {
         this.title = title;
         this.isExpanded = isExpanded;
+    }
+
+    public Course(String title, String content, boolean isExpanded) {
+        this.title = title;
+        this.content=content;
+        this.isExpanded = isExpanded;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getProblemNumber() {

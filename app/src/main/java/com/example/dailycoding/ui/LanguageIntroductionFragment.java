@@ -33,6 +33,16 @@ public class LanguageIntroductionFragment extends BaseFragment {
 //    public final static int FIRST_PAGE=PAGES*LOOPS/2;
     private static final String TAG="LanguageIntroductionFragment";
 
+    private String currentLanguage;
+
+    public String getCurrentLanguage() {
+        return currentLanguage;
+    }
+
+    public void setCurrentLanguage(String currentLanguage) {
+        this.currentLanguage = currentLanguage;
+    }
+
     private DiscreteScrollView scrollView;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -69,8 +79,24 @@ public class LanguageIntroductionFragment extends BaseFragment {
         showCourseTitle();
         showCourseList();
 
-        loadData("python");
+//        loadData("python");
     }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+////        viewPager2.setCurrentItem(1);
+//        /**
+//         * set init viewpager2 item
+//         * */
+//        viewPager2.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                viewPager2.setCurrentItem(1, true);
+//            }
+//        },10);
+//
+//    }
 
     private void showCourseTitle(){
         viewPager2=getView().findViewById(R.id.ViewPager2_languageSelect);
@@ -87,10 +113,23 @@ public class LanguageIntroductionFragment extends BaseFragment {
         viewPager2.setPageTransformer(overlapTransformer);
 
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-//                Log.d(TAG, "현재 선택된 포지션:"+position);
+                Log.d(TAG, "현재 선택된 포지션:"+position);
+                switch(position){
+                    case 0:
+                        setCurrentLanguage("python");
+                        break;
+                    case 1:
+                        setCurrentLanguage("java");
+                        break;
+                    case 2:
+                        setCurrentLanguage("c++");
+                        break;
+                }
+                loadData(currentLanguage);
             }
 
         });
@@ -152,36 +191,31 @@ public class LanguageIntroductionFragment extends BaseFragment {
 //        tempList.add("변수활용13");
 //        tempList.add("변수활용14");
 
-        list_course.add(new Course(getString(R.string.languageIntro_title1), false));
-        list_course.add(new Course(getString(R.string.languageIntro_title2), false));
-        list_course.add(new Course(getString(R.string.languageIntro_title3), false));
-        list_course.add(new Course(getString(R.string.languageIntro_title4),false));
-
     }
 
     private void loadData(String language){
+        list_course.clear();
+        if(language=="python"){
+            list_course.add(new Course(getString(R.string.language_intro_python_def_title), getString(R.string.language_intro_python_def), false));
+            list_course.add(new Course(getString(R.string.language_intro_python_prosCons_title), getString(R.string.language_intro_python_prosCons),false));
+            list_course.add(new Course(getString(R.string.language_intro_python_feature_title), getString(R.string.language_intro_python_feature),false));
+            list_course.add(new Course(getString(R.string.language_intro_python_usage_title), getString(R.string.language_intro_python_usage),false));
+        }
+        else if(language=="java"){
+            list_course.add(new Course(getString(R.string.language_intro_java_def_title), getString(R.string.language_intro_java_def), false));
+            list_course.add(new Course(getString(R.string.language_intro_java_prosCons_title), getString(R.string.language_intro_java_prosCons),false));
+            list_course.add(new Course(getString(R.string.language_intro_java_feature_title), getString(R.string.language_intro_java_feature),false));
+            list_course.add(new Course(getString(R.string.language_intro_java_usage_title), getString(R.string.language_intro_java_usage),false));
+        }
+        else if(language=="c++"){
+            list_course.add(new Course(getString(R.string.language_intro_cpp_def_title), getString(R.string.language_intro_cpp_def), false));
+            list_course.add(new Course(getString(R.string.language_intro_cpp_prosCons_title), getString(R.string.language_intro_cpp_propsCons),false));
+            list_course.add(new Course(getString(R.string.language_intro_cpp_feature_title), getString(R.string.language_intro_cpp_feature),false));
+            list_course.add(new Course(getString(R.string.language_intro_cpp_usage_title), getString(R.string.language_intro_cpp_usage),false));
+        }
+        mAdapter = new CourseAdapter(list_course, getContext(), 2);
+        recyclerView.setAdapter(mAdapter);
 
-        serviceProblemApi =ApiUtils.getServiceProblemApi();
-        //        로딩
-        //progressOn();
-        serviceProblemApi.getData("python").enqueue(new Callback<ArrayList<CategoryResponse>>() {
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onResponse(Call<ArrayList<CategoryResponse>> call, Response<ArrayList<CategoryResponse>> response) {
-                //progressOff();
-                ArrayList<CategoryResponse> result=response.body();
-
-                Log.d(TAG, result.size()+"");
-                for(int i=0;i<result.size();i++){
-                    Log.d(TAG, result.get(i).getCategory()+"");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<CategoryResponse>> call, Throwable t) {
-
-            }
-        });
     }
 
 }

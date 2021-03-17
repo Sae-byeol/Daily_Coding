@@ -39,6 +39,5 @@
         android:visibility="gone"
         android:layout_marginBottom="16dp"
         android:layout_marginHorizontal="22dp"
-        android:text="@string/languageIntro_content1"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

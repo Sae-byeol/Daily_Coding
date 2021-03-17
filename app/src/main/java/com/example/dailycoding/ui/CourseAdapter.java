@@ -101,6 +101,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                             imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_up_small));
                             constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang02));
 
+
                             TextView_title.setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
                             TextView_content.setTextColor(ContextCompat.getColor(context, R.color.white));
                         }
@@ -135,11 +136,13 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.TextView_title.setText(dataList.get(position).getTitle());
-        boolean isExpanded = dataList.get(position).isExpanded();
+
         if(type==1||type==0){
             holder.imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_right));
         }
         else{
+            holder.TextView_content.setText(dataList.get(position).getContent());
+            boolean isExpanded = dataList.get(position).isExpanded();
             holder.TextView_content.setVisibility(isExpanded?View.VISIBLE: View.GONE);
             if(isExpanded){
                 holder.constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang02));

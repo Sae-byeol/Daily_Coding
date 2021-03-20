@@ -2,7 +2,9 @@ package com.example.dailycoding.api;
 
 import com.example.dailycoding.model.CategoryResponse;
 import com.example.dailycoding.model.GetOneProblem;
+import com.example.dailycoding.model.News;
 import com.example.dailycoding.model.TheoryProblem;
+import com.example.dailycoding.ui.NewsData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,4 +36,9 @@ public interface ServiceProblemApi {
 
     @POST("/problem/getWrongs")
     Call <ArrayList<GetOneProblem>> getWrongs(@Body Integer[] ids);
+
+    @GET("/page/contents")
+    Call<ArrayList<News>> getNews(@Query("isBook") boolean isBook);
+
+
 }

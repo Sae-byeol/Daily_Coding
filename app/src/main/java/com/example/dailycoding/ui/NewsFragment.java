@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.dailycoding.R;
+import com.example.dailycoding.api.ApiUtils;
+import com.example.dailycoding.api.ServiceProblemApi;
 import com.example.dailycoding.util.BaseFragment;
 
 public class NewsFragment extends BaseFragment {
+
 
 
     public static NewsFragment newInstance() {
@@ -19,6 +22,8 @@ public class NewsFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         View rootView=(View)inflater.inflate(R.layout.fragment_news, container, false);
         //처음 childfragment 지정
         getFragmentManager().beginTransaction().add(R.id.child_fragment, new ChanelFragment()).commit();

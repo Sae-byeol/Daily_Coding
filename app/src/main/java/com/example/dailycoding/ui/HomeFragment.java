@@ -19,10 +19,16 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceProblemApi;
+import com.example.dailycoding.api.ServiceUserApi;
 import com.example.dailycoding.model.CategoryResponse;
+import com.example.dailycoding.model.News;
+import com.example.dailycoding.model.UserRank;
+import com.example.dailycoding.model.UserRankResponse;
 import com.example.dailycoding.util.BaseFragment;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -62,7 +68,11 @@ public class HomeFragment extends BaseFragment {
     private Button btnPython;
 
     // retrofit2
-    private ServiceProblemApi service;
+    //private ServiceProblemApi problemService;
+    //private ServiceUserApi userService;
+
+    private ArrayList<News> bookData = new ArrayList<>();
+    private ArrayList<String> imageData = new ArrayList<>();
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -80,14 +90,16 @@ public class HomeFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         //retrofit2 객체 할당
-//        service = ApiUtils.getServiceApi();
+        //problemService = ApiUtils.getServiceProblemApi();
+        //userService = ApiUtils.getServiceUserApi();
 
         init();
         initListener();
         initSpinner();
         initChart();
         initMultiline();
-        initAdapter();
+        //loadBook();
+        //loadData();
         
         // Retrofit2 Test
         //loadData("python");
@@ -111,14 +123,6 @@ public class HomeFragment extends BaseFragment {
 
     private void initAdapter() {
 
-        data = new ArrayList<>();
-
-        data.add("0");
-        data.add("0");
-        data.add("0");
-        data.add("0");
-        data.add("0");
-        data.add("0");
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.home_recyclerview);
         recyclerView.setHasFixedSize(true);
@@ -127,7 +131,7 @@ public class HomeFragment extends BaseFragment {
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new HomeAdapter(data);
+        mAdapter = new HomeAdapter(imageData);
         recyclerView.setAdapter(mAdapter);
 
     }
@@ -293,39 +297,77 @@ public class HomeFragment extends BaseFragment {
         tv_toplate = getView().findViewById(R.id.home_textview_toplate);
         tv_toplate.setText("13위");
     }
-
-
-    // retrofit2 사용예시
-    private void loadData(String language) {
-        progressOn();
-        service.getData(language).enqueue(new Callback<ArrayList<CategoryResponse>>() {
-            @Override
-            public void onResponse(Call<ArrayList<CategoryResponse>> call, Response<ArrayList<CategoryResponse>> response) {
-                if(response.isSuccessful()) {
-                    progressOff();
-                    ArrayList<CategoryResponse> result = response.body();
-                    /**
-                     * [
-                     *     {
-                     *         "category": "something python"     //result[0]
-                     *     },
-                     *     {
-                     *         "category": "category?"            //result[1]
-                     *     },
-                     *     {
-                     *         "category": "category01"
-                     *     }
-                     * ]
-                     */
-                    tv_temp.setText(result.get(0).getCategory()); // 임시로 텍스트 변경
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<CategoryResponse>> call, Throwable t) {
-                Log.e("onFailure", t.getMessage());
-            }
-        });
-    }
+//
+//    private void loadBook() {
+//        progressOn();
+//
+//        problemService.getNews(true).enqueue(new Callback<ArrayList<News>>() {
+//            @Override
+//            public void onResponse(Call<ArrayList<News>> call, Response<ArrayList<News>> response) {
+//                if(response.isSuccessful()){
+//                    bookData=response.body();
+//                    for (int i=0;i<bookData.size();i++){
+//                        imageData.add(bookData.get(i).getImageUrl());
+//                    }
+//
+//                    initAdapter();
+//                }
+//                else{
+//                    Log.d("BOOK","실패");
+//                }
+//                progressOff();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ArrayList<News>> call, Throwable t) {
+//                Log.d("load book", "실패");
+//                progressOff();
+//            }
+//        });
+//
+//    }
+//
+//
+//    private void loadData() {
+//        progressOn();
+//        userService.getRank().enqueue(new Callback<UserRankResponse>() {
+//            @Override
+//            public void onResponse(Call<UserRankResponse> call, Response<UserRankResponse> response) {
+//                if (response.isSuccessful()) {
+//                    Log.e("onSuccess","success");
+//
+////                    ArrayList<UserRank> result = response.body().getData();
+////
+////                    Glide.with(getActivity()).load(result.get(0).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank1);
+////                    Glide.with(getActivity()).load(result.get(1).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank2);
+////                    Glide.with(getActivity()).load(result.get(2).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank3);
+////
+////                    tvNameRank1.setText(result.get(0).getName());
+////                    tvNameRank2.setText(result.get(1).getName());
+////                    tvNameRank3.setText(result.get(2).getName());
+////
+////                    tvStarRank1.setText(result.get(0).getStar());
+////                    tvStarRank2.setText(result.get(1).getStar());
+////                    tvStarRank3.setText(result.get(2).getStar());
+////
+////                    for (int i = 3; i < result.size(); i++) {
+////                        rankData.add(result.get(i));
+////                    }
+////                    initAdapter();
+//                }
+//                else {
+//                    Log.e("???",response.message().toString());
+//                    Log.e("???",response.errorBody().toString());
+//                }
+//                progressOff();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserRankResponse> call, Throwable t) {
+//                Log.e("onFailure", t.getMessage());
+//                progressOff();
+//            }
+//        });
+//    }
 
 }

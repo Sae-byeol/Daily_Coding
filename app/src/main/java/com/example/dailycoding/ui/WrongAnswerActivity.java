@@ -156,18 +156,23 @@ public class WrongAnswerActivity extends BaseActivity {
                             @Override
                             public void onFailure(Call<ArrayList<GetOneProblem>> call, Throwable t) {
                                 Log.d("getOne!!", "아예 실패");
+                                progressOff();
                             }
                         });
                     }
                 }
                 else
                     Log.d("!!!","실패");
+                progressOff();
             }
+
             @Override
             public void onFailure(Call<ArrayList<TheoryProblem>> call, Throwable t) {
                 Log.d("!!!","아예 실패");
                 Log.d("???",t.getMessage().toString());
+                progressOff();
             }
         });
+
     }
 }

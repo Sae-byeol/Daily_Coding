@@ -18,6 +18,7 @@ public class UserRankResponse {
     @Expose
     private ArrayList<UserRank> data = null;
 
+
     public Integer getStatus() {
         return status;
     }
@@ -41,6 +42,7 @@ public class UserRankResponse {
     public void setData(ArrayList<UserRank> data) {
         this.data = data;
     }
+
 
 
 

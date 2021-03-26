@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +23,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceUserApi;
+import com.example.dailycoding.model.ErrorResponse;
 import com.example.dailycoding.model.UserRank;
 import com.example.dailycoding.model.UserRankResponse;
 import com.example.dailycoding.util.BaseFragment;
@@ -34,7 +34,10 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,8 +101,7 @@ public class RankFragment extends BaseFragment {
         //retrofit2 객체 할당
         userService = ApiUtils.getServiceUserApi();
 
-//        init();
-        //initSpinner();
+
         init();
         initListener();
         initChart();
@@ -107,10 +109,6 @@ public class RankFragment extends BaseFragment {
 
         loadData();
 
-//        progressOff();
-//
-//        // Retrofit2 Test
-//        loadData("python");
     }
 
     private void init() {
@@ -137,7 +135,7 @@ public class RankFragment extends BaseFragment {
 
     private void initListener() {
 
-        btnJava.setOnClickListener(new View.OnClickListener(){
+        btnJava.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selected = 0;
@@ -147,7 +145,7 @@ public class RankFragment extends BaseFragment {
             }
         });
 
-        btnC.setOnClickListener(new View.OnClickListener(){
+        btnC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selected = 1;
@@ -157,7 +155,7 @@ public class RankFragment extends BaseFragment {
             }
         });
 
-        btnPython.setOnClickListener(new View.OnClickListener(){
+        btnPython.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selected = 2;
@@ -231,12 +229,12 @@ public class RankFragment extends BaseFragment {
         lineDataSet.setLineWidth(2);
         lineDataSet.setCircleRadius(6);
 
-        int circleColor = ContextCompat.getColor(getContext(),R.color.primary_chart);
-        int firstLineColor = ContextCompat.getColor(getContext(),R.color.secondary_font);
+        int circleColor = ContextCompat.getColor(getContext(), R.color.primary_chart);
+        int firstLineColor = ContextCompat.getColor(getContext(), R.color.secondary_font);
 
         lineDataSet.setColor(firstLineColor);
 
-        int[] colors = {circleColor,circleColor,circleColor,circleColor,circleColor,circleColor,ContextCompat.getColor(getContext(),R.color.color_primary_light)};
+        int[] colors = {circleColor, circleColor, circleColor, circleColor, circleColor, circleColor, ContextCompat.getColor(getContext(), R.color.color_primary_light)};
         lineDataSet.setCircleColors(colors);
         lineDataSet.setCircleHoleRadius(100);
 
@@ -311,7 +309,7 @@ public class RankFragment extends BaseFragment {
         lineChart.setScaleEnabled(false); // zoom disable
         //lineChart.setXAxisRenderer(new CustomXAxisRenderer(lineChart.getViewPortHandler(), lineChart.getXAxis(), lineChart.getTransformer(YAxis.AxisDependency.LEFT) ));
 
-        int firstLineColor = ContextCompat.getColor(getContext(),R.color.secondary_chart);
+        int firstLineColor = ContextCompat.getColor(getContext(), R.color.secondary_chart);
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.TOP);
@@ -339,17 +337,16 @@ public class RankFragment extends BaseFragment {
         tv_toplate.setText("13위");
     }
 
-
-    // retrofit2 사용예시
     private void loadData() {
         progressOn();
         userService.getRank().enqueue(new Callback<UserRankResponse>() {
             @Override
             public void onResponse(Call<UserRankResponse> call, Response<UserRankResponse> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
+                    Log.e("onSuccess","success");
 
                     ArrayList<UserRank> result = response.body().getData();
-                    
+
                     Glide.with(getActivity()).load(result.get(0).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank1);
                     Glide.with(getActivity()).load(result.get(1).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank2);
                     Glide.with(getActivity()).load(result.get(2).getProfileUrl()).apply(new RequestOptions().circleCrop()).into(ivRank3);
@@ -362,12 +359,16 @@ public class RankFragment extends BaseFragment {
                     tvStarRank2.setText(result.get(1).getStar());
                     tvStarRank3.setText(result.get(2).getStar());
 
-                    for(int i = 3; i<result.size(); i++) {
+                    for (int i = 3; i < result.size(); i++) {
                         rankData.add(result.get(i));
                     }
                     initAdapter();
-                    progressOff();
                 }
+                else {
+                    Log.e("???",response.message().toString());
+                    Log.e("???",response.errorBody().toString());
+                }
+                progressOff();
             }
 
             @Override
@@ -377,5 +378,6 @@ public class RankFragment extends BaseFragment {
             }
         });
     }
+
 
 }

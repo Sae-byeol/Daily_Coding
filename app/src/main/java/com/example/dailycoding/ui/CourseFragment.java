@@ -105,12 +105,12 @@ public class CourseFragment extends BaseFragment
         /**
          * set init viewpager2 item
          * */
-        viewPager2.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                viewPager2.setCurrentItem(1, true);
-            }
-        },10);
+//        viewPager2.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                viewPager2.setCurrentItem(1, true);
+//            }
+//        },10);
 
 //        new Handler().postDelayed(new Runnable(){
 //            @Override

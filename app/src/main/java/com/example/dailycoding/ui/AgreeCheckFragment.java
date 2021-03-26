@@ -61,7 +61,6 @@ public class AgreeCheckFragment extends BaseFragment {
         //일단 cont1 넣어둠
         item_list.add(new CheckModel(R.string.agree3, false,R.string.agree_check_cont3));
 
-
         recyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(getContext()) {
             @Override

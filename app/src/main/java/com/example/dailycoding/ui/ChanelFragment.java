@@ -62,7 +62,7 @@ public class ChanelFragment extends BaseFragment {
                 if(response.isSuccessful()){
                     chanelData=response.body();
                     for (int i=0;i<chanelData.size();i++){
-                        mDataset.add(new NewsData(chanelData.get(i).getTitle(),chanelData.get(i).getIntroduction(),chanelData.get(i).getHashTag()));
+                        mDataset.add(new NewsData(chanelData.get(i).getTitle(),chanelData.get(i).getIntroduction(),chanelData.get(i).getHashTag(),chanelData.get(i).getContentOrder(),chanelData.get(i).getRecommendation()));
                     }
                     mAdapter=new ChanelAdapter(getActivity(),mDataset);
                     recyclerView.setAdapter(mAdapter);

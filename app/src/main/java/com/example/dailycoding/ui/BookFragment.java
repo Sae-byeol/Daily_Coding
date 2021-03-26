@@ -64,7 +64,7 @@ public class BookFragment extends BaseFragment {
                 if(response.isSuccessful()){
                     bookData=response.body();
                     for (int i=0;i<bookData.size();i++){
-                        mDataset.add(new NewsData(bookData.get(i).getTitle(),bookData.get(i).getIntroduction(),bookData.get(i).getHashTag()));
+                        mDataset.add(new NewsData(bookData.get(i).getTitle(),bookData.get(i).getIntroduction(),bookData.get(i).getHashTag(),bookData.get(i).getContentOrder(),bookData.get(i).getRecommendation()));
 
                     }
                     Log.d("BOOK",mDataset.toString());

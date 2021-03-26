@@ -18,12 +18,20 @@ public class ChanelNewActivity extends BaseActivity implements View.OnClickListe
         setContentView(R.layout.activity_chanel);
         //전환될 액티비티의 텍스트뷰에 데이터 전달하기
         TextView activity_title=findViewById(R.id.news_activity_title);
-        TextView activity_content=findViewById(R.id.news_activity_code_it_content);
+        TextView activity_subtitle=findViewById(R.id.news_activity_code_it);
+        TextView activity_hash=findViewById(R.id.news_activity_code_it_content);
+        TextView activity_course=findViewById(R.id.news_activity_course2);
+        TextView activity_review=findViewById(R.id.news_activity_review);
+
 
         Intent intent=getIntent();
 
         activity_title.setText(intent.getStringExtra("title"));
-        activity_content.setText(intent.getStringExtra("content"));
+        activity_subtitle.setText(intent.getStringExtra("content"));
+        activity_hash.setText(intent.getStringExtra("hash"));
+        activity_review.setText(intent.getStringExtra("review"));
+        activity_course.setText(intent.getStringExtra("course"));
+
 
         //뒤로 가기 버튼
         ImageButton closeBtn=findViewById(R.id.news_activity_left);

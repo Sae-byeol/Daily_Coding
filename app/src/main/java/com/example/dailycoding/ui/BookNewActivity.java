@@ -22,7 +22,7 @@ public class BookNewActivity extends BaseActivity implements View.OnClickListene
         ImageView activity_image=findViewById(R.id.book_activity_image);
         TextView activity_intro=findViewById(R.id.book_activity_intro_content);
         TextView activity_hash=findViewById(R.id.book_activity_code_it_content);
-        TextView activity_content=findViewById(R.id.book_activity_intro_content);
+        TextView activity_review=findViewById(R.id.book_introduce_content);
         TextView activity_course=findViewById(R.id.book_course_content);
 
 
@@ -30,8 +30,9 @@ public class BookNewActivity extends BaseActivity implements View.OnClickListene
 
         activity_title.setText(intent.getStringExtra("title"));
         activity_intro.setText(intent.getStringExtra("content"));
-        activity_hash.setText(intent.getStringExtra("review"));
-
+        activity_hash.setText(intent.getStringExtra("hash"));
+        activity_review.setText(intent.getStringExtra("review"));
+        activity_course.setText(intent.getStringExtra("course"));
 
 
         //뒤로 가기 버튼

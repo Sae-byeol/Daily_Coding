@@ -10,10 +10,12 @@ public class NewsData {
     private String course;
     private ImageView imageView;
 
-    public NewsData(String title, String content, String hash) {
+    public NewsData(String title, String content, String hash,String course, String review) {
         this.title = title;
         this.content = content;
         this.hash = hash;
+        this.course=course;
+        this.review=review;
     }
 
     public String getTitle() {

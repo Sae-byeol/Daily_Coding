@@ -47,7 +47,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>  {
 
                         intent.putExtra("title",mDataset.get(pos).getTitle());
                         intent.putExtra("content",mDataset.get(pos).getContent());
+                        intent.putExtra("hash",mDataset.get(pos).getHash());
                         intent.putExtra("review",mDataset.get(pos).getReview());
+                        intent.putExtra("course",mDataset.get(pos).getCourse());
 
                         //액티비티 전환
                         context.startActivity(intent);

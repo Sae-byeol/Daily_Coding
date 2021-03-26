@@ -117,28 +117,6 @@
             android:text="목차 내용"
             android:textSize="10sp"
             android:layout_marginTop="8dp"/>
-        <TextView
-            android:id="@+id/book_review"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/book_course_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="추천서평"
-            android:textStyle="bold"
-            android:textSize="10sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="8dp"/>
-        <TextView
-            android:id="@+id/book_review_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/book_review"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/news_activity_code_it_review"
-            android:textSize="10sp"
-            android:layout_marginTop="8dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

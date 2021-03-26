@@ -25,17 +25,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>  {
         protected ImageView imageView;
         protected TextView textView_title;
         protected TextView textView_content;
-        protected TextView textView_review;
+        protected TextView textView_hash;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.imageView=itemView.findViewById(R.id.news_item_imageView);
             this.textView_title=itemView.findViewById(R.id.news_item_textView);
             this.textView_content=itemView.findViewById(R.id.news_item_textView2);
-            this.textView_review=itemView.findViewById(R.id.news_item_textView3);
+            this.textView_hash=itemView.findViewById(R.id.news_item_textView3);
 //            this.button=itemView.findViewById(R.id.news_item_button);
 
-
+            //아이템 클릭하면 새로운 창 뜨도록
             itemView.setClickable(true);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -47,7 +47,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>  {
 
                         intent.putExtra("title",mDataset.get(pos).getTitle());
                         intent.putExtra("content",mDataset.get(pos).getContent());
-                        //intent.putExtra("review",mDataset.get(pos).getReview());
+                        intent.putExtra("review",mDataset.get(pos).getReview());
 
                         //액티비티 전환
                         context.startActivity(intent);
@@ -74,7 +74,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>  {
     public void onBindViewHolder(@NonNull BookAdapter.ViewHolder holder, int position) {
         holder.textView_title.setText(mDataset.get(position).getTitle());
         holder.textView_content.setText(mDataset.get(position).getContent());
-        holder.textView_review.setText(mDataset.get(position).getReview());
+        holder.textView_hash.setText(mDataset.get(position).getHash());
     }
 
     @Override

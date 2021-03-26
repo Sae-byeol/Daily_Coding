@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -18,12 +19,20 @@ public class BookNewActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_book);
         //전환될 액티비티의 텍스트뷰에 데이터 전달하기
         TextView activity_title=findViewById(R.id.book_activity_title);
-        TextView activity_content=findViewById(R.id.book_activity_code_it_content);
+        ImageView activity_image=findViewById(R.id.book_activity_image);
+        TextView activity_intro=findViewById(R.id.book_activity_intro_content);
+        TextView activity_hash=findViewById(R.id.book_activity_code_it_content);
+        TextView activity_content=findViewById(R.id.book_activity_intro_content);
+        TextView activity_course=findViewById(R.id.book_course_content);
+
 
         Intent intent=getIntent();
 
         activity_title.setText(intent.getStringExtra("title"));
-        activity_content.setText(intent.getStringExtra("content"));
+        activity_intro.setText(intent.getStringExtra("content"));
+        activity_hash.setText(intent.getStringExtra("review"));
+
+
 
         //뒤로 가기 버튼
         ImageButton closeBtn=findViewById(R.id.book_activity_left);

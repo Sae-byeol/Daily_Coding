@@ -78,6 +78,10 @@ public class LanguageIntroductionFragment extends BaseFragment {
         initData();
         showCourseTitle();
         showCourseList();
+        loadData(currentLanguage);
+
+//        showCourseList();
+//        showCourseTitle();
 
 //        loadData("python");
     }
@@ -98,12 +102,16 @@ public class LanguageIntroductionFragment extends BaseFragment {
 //
 //    }
 
+    @SuppressLint("LongLogTag")
     private void showCourseTitle(){
+
+        Log.d(TAG, "showCourseTitle 실행 시작");
+
         viewPager2=getView().findViewById(R.id.ViewPager2_languageSelect);
 //        viewPager2.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         viewPager2.setAdapter(new CourseSelectAdapter(list_courseTitle, viewPager2));
 
-        viewPager2.setCurrentItem(1);
+//        viewPager2.setCurrentItem(1);
         viewPager2.setClipToPadding(false);
         viewPager2.setClipChildren(false);
         viewPager2.setOffscreenPageLimit(3);
@@ -134,33 +142,14 @@ public class LanguageIntroductionFragment extends BaseFragment {
 
         });
 
-//        scrollView = getView().findViewById(R.id.DiscreteScrollView_language);
-//        scrollView.setAdapter(new CourseSelectAdapter(list_courseTitle));
-//        scrollView.setOffscreenItems(3);
-//        scrollView.setOverScrollEnabled(false);
-//        scrollView.setItemTransformer(new ScaleTransformer.Builder()
-//                .setMaxScale(1.05f)
-//                .setMinScale(0.8f)
-//                .setPivotX(Pivot.X.CENTER) // CENTER is a default one
-//                .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
-//                .build());
-
-
-//        scrollView = getView().findViewById(R.id.DiscreteScrollView_language);
-//        CourseSelectAdapter courseSelectAdapter=new CourseSelectAdapter(list_courseTitle, LOOPS);
-////        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(courseSelectAdapter);
-////        scrollView.setAdapter(wrapper);
-//        scrollView.setAdapter(courseSelectAdapter);
-//        scrollView.scrollToPosition(LOOPS*3/2);
-//        scrollView.setItemTransformer(new ScaleTransformer.Builder()
-//                .setMaxScale(1.05f)
-//                .setMinScale(0.8f)
-//                .setPivotX(Pivot.X.CENTER) // CENTER is a default one
-//                .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
-//                .build());
+        Log.d(TAG, "showCourseTitle 실행 완료");
     }
 
+    @SuppressLint("LongLogTag")
     private void showCourseList(){
+
+        Log.d(TAG, "showCourseList 실행 시작");
+
         recyclerView = getView().findViewById(R.id.RecyclerView_language);
 
         // use this setting to improve performance if you know that changes
@@ -174,9 +163,14 @@ public class LanguageIntroductionFragment extends BaseFragment {
         // specify an adapter (see also next example)
         mAdapter = new CourseAdapter(list_course, getContext(), 2);
         recyclerView.setAdapter(mAdapter);
+
+        Log.d(TAG, "showCourseList 실행 완료");
+
     }
 
+    @SuppressLint("LongLogTag")
     private void initData(){
+        Log.d(TAG, "initData 실행");
 
         list_courseTitle = new ArrayList<>();
         list_course=new ArrayList<>();
@@ -184,6 +178,10 @@ public class LanguageIntroductionFragment extends BaseFragment {
         list_courseTitle.add("Python");
         list_courseTitle.add("JAVA");
         list_courseTitle.add("C++");
+
+        setCurrentLanguage("python");
+
+        Log.d(TAG, "initData 실행 완료");
 
 //        ArrayList tempList=new ArrayList();
 //        tempList.add("변수활용11");
@@ -193,8 +191,10 @@ public class LanguageIntroductionFragment extends BaseFragment {
 
     }
 
+    @SuppressLint("LongLogTag")
     private void loadData(String language){
         list_course.clear();
+        Log.d(TAG, "loadData 실행, "+language);
         if(language=="python"){
             list_course.add(new Course(getString(R.string.language_intro_python_def_title), getString(R.string.language_intro_python_def), false));
             list_course.add(new Course(getString(R.string.language_intro_python_prosCons_title), getString(R.string.language_intro_python_prosCons),false));

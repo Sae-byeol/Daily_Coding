@@ -138,7 +138,8 @@ public class ProblemListActivity extends BaseActivity {
 
     private void showList(){
         // specify an adapter (see also next example)
-        mAdapter = new CourseAdapter(dataList, this, 1);
+        Log.d(TAG, "showList currentLanguage:"+currentLanguage);
+        mAdapter = new CourseAdapter(dataList, this, 1, currentLanguage);
         recyclerView.setAdapter(mAdapter);
     }
 

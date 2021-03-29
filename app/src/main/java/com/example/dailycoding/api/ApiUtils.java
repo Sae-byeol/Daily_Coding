@@ -4,7 +4,7 @@ package com.example.dailycoding.api;
 
 public class ApiUtils {
 
-    public static String BASE_URL_USER = "http://52.78.57.24:8080/";
+    public static String BASE_URL_USER = "http://52.78.57.24:8081/";
 
     public static String BASE_URL_PROBLEM = "https://radiant-hollows-57561.herokuapp.com/";
 

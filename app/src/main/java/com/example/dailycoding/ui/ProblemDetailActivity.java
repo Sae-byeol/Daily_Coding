@@ -26,6 +26,9 @@ import androidx.core.content.ContextCompat;
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceProblemApi;
+import com.example.dailycoding.api.ServiceUserApi;
+import com.example.dailycoding.model.CheckAnswerBody;
+import com.example.dailycoding.model.CheckAnswerResponse;
 import com.example.dailycoding.model.GetOneProblem;
 import com.example.dailycoding.util.BaseActivity;
 
@@ -53,8 +56,10 @@ public class ProblemDetailActivity extends BaseActivity {
     private String currentCode;
 
     private ServiceProblemApi serviceProblemApi;
+    private ServiceUserApi serviceUserApi;
 
     private int currentId;
+    private String currentLanguage;
 
     private boolean isLeftProblem=false;
 
@@ -65,7 +70,7 @@ public class ProblemDetailActivity extends BaseActivity {
 
         problemDialog=new ProblemDialog(ProblemDetailActivity.this);
         init();
-        loadData(currentId);
+        loadProblemData(currentId);
 //        setData();
     }
 
@@ -88,7 +93,9 @@ public class ProblemDetailActivity extends BaseActivity {
 
         Intent gIntent=getIntent();
         currentId=gIntent.getIntExtra("id", -1);
-        currentPosition=getIntent().getIntExtra("position", -1);
+        currentPosition=gIntent.getIntExtra("position", -1);
+//        currentLanguage=gIntent.getStringExtra("language");
+        Log.d(TAG, "currentId: "+currentId+" / currentPosition: "+currentPosition+" / currentLang: "+currentLanguage);
         dataList=new ArrayList<>();
         dataList= (ArrayList<Course>) gIntent.getSerializableExtra("dataList");
 
@@ -147,9 +154,11 @@ public class ProblemDetailActivity extends BaseActivity {
 //                        currentSelect=1;
                         if(currentAnswer==1){
                             Toast.makeText(ProblemDetailActivity.this, "정답입니다.", Toast.LENGTH_SHORT).show();
+                            checkProblem(currentId, 1, currentLanguage);
                         }
                         else{
                             Toast.makeText(ProblemDetailActivity.this, "오답입니다.", Toast.LENGTH_SHORT).show();
+                            checkProblem(currentId, 0, currentLanguage);
                         }
                         break;
                     case R.id.Button_problemDetail_option2:
@@ -165,9 +174,12 @@ public class ProblemDetailActivity extends BaseActivity {
 //                        currentSelect=2;
                         if(currentAnswer==2){
                             Toast.makeText(ProblemDetailActivity.this, "정답입니다.", Toast.LENGTH_SHORT).show();
+                            checkProblem(currentId, 1, currentLanguage);
                         }
                         else{
                             Toast.makeText(ProblemDetailActivity.this, "오답입니다.", Toast.LENGTH_SHORT).show();
+                            checkProblem(currentId, 0, currentLanguage);
+
                         }
                         break;
                     case R.id.Button_problemDetail_option3:
@@ -182,9 +194,11 @@ public class ProblemDetailActivity extends BaseActivity {
 
                         if(currentAnswer==3){
                             Toast.makeText(ProblemDetailActivity.this, "정답입니다.", Toast.LENGTH_SHORT).show();
+                            checkProblem(currentId, 1, currentLanguage);
                         }
                         else{
                             Toast.makeText(ProblemDetailActivity.this, "오답입니다.", Toast.LENGTH_SHORT).show();
+                            checkProblem(currentId, 0, currentLanguage);
                         }
                         break;
                         //다음문제 버튼
@@ -196,7 +210,7 @@ public class ProblemDetailActivity extends BaseActivity {
                         else{
                             currentPosition++;
                             currentId=dataList.get(currentPosition).getId();
-                            loadData(currentId);
+                            loadProblemData(currentId);
                         }
                         break;
                         //이전문제 버튼
@@ -207,7 +221,7 @@ public class ProblemDetailActivity extends BaseActivity {
                         else{
                             currentPosition--;
                             currentId=dataList.get(currentPosition).getId();
-                            loadData(currentId);
+                            loadProblemData(currentId);
                         }
                         break;
                 }
@@ -224,7 +238,7 @@ public class ProblemDetailActivity extends BaseActivity {
 
     }
 
-    public void loadData(int id){
+    public void loadProblemData(int id){
         serviceProblemApi= ApiUtils.getServiceProblemApi();
         progressOn();
 
@@ -242,6 +256,7 @@ public class ProblemDetailActivity extends BaseActivity {
                     Log.d(TAG, currentId+"번의 데이터: "+response.body());
                     GetOneProblem getOneProblem=response.body().get(0);
 
+                    currentLanguage=getOneProblem.getLanguage();
                     currentCode=getOneProblem.getCode();
                     String[] myCode=currentCode.split("___");
 
@@ -312,6 +327,35 @@ public class ProblemDetailActivity extends BaseActivity {
 
             }
         });
+    }
+
+    //채점
+    public void checkProblem(int question, int answer, String language){
+        Log.d(TAG, "checkProblem question: "+question+" answer: "+answer+" language: "+language);
+        serviceUserApi=ApiUtils.getServiceUserApi();
+        progressOn();
+
+        serviceUserApi.postCheckAnswer(new CheckAnswerBody(question, answer, language)).enqueue(new Callback<CheckAnswerResponse>() {
+            @Override
+            public void onResponse(Call<CheckAnswerResponse> call, Response<CheckAnswerResponse> response) {
+                if(response.isSuccessful()){
+                    Log.d(TAG, "채점 status"+response.body().getStatus());
+                    Toast.makeText(ProblemDetailActivity.this, "채점에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(ProblemDetailActivity.this, "채점에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "response isn't successful, response error code "+response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CheckAnswerResponse> call, Throwable t) {
+                Toast.makeText(ProblemDetailActivity.this, "채점에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "채점 실패 메시지"+t.getMessage());
+            }
+        });
+        progressOff();
+
     }
 
     @SuppressLint("ResourceAsColor")

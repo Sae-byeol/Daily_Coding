@@ -3,6 +3,7 @@ package com.example.dailycoding.ui;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,41 +74,41 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                 constraintLayout=itemView.findViewById(R.id.ConstraintLayout_item_language);
             }
 
-            constraintLayout.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("UseCompatLoadingForDrawables")
-                @Override
-                public void onClick(View v) {
-                    //코스 페이지
-                    if(type==0){
-                        Intent intent=new Intent(context, ProblemListActivity.class);
-                        context.startActivity(intent);
-                    }
-                    //문제 리스트 페이지
-                    else if(type==1){
-                        Intent intent=new Intent(context, ProblemDetailActivity.class);
-                        context.startActivity(intent);
-                    }
-                    //언어 소개 페이지
-                    else if(type==2){
-                        Course course = dataList.get(getAdapterPosition());
-                        course.setExpanded(!course.isExpanded());
-                        notifyItemChanged(getAdapterPosition());
-                        if(course.isExpanded()) {
-                            imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_down_small));
-                            constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang));
-                            TextView_title.setTextColor(ContextCompat.getColor(context, R.color.black));
-                        }
-                        else    {
-                            imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_up_small));
-                            constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang02));
-
-
-                            TextView_title.setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
-                            TextView_content.setTextColor(ContextCompat.getColor(context, R.color.white));
-                        }
-                    }
-                }
-            });
+//            constraintLayout.setOnClickListener(new View.OnClickListener() {
+//                @SuppressLint("UseCompatLoadingForDrawables")
+//                @Override
+//                public void onClick(View v) {
+//                    //코스 페이지
+//                    if(type==0){
+//                        Intent intent=new Intent(context, ProblemListActivity.class);
+//                        context.startActivity(intent);
+//                    }
+//                    //문제 리스트 페이지
+//                    else if(type==1){
+//                        Intent intent=new Intent(context, ProblemDetailActivity.class);
+//                        context.startActivity(intent);
+//                    }
+//                    //언어 소개 페이지
+//                    else if(type==2){
+//                        Course course = dataList.get(getAdapterPosition());
+//                        course.setExpanded(!course.isExpanded());
+//                        notifyItemChanged(getAdapterPosition());
+//                        if(course.isExpanded()) {
+//                            imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_down_small));
+//                            constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang));
+//                            TextView_title.setTextColor(ContextCompat.getColor(context, R.color.black));
+//                        }
+//                        else    {
+//                            imageView.setBackground(context.getDrawable(R.drawable.ic_arrow_up_small));
+//                            constraintLayout.setBackground(context.getDrawable(R.drawable.round_border_lang02));
+//
+//
+//                            TextView_title.setTextColor(ContextCompat.getColor(context, R.color.color_primary_light));
+//                            TextView_content.setTextColor(ContextCompat.getColor(context, R.color.white));
+//                        }
+//                    }
+//                }
+//            });
         }
     }
 
@@ -180,6 +181,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                     Intent intent=new Intent(context, ProblemDetailActivity.class);
                     intent.putExtra("id", dataList.get(position).getId());
                     intent.putExtra("position", position);
+                    intent.putExtra("language, ", language);
+                    Log.d(TAG, "CourseAdapter type 1 language "+language);
                     intent.putExtra("dataList", dataList);
                     context.startActivity(intent);
                 }

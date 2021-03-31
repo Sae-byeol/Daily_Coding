@@ -41,9 +41,6 @@ public class BookFragment extends BaseFragment {
 
         loadData();
 
-        /*mDataset.add(new NewsData("book 1 title","book 1 content","book 1 review"));
-        mDataset.add(new NewsData("book 2 title","book 2 content","book 2 review"));
-        mDataset.add(new NewsData("book 3 title","book 3 content","book 3 review"));*/
 
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_book, container, false);
@@ -57,17 +54,18 @@ public class BookFragment extends BaseFragment {
     }
     private void loadData(){
         progressOn();
-        //mDataset.clear();
+        mDataset.clear();
         problemService.getNews(true).enqueue(new Callback<ArrayList<News>>() {
             @Override
             public void onResponse(Call<ArrayList<News>> call, Response<ArrayList<News>> response) {
                 if(response.isSuccessful()){
                     bookData=response.body();
                     for (int i=0;i<bookData.size();i++){
-                        mDataset.add(new NewsData(bookData.get(i).getTitle(),bookData.get(i).getIntroduction(),bookData.get(i).getHashTag(),bookData.get(i).getContentOrder(),bookData.get(i).getRecommendation()));
+                        mDataset.add(new NewsData(bookData.get(i).getTitle(),bookData.get(i).getIntroduction(),bookData.get(i).getHashTag(),bookData.get(i).getContentOrder(),
+                                bookData.get(i).getRecommendation(),bookData.get(i).getImageUrl(),bookData.get(i).getLink()));
 
                     }
-                    Log.d("BOOK",mDataset.toString());
+                    //Log.d("BOOK",mDataset.toString());
                     mAdapter=new BookAdapter(getActivity(),mDataset);
                     recyclerView.setAdapter(mAdapter);
                 }

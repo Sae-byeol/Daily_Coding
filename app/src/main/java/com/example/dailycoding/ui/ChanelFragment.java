@@ -38,9 +38,6 @@ public class ChanelFragment extends BaseFragment {
         //retrofit2 객체 할당
         problemService = ApiUtils.getServiceProblemApi();
 
-        /*mDataset.add(new NewsData("chanel 1 title","chanel 1 content","chanel 1 review"));
-        mDataset.add(new NewsData("chanel 2 title","chanel 2 content","chanel 2 review"));
-        mDataset.add(new NewsData("chanel 3 title","chanel 3 content","chanel 3 review"));*/
 
         loadData();
 
@@ -62,7 +59,8 @@ public class ChanelFragment extends BaseFragment {
                 if(response.isSuccessful()){
                     chanelData=response.body();
                     for (int i=0;i<chanelData.size();i++){
-                        mDataset.add(new NewsData(chanelData.get(i).getTitle(),chanelData.get(i).getIntroduction(),chanelData.get(i).getHashTag(),chanelData.get(i).getContentOrder(),chanelData.get(i).getRecommendation()));
+                        mDataset.add(new NewsData(chanelData.get(i).getTitle(),chanelData.get(i).getIntroduction(),chanelData.get(i).getHashTag(),chanelData.get(i).getContentOrder(),
+                                chanelData.get(i).getRecommendation(),chanelData.get(i).getImageUrl(),chanelData.get(i).getLink()));
                     }
                     mAdapter=new ChanelAdapter(getActivity(),mDataset);
                     recyclerView.setAdapter(mAdapter);

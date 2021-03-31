@@ -8,14 +8,16 @@ public class NewsData {
     private String hash;
     private String review;
     private String course;
-    private ImageView imageView;
-
-    public NewsData(String title, String content, String hash,String course, String review) {
+    private String imageUrl;
+    private String link;
+    public NewsData(String title, String content, String hash,String course, String review,String imageUrl,String link) {
         this.title = title;
         this.content = content;
         this.hash = hash;
         this.course=course;
         this.review=review;
+        this.imageUrl=imageUrl;
+        this.link=link;
     }
 
     public String getTitle() {
@@ -57,12 +59,20 @@ public class NewsData {
     public void setCourse(String course) {
         this.course = course;
     }
-    public ImageView getImageView() {
-        return imageView;
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageView(ImageView imageView) {
-        this.imageView = imageView;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 }

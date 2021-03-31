@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.dailycoding.R;
 
 import java.util.ArrayList;
@@ -50,7 +52,8 @@ public class ChanelAdapter extends RecyclerView.Adapter<ChanelAdapter.ViewHolder
                         intent.putExtra("hash",mDataset.get(pos).getHash());
                         intent.putExtra("review",mDataset.get(pos).getReview());
                         intent.putExtra("course",mDataset.get(pos).getCourse());
-
+                        intent.putExtra("image",mDataset.get(pos).getImageUrl().split(",")[1]);
+                        intent.putExtra("link",mDataset.get(pos).getLink());
                         //액티비티 전환
                         context.startActivity(intent);
                     }
@@ -77,7 +80,12 @@ public class ChanelAdapter extends RecyclerView.Adapter<ChanelAdapter.ViewHolder
         holder.textView_title.setText(mDataset.get(position).getTitle());
         holder.textView_content.setText(mDataset.get(position).getContent());
         holder.textView_hash.setText(mDataset.get(position).getHash());
+        Glide.with(context)
+                .load(mDataset.get(position).getImageUrl().split(",")[0])
+                .apply(new RequestOptions().circleCrop())
+                .into(holder.imageView);
     }
+
 
     @Override
     public int getItemCount() {

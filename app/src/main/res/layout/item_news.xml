@@ -17,7 +17,7 @@
             android:id="@+id/news_item_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:text="@string/news_item_title"
             android:textColor="@color/primary_font"
             android:textSize="12sp"
@@ -27,11 +27,13 @@
         <TextView
             android:id="@+id/news_item_textView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:textColor="@color/news_font"
             android:text="@string/news_item_content"
+            android:maxLines="2"
+            android:ellipsize="end"
             android:textSize="9sp"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:layout_weight="6">
         </TextView>
         <TextView
@@ -41,7 +43,7 @@
             android:text="@string/news_item_review"
             android:textColor="@color/tertiary_font"
             android:textSize="8sp"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:layout_weight="2">
         </TextView>
 

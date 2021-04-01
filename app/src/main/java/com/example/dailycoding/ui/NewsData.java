@@ -20,6 +20,9 @@ public class NewsData {
         this.link=link;
     }
 
+
+
+
     public String getTitle() {
         return title;
     }

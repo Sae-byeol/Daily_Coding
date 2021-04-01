@@ -5,10 +5,13 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
@@ -23,9 +26,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ChanelFragment extends BaseFragment {
+public class ChanelFragment extends BaseFragment implements TextWatcher {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private ChanelAdapter mAdapter;
     private ArrayList<NewsData> mDataset=new ArrayList<>();
 
     //retrofit2
@@ -42,6 +45,8 @@ public class ChanelFragment extends BaseFragment {
         loadData();
 
         View view=inflater.inflate(R.layout.fragment_chanel, container, false);
+        EditText editText=(EditText)view.findViewById(R.id.chanel_editText);
+        editText.addTextChangedListener(this);
         recyclerView=(RecyclerView)view.findViewById(R.id.chanel_fragment);
         LinearLayoutManager LayoutManager=new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         recyclerView.setHasFixedSize(true);
@@ -59,7 +64,7 @@ public class ChanelFragment extends BaseFragment {
                 if(response.isSuccessful()){
                     chanelData=response.body();
                     for (int i=0;i<chanelData.size();i++){
-                        mDataset.add(new NewsData(chanelData.get(i).getTitle(),chanelData.get(i).getIntroduction(),chanelData.get(i).getHashTag(),chanelData.get(i).getContentOrder(),
+                        mDataset.add(new NewsData(chanelData.get(i).getTitle(),chanelData.get(i).getIntroduction(),chanelData.get(i).getHashTag().replace("|"," #"),chanelData.get(i).getContentOrder(),
                                 chanelData.get(i).getRecommendation(),chanelData.get(i).getImageUrl(),chanelData.get(i).getLink()));
                     }
                     mAdapter=new ChanelAdapter(getActivity(),mDataset);
@@ -77,6 +82,21 @@ public class ChanelFragment extends BaseFragment {
                 progressOff();
             }
         });
+
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        mAdapter.getFilter().filter(s.toString());
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
 
     }
 }

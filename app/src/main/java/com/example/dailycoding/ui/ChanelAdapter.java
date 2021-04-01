@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,9 +20,43 @@ import com.example.dailycoding.R;
 
 import java.util.ArrayList;
 
-public class ChanelAdapter extends RecyclerView.Adapter<ChanelAdapter.ViewHolder>  {
+public class ChanelAdapter extends RecyclerView.Adapter<ChanelAdapter.ViewHolder> implements Filterable {
     private ArrayList<NewsData> mDataset;
     private Context context;
+    private ArrayList<NewsData> unfilterList;
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String str=constraint.toString();
+                if (str.isEmpty()){
+                    mDataset=unfilterList;
+                }
+                else{
+                    ArrayList<NewsData> filteringList=new ArrayList<>();
+
+                    for (NewsData newsData : unfilterList){
+                        if (newsData.getContent().toLowerCase().contains(str)){
+                            filteringList.add(newsData);
+                        }
+                    }
+                    mDataset=filteringList;
+                }
+                FilterResults filterResults=new FilterResults();
+                filterResults.values=mDataset;
+
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                mDataset=(ArrayList<NewsData>)results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -64,7 +100,7 @@ public class ChanelAdapter extends RecyclerView.Adapter<ChanelAdapter.ViewHolder
     public ChanelAdapter(Context context, ArrayList<NewsData> myDataset){
         this.context=context;
         mDataset=myDataset;
-
+        this.unfilterList=myDataset;
     }
     @NonNull
     @Override

@@ -1,14 +1,16 @@
 package com.example.dailycoding.ui;
 
 import android.os.Bundle;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
@@ -23,9 +25,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class BookFragment extends BaseFragment {
+public class BookFragment extends BaseFragment implements TextWatcher {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private BookAdapter mAdapter;
     private static ArrayList<NewsData> mDataset=new ArrayList<>();
 
     //retrofit2
@@ -39,11 +41,13 @@ public class BookFragment extends BaseFragment {
         //retrofit2 객체 할당
         problemService = ApiUtils.getServiceProblemApi();
 
-        loadData();
 
+        loadData();
 
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_book, container, false);
+        EditText editText=(EditText)view.findViewById(R.id.promotion_editText);
+        editText.addTextChangedListener(this);
         recyclerView=(RecyclerView)view.findViewById(R.id.book_fragment);
         LinearLayoutManager LayoutManager=new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         recyclerView.setHasFixedSize(true);
@@ -61,7 +65,7 @@ public class BookFragment extends BaseFragment {
                 if(response.isSuccessful()){
                     bookData=response.body();
                     for (int i=0;i<bookData.size();i++){
-                        mDataset.add(new NewsData(bookData.get(i).getTitle(),bookData.get(i).getIntroduction(),bookData.get(i).getHashTag(),bookData.get(i).getContentOrder(),
+                        mDataset.add(new NewsData(bookData.get(i).getTitle(),bookData.get(i).getIntroduction(),bookData.get(i).getHashTag().replace("|"," #"),bookData.get(i).getContentOrder(),
                                 bookData.get(i).getRecommendation(),bookData.get(i).getImageUrl(),bookData.get(i).getLink()));
 
                     }
@@ -81,5 +85,22 @@ public class BookFragment extends BaseFragment {
                 progressOff();
             }
         });
+
+    }
+
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        mAdapter.getFilter().filter(s.toString());
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
     }
 }

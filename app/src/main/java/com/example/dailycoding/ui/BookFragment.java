@@ -45,7 +45,7 @@ public class BookFragment extends BaseFragment implements TextWatcher {
         loadData();
 
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_book, container, false);
+         View view= inflater.inflate(R.layout.fragment_book, container, false);
         EditText editText=(EditText)view.findViewById(R.id.promotion_editText);
         editText.addTextChangedListener(this);
         recyclerView=(RecyclerView)view.findViewById(R.id.book_fragment);

@@ -193,7 +193,6 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
                     holder.tv[i].setBackgroundResource(R.drawable.round_border_gray_stroke);
                     holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.white));
                 }
-
             }
             //activity에서 준 값들을 잘 받긴 하는데 이 부분에서 자꾸 틀린문제들도 액티비티에서 준 arrayList의 첫번째 정보를 가져와서 색칠됨
             //계속 안되니까 일단은 하드코딩 하겠음

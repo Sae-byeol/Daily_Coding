@@ -140,9 +140,9 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
     @NonNull
     @Override
     public WrongAnswerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wrong_answer,null);
-        WrongAnswerAdapter.ViewHolder viewHolder=new WrongAnswerAdapter.ViewHolder(view);
-        return viewHolder;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wrong_answer,null,false);
+        view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
+        return new ViewHolder(view);
     }
 
     @Override
@@ -175,10 +175,10 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
             holder.imageView.setImageResource(R.drawable.ic_incorrect);
 
             /*for (int i=0;i<3;i++) {
-=======
-            holder.imageView.setImageResource(R.drawable.uncorrect);
+
+            holder.imageView.setImageResource(R.drawable.uncorrect);*/
             for (int i=0;i<3;i++) {
->>>>>>> 5eb1dcd5dcbd1b664d7f6a64f741beb397451096
+
                 isCorrectAnswer=arrayList.get(position).getCorrectArrayList().get(i).isCorrect();
                 isChosen=arrayList.get(position).getCorrectArrayList().get(i).isChosen();
                 if (isChosen ){
@@ -194,14 +194,6 @@ public class WrongAnswerAdapter extends RecyclerView.Adapter<WrongAnswerAdapter.
                     holder.tv[i].setTextColor(ContextCompat.getColor(context, R.color.white));
                 }
             }
-            //activity에서 준 값들을 잘 받긴 하는데 이 부분에서 자꾸 틀린문제들도 액티비티에서 준 arrayList의 첫번째 정보를 가져와서 색칠됨
-            //계속 안되니까 일단은 하드코딩 하겠음
-            /*holder.tv[0].setBackgroundResource(R.drawable.round_border_light_stroke);
-            holder.tv[0].setTextColor(ContextCompat.getColor(context, R.color.black));
-            holder.tv[1].setBackgroundResource(R.drawable.round_border_gray_stroke);
-            holder.tv[1].setTextColor(ContextCompat.getColor(context, R.color.white));
-            holder.tv[2].setBackgroundResource(R.drawable.round_border_red_stroke);
-            holder.tv[2].setTextColor(ContextCompat.getColor(context, R.color.white));*/
         }
     }
 

@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceProblemApi;
+import com.example.dailycoding.api.ServiceUserApi;
+import com.example.dailycoding.model.LastProblemResponse;
 import com.example.dailycoding.model.TheoryProblem;
 import com.example.dailycoding.util.BaseActivity;
 
@@ -41,6 +43,7 @@ public class ProblemListActivity extends BaseActivity {
     private ArrayList<Integer> arr_id;
     private ServiceProblemApi serviceProblemApi;
 
+
     private String currentCategory;
     private String currentLanguage;
 
@@ -66,6 +69,7 @@ public class ProblemListActivity extends BaseActivity {
 //        course.setTitle();
 //        dataList.add(course);
         serviceProblemApi= ApiUtils.getServiceProblemApi();
+
         progressOn();
         dataList.clear();
 

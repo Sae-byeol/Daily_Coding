@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,7 +28,10 @@ import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceProblemApi;
 import com.example.dailycoding.api.ServiceUserApi;
 import com.example.dailycoding.model.CategoryResponse;
+import com.example.dailycoding.model.LastProblemData;
+import com.example.dailycoding.model.LastProblemResponse;
 import com.example.dailycoding.util.BaseFragment;
+import com.google.android.gms.common.api.Api;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
 import com.yarolegovich.discretescrollview.transform.Pivot;
@@ -67,7 +71,8 @@ public class CourseFragment extends BaseFragment
     private RecyclerView.LayoutManager layoutManager;
     private ViewPager2 viewPager2;
     private ServiceProblemApi serviceProblemApi;
-    private ArrayList<CategoryResponse> categoryData=new ArrayList<>();
+    private ServiceUserApi serviceUserApi;
+
     private TextView TextView_noProblems;
 
 //    private static final String[] DATA={"변수활용1", "변수활용2", "변수활용3"};
@@ -89,11 +94,13 @@ public class CourseFragment extends BaseFragment
         super.onViewCreated(view, savedInstanceState);
 
         init();
-        loadData();
         initData();
+
         showCourseTitle();
         showCourseList();
 //        scrollEvent();
+
+//        loadData();
 
 //        Log.d(TAG, "현재 아이템: "+scrollView.getCurrentItem());
     }
@@ -151,6 +158,8 @@ public class CourseFragment extends BaseFragment
     private void loadData(){
         Log.d(TAG, "loadData 호출");
         serviceProblemApi=ApiUtils.getServiceProblemApi();
+        serviceUserApi= ApiUtils.getServiceUserApi();
+
         progressOn();
 //        list_course=new ArrayList<>();
         list_course.clear();
@@ -187,6 +196,27 @@ public class CourseFragment extends BaseFragment
             public void onFailure(Call<ArrayList<CategoryResponse>> call, Throwable t) {
                 Log.d(TAG, "카테고리 데이터 로드에 실패하였습니다.\n");
                 progressOff();
+            }
+        });
+
+        serviceUserApi.getLastProblem().enqueue(new Callback<LastProblemResponse>() {
+            @Override
+            public void onResponse(Call<LastProblemResponse> call, Response<LastProblemResponse> response) {
+                Log.d(TAG, "getLastProblem response: "+response.body());
+                if(response.code()==200){
+                    for(LastProblemData data : response.body().getList()){
+                        Log.d(TAG, "최근 푼 문제: "+data.getCategory()+" / "+data.getQuest());
+                    }
+                }
+                else{
+                    Toast.makeText(getContext(), "최근에 푼 문제 데이터 로드에 실패하였습니다.\n에러코드: "+response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LastProblemResponse> call, Throwable t) {
+                Log.d(TAG, "getLastProblem failed!\nError:"+t.getMessage());
+                Toast.makeText(getContext(), "최근 푼 문제 조회에 실패하였습니다.", Toast.LENGTH_SHORT);
             }
         });
     }

@@ -14,12 +14,10 @@ import android.widget.Toast;
 import com.example.dailycoding.R;
 import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceProblemApi;
-import com.example.dailycoding.api.ServiceUserApi;
-import com.example.dailycoding.model.LastProblemResponse;
+import com.example.dailycoding.model.Course;
 import com.example.dailycoding.model.TheoryProblem;
 import com.example.dailycoding.util.BaseActivity;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -27,8 +25,6 @@ import java.util.Comparator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static java.security.AccessController.getContext;
 
 
 public class ProblemListActivity extends BaseActivity {
@@ -46,6 +42,9 @@ public class ProblemListActivity extends BaseActivity {
 
     private String currentCategory;
     private String currentLanguage;
+
+    private int currentProblemId;
+    private int currentProblemIdx;
 
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -124,6 +123,8 @@ public class ProblemListActivity extends BaseActivity {
         Intent gIntent=getIntent();
         currentCategory=gIntent.getStringExtra("category");
         currentLanguage=gIntent.getStringExtra("language");
+        currentProblemId=gIntent.getIntExtra("questionId", -1);
+        currentProblemIdx=gIntent.getIntExtra("questionIdx", -1);
 
         TextView_title.setText(currentLanguage+" "+currentCategory);
         recyclerView.setHasFixedSize(true);
@@ -143,16 +144,16 @@ public class ProblemListActivity extends BaseActivity {
     private void showList(){
         // specify an adapter (see also next example)
         Log.d(TAG, "showList currentLanguage:"+currentLanguage);
-        mAdapter = new CourseAdapter(dataList, this, 1, currentLanguage);
+        mAdapter = new CourseAdapter(dataList, this, 1, currentLanguage, currentProblemIdx);
         recyclerView.setAdapter(mAdapter);
     }
 
-    private void initData(){
-        for(int i=0;i<10;i++){
-            Course course=new Course();
-            course.setTitle("변수 생성 예제 "+(i+1)+"번");
-            dataList.add(course);
-        }
-    }
+//    private void initData(){
+//        for(int i=0;i<10;i++){
+//            Course course=new Course();
+//            course.setTitle("변수 생성 예제 "+(i+1)+"번");
+//            dataList.add(course);
+//        }
+//    }
 
 }

@@ -3,11 +3,7 @@ package com.example.dailycoding.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -29,10 +25,9 @@ import com.example.dailycoding.api.ServiceProblemApi;
 import com.example.dailycoding.api.ServiceUserApi;
 import com.example.dailycoding.model.CheckAnswerBody;
 import com.example.dailycoding.model.CheckAnswerResponse;
+import com.example.dailycoding.model.Course;
 import com.example.dailycoding.model.GetOneProblem;
 import com.example.dailycoding.util.BaseActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

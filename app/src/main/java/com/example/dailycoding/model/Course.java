@@ -1,11 +1,11 @@
-package com.example.dailycoding.ui;
+package com.example.dailycoding.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Course implements Serializable {
-    private int id;
 
+    private int id;
     private int problemNumber;
     private String title;
     private String content;

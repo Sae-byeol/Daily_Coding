@@ -1,10 +1,6 @@
 package com.example.dailycoding.ui;
 
-import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,13 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.ViewCompat;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.dailycoding.R;
@@ -28,16 +19,13 @@ import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceProblemApi;
 import com.example.dailycoding.api.ServiceUserApi;
 import com.example.dailycoding.model.CategoryResponse;
+import com.example.dailycoding.model.Course;
 import com.example.dailycoding.model.LastProblemData;
 import com.example.dailycoding.model.LastProblemResponse;
+import com.example.dailycoding.model.RecentProblem;
 import com.example.dailycoding.util.BaseFragment;
-import com.google.android.gms.common.api.Api;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
-import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
-import com.yarolegovich.discretescrollview.transform.Pivot;
-import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -73,6 +61,8 @@ public class CourseFragment extends BaseFragment
     private ServiceProblemApi serviceProblemApi;
     private ServiceUserApi serviceUserApi;
 
+    private RecentProblem recentProblems;
+
     private TextView TextView_noProblems;
 
 //    private static final String[] DATA={"변수활용1", "변수활용2", "변수활용3"};
@@ -97,7 +87,7 @@ public class CourseFragment extends BaseFragment
         initData();
 
         showCourseTitle();
-        showCourseList();
+//        showCourseList();
 //        scrollEvent();
 
 //        loadData();
@@ -153,6 +143,8 @@ public class CourseFragment extends BaseFragment
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
+
+        recentProblems=new RecentProblem();
     }
 
     private void loadData(){
@@ -185,6 +177,8 @@ public class CourseFragment extends BaseFragment
                         TextView_noProblems.setVisibility(View.VISIBLE);
                     }
                     progressOff();
+
+                    showCourseList();
                 }
                 else{
                     Log.d(TAG, "카테고리 데이터 로드에 실패하였습니다.");
@@ -205,8 +199,35 @@ public class CourseFragment extends BaseFragment
                 Log.d(TAG, "getLastProblem response: "+response.body());
                 if(response.code()==200){
                     for(LastProblemData data : response.body().getList()){
-                        Log.d(TAG, "최근 푼 문제: "+data.getCategory()+" / "+data.getQuest());
+                        Log.d(TAG, "최근 푼 문제: "+data.getCategory()+" / "+data.getQuest()+" / "+data.getCreatedate()+" / "+data.getQuestIdx());
+                        Log.d(TAG, "최근 문제 카테고리: "+data.getCategory()+"/ 타입: "+data.getCategory().getClass().getName());
+                        String currentCategory=data.getCategory();
+                        switch(currentCategory){
+                            case "python":
+                                recentProblems.setRecentPython(data.getQuest());
+                                recentProblems.setRecentPythonIdx(data.getQuestIdx());
+                                Log.d(TAG, "최근 인덱스 Python:"+recentProblems.getRecentJavaIdx());
+                                break;
+                            case "java":
+                                recentProblems.setRecentJava(data.getQuest());
+                                recentProblems.setRecentJavaIdx(data.getQuestIdx());
+                                Log.d(TAG, "최근 인덱스 Java:"+recentProblems.getRecentJavaIdx());
+                                break;
+                            case "cplus":
+                                recentProblems.setRecentCpp(data.getQuest());
+                                recentProblems.setRecentCppIdx(data.getQuestIdx());
+                                Log.d(TAG, "최근 인덱스 C++:"+recentProblems.getRecentCppIdx());
+                                break;
+                            default:
+                                Log.d(TAG, "최근 인덱스 x");
+                                break;
+                        }
                     }
+
+//                    Log.d(TAG, "최근 파이썬 index, before showCourseList2: "+recentProblems.getRecentPythonIdx());
+
+                    showCourseList();
+
                 }
                 else{
                     Toast.makeText(getContext(), "최근에 푼 문제 데이터 로드에 실패하였습니다.\n에러코드: "+response.code(), Toast.LENGTH_SHORT).show();
@@ -293,7 +314,10 @@ public class CourseFragment extends BaseFragment
     private void showCourseList(){
 
         // specify an adapter (see also next example)
-        mAdapter = new CourseAdapter(list_course, getContext(), 0, currentLanguage);
+
+        Log.d(TAG, "최근 파이썬 문제 인덱스:"+recentProblems.getRecentPythonIdx());
+
+        mAdapter = new CourseAdapter(list_course, getContext(), 0, currentLanguage, recentProblems);
         recyclerView.setAdapter(mAdapter);
     }
 

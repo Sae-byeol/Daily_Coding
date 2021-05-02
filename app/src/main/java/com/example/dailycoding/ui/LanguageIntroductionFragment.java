@@ -14,17 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.dailycoding.R;
-import com.example.dailycoding.api.ApiUtils;
 import com.example.dailycoding.api.ServiceProblemApi;
-import com.example.dailycoding.model.CategoryResponse;
+import com.example.dailycoding.model.Course;
 import com.example.dailycoding.util.BaseFragment;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class LanguageIntroductionFragment extends BaseFragment {
 

@@ -1,6 +1,7 @@
 # Daily_Coding
-AppUs 개발팀 "하루코딩" 프로젝트 <br/>
-📱 android 
+✨AppUs 개발팀 "하루코딩" 프로젝트✨ <br/>
+📱 android <br/>
+프론트엔드 코드
 
 ### 1. 실행 화면
 
